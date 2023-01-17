@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 import yfinance as yf 
 import datetime
-from load_data_2 import load_data_All
-from plotly.subplots import make_subplots
 import os
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
