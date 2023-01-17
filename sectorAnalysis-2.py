@@ -12,7 +12,7 @@ market_select =  st.sidebar.radio("Select Market:",("USA","Canada","India"),inde
 
 
 
-AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
+AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
 
 
 # VARIABLE INITIALIZED 
