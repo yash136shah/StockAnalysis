@@ -3,33 +3,17 @@ import pandas as pd
 import numpy as np
 import yfinance as yf 
 import datetime
-import plotly.express as px 
-import plotly.graph_objects as go
-from streamlit_plotly_events import plotly_events
-import  streamlit_toggle as tog
 from load_data_2 import load_data_All
 from plotly.subplots import make_subplots
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
-from eodhd import APIClient
 import os
-import urllib, json
-import re
-from Hmap import rhmap
-import plotly
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import plotly.express as px 
-from streamlit_extras.switch_page_button import switch_page
+
 
 
 st.set_page_config(layout="wide")
 
-
-
-
-
-
-AdfC,AdfF,AmultidfC,AdfQ,dfM,dfT,dfSh,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
 
 
 # VARIABLE INITIALIZED 
@@ -65,69 +49,12 @@ OT = "Ratio"
 
 
 
-markets = ["USA","Canada","India"]
 
 
-#MARKET SELECT 
-if "marketSelect" not in st.session_state:
-    st.session_state["marketSelect"] = markets[0]
-    st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
+url ="https://github.com/yash136shah/StockAnalysis/blob/main/US_CompanyInfo.csv"
+dfC = pd.read_csv(url)
 
-def MarketSelect ():
-    st.session_state["marketIndex"] = markets.index(st.session_state["marketSelrad"])
-
-st.session_state["marketSelect"] = st.sidebar.radio("Market:",markets,index=st.session_state["marketIndex"],key="marketSelrad",on_change=MarketSelect)
-
-
-
-
-if st.session_state["marketSelect"] == "USA":
-        benchmark = "SPY"
-        descriptive_screener = ["EXCHANGE"]
-        dfC = AdfC[AdfC["Market Code"]=="US"]
-        dfF = AdfF[AdfF["Market Code"]=="US"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="US"]
-        multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
-
-elif st.session_state["marketSelect"] == "India":
-        benchmark = '^NSEI'
-        descriptive_screener = []
-        dfC = AdfC[AdfC["Market Code"]=="IND"]
-        dfF = AdfF[AdfF["Market Code"]=="IND"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
-        multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
-
-
-elif st.session_state["marketSelect"] == "Canada":
-        benchmark = '^GSPTSE'
-        descriptive_screener=[]
-        dfC = AdfC[AdfC["Market Code"]=="CAN"]
-        dfF = AdfF[AdfF["Market Code"]=="CAN"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
-        multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
-
-        #IS bifurcation IND and CAN
-
-
-
-
-
-col1,col2 = st.columns([10,2])
-
-with col1:
-    st.header("TECHNICAL ANALYSIS")
-
-with col2:
-    homePage = st.button("Home")
-    
-    if homePage:
-        switch_page("stockAnalysis-2")
-    
-    if st.button("Fundamental Analysis"):
-        switch_page("Fundamental")
-    
-    if st.button("Industry Overview"):
-        switch_page("Industry-Analysis-2")
+st.header("TECHNICAL ANALYSIS")
 
 
 # ENTER DATE
