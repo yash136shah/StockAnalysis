@@ -14,7 +14,6 @@ from eodhd import APIClient
 import os
 import urllib, json
 import re
-from Hmap import rhmap
 import plotly
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
