@@ -7,7 +7,7 @@ import os
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import plotly.express as px 
-
+from load_data_2 import load_data_All
 
 
 st.set_page_config(layout="wide")
@@ -48,10 +48,7 @@ OT = "Ratio"
 
 
 
-url = "https://raw.githubusercontent.com/yash136shah/StockAnalysis/main/US_CompanyInfo.csv"
-dfC = pd.read_csv(url)
-dfC.columns = dfC.columns.str.lstrip()
-dfC.loc[dfC["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfC["TICKER"]
+AdfC,AdfF,AmultidfC,AdfQ,dfM,dfT,dfSh,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
 
     
 st.header("TECHNICAL ANALYSIS")
