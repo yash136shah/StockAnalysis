@@ -204,11 +204,11 @@ with tab2:
                 
         
 with tab3:
-    if st.session_state["marketSelect"] == "USA":
-        col1,col2 = st.columns([3,13])
-        with col1:
-             benchmark = st.selectbox("Select Benchmark:",options=['SPY','XLE','XLY','XLI','XLF','XLU','XLV','XLP','XLC','XLB','XLRE','XLK'],index=0)
-    
+    #if st.session_state["marketSelect"] == "USA":
+    col1,col2 = st.columns([3,13])
+    with col1:
+         benchmark = st.selectbox("Select Benchmark:",options=['SPY','XLE','XLY','XLI','XLF','XLU','XLV','XLP','XLC','XLB','XLRE','XLK'],index=0)
+
     
     def benchmarkData():
         benchmark_data = yf.download(benchmark,start=sd,end=ed)
