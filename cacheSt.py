@@ -45,8 +45,6 @@ elif st.button("Previous image", key="previous"):
     st.session_state.image_idx = idx
     st.experimental_rerun()
 
-st.session_state["sectorSel"]
-st.session_state["industrySel"]
 
 card(
     title="Microsoft",
