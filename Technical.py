@@ -47,10 +47,9 @@ OT = "Ratio"
 
 
 
+file = st.file_uploader("Please choose a file")
 
-
-url =r"https://github.com/yash136shah/StockAnalysis/blob/main/US_CompanyInfo.csv"
-dfC = pd.read_csv(url)
+dfC = pd.read_csv(file)
 dfC.columns = dfC.columns.str.lstrip()
 dfC.loc[dfC["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfC["TICKER"]
 
