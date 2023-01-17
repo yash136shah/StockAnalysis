@@ -54,7 +54,7 @@ markets = ["USA","Canada","India"]
 
 #MARKET SELECT 
 if "marketSelect" not in st.session_state:
-    st.session_state["marketSelect"] = markets[0]
+    st.session_state["marketSelect"] = markets[2]
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
 
 def MarketSelect ():
@@ -78,7 +78,7 @@ elif st.session_state["marketSelect"] == "India":
         descriptive_screener = []
         dfC = AdfC[AdfC["Market Code"]=="IND"]
         dfF = AdfF[AdfF["Market Code"]=="IND"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
 
 
@@ -87,7 +87,7 @@ elif st.session_state["marketSelect"] == "Canada":
         descriptive_screener=[]
         dfC = AdfC[AdfC["Market Code"]=="CAN"]
         dfF = AdfF[AdfF["Market Code"]=="CAN"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
 
         #IS bifurcation IND and CAN
