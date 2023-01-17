@@ -1,7 +1,7 @@
 import streamlit as st
 import yfinance as yf
 import datetime
-import pandas ad pd 
+import pandas as pd 
 from streamlit_plotly_events import plotly_events
 from load_data_2 import load_data_All
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
