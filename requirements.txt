@@ -6,3 +6,4 @@ DateTime==4.5
 plotly==5.10.0
 numpy==1.21.6
 ta==0.10.2
+numerize==0.12
