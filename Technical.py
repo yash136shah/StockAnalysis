@@ -47,16 +47,13 @@ OT = "Ratio"
 
 
 
-file = st.file_uploader("Please choose a file")
 
-if file is not None:
-    dfC = pd.read_csv(file)
-    dfC.columns = dfC.columns.str.lstrip()
-    dfC.loc[dfC["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfC["TICKER"]
+url = "https://raw.githubusercontent.com/yash136shah/StockAnalysis/main/US_CompanyInfo.csv"
+dfC = pd.read_csv(url)
+dfC.columns = dfC.columns.str.lstrip()
+dfC.loc[dfC["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfC["TICKER"]
 
     
-else: 
-    st.stop()
 st.header("TECHNICAL ANALYSIS")
 
 
