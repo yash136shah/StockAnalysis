@@ -66,9 +66,6 @@ def load_data_All():
     
     #all
     dfOff = dictDf["Officers"]
-    dfEH = dictDf["EarningHistorical"]
-    dfET = dictDf["EarningTrend"]
-    dfEA = dictDf["EarningAnnual"]
 
     dfCI = dictDf["CompanyInfo"] 
 
@@ -97,10 +94,6 @@ def load_data_All():
 
     #dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfOff = dfOff.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
-    dfEH = dfEH.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
-    dfET = dfET.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
-    dfEA= dfEA.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
-
 
     mdata=[]
     for i in dfC['MARKET CAPITALIZATION']:
@@ -529,6 +522,6 @@ def load_data_All():
         
         
 
-    return dfC,dfF,multidfC,dfM,dfT,dfOff,dfEA,dfEH,dfET,gridOptions
+    return dfC,dfF,multidfC,dfM,dfT,dfOff,gridOptions
 
 
