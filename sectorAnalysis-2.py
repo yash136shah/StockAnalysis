@@ -7,7 +7,6 @@ from load_data_2 import load_data_All
 
 st.set_page_config(layout="wide")
 
-market_select =  st.sidebar.radio("Select Market:",("USA","Canada","India"),index=2)
 
 
 
