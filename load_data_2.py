@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import requests
-from pandas_datareader.nasdaq_trader import get_nasdaq_symbols
 from numerize import numerize as nu
 
 # VARIABLE INITIALIZED 
@@ -39,8 +37,8 @@ OT = "Ratio"
 
 @st.experimental_memo
 def load_data_All():
-    countries = ["US","CAN","IND"]
-    infoType = ["CompanyInfo","AF","QF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
+    countries = ["CAN","IND"]
+    infoType = ["CompanyInfo","AF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
 
     dictDf = {} 
     listDf = []
@@ -48,7 +46,8 @@ def load_data_All():
     try:
         for info in infoType:
             for country in countries:
-                    df = pd.read_csv(f"D:\EQUITY DATA\{country}-EOD\{country}_{info}.csv",low_memory=False)
+                    url=f"https://raw.githubusercontent.com/yash136shah/StockAnalysis/main/{country}_{info}.csv"
+                    df = pd.read_csv(url,low_memory=False)
                     df["Market Code"] = country
                     listDf.append(df)
                     
@@ -63,7 +62,7 @@ def load_data_All():
         pass
     
     #only US
-    dfSh = pd.read_csv(r"D:\EQUITY DATA\US-EOD\US_Shareholders.csv")
+    #dfSh = pd.read_csv(r"D:\EQUITY DATA\US-EOD\US_Shareholders.csv")
     
     #all
     dfOff = dictDf["Officers"]
@@ -83,7 +82,7 @@ def load_data_All():
 
     dfCI.loc[dfCI["EXCHANGE"]=="TO",["YF TICKER"]] = dfCI["TICKER"] + ".TO"
     dfCI.loc[dfCI["EXCHANGE"]=="NSE",["YF TICKER"]] = dfCI["TICKER"] + ".NS"
-    dfCI.loc[dfCI["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfCI["TICKER"]
+  #dfCI.loc[dfCI["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfCI["TICKER"]
 
 
     dfC = dfCI.merge(dfT,left_on="TICKER",right_on="Ticker",how="left")
@@ -95,7 +94,7 @@ def load_data_All():
     nameInfo = dfC[["TICKER","NAME"]]
     nameInfo.rename(columns={"NAME":"Company Name"},inplace=True)
 
-    dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
+    #dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfOff = dfOff.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfEH = dfEH.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfET = dfET.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
@@ -118,25 +117,6 @@ def load_data_All():
 
     selected_info=dfC[["YF TICKER",'TICKER','NAME','SECTOR','INDUSTRY','MARKET CAPITALIZATION','Current Market Cap','SHARES OUTSTANDING']]
 
-
-    #QUARTERLY FS     
-
-    dfQI = dictDf["QF"]  
-
-    dfQI.columns = dfQI.columns.str.lstrip()
-
-    dfQ = dfQI.merge(selected_info,left_on="TICKER",right_on='TICKER',how="left")
-
-    dfQ['Value 2'] = dfQ['CASH'] + dfQ['CASH AND EQUIVALENTS'] + dfQ['SHORT TERM INVESTMENTS'] + dfQ['LONG TERM INVESTMENTS'].fillna(0) - dfQ['MINORITY INTEREST'].fillna(0) - dfQ['TOTAL LIAB'].fillna(0)
-
-    dfQ['Net Profit Margin'] = dfQ['NET INCOME']/dfQ['TOTAL REVENUE']                     
-    dfQ['Operating Profit Margin'] = dfQ['EBIT']/dfQ['TOTAL REVENUE']
-    dfQ['EBITDA Margin'] = dfQ['EBITDA']/dfQ['TOTAL REVENUE']
-    dfQ['Gross Profit Margin'] = dfQ['GROSS PROFIT']/dfQ['TOTAL REVENUE']
-    dfQ['DATE']=pd.to_datetime(dfQ['DATE']).dt.date
-    dfQ['C/R'] = dfQ['TOTAL CURRENT ASSETS'].fillna(0)/dfQ['TOTAL CURRENT LIABILITIES'].fillna(0)
-    dfQ['D/E'] = (dfQ['LONG TERM DEBT'].fillna(0) + dfQ['SHORT LONG TERM DEBT TOTAL'].fillna(0))/dfQ['TOTAL STOCKHOLDER EQUITY'].fillna(0)
-    dfQ['ROIC'] = dfQ['EBIT']/(dfQ['LONG TERM DEBT'].fillna(0) + dfQ['SHORT LONG TERM DEBT TOTAL'].fillna(0) + dfQ['TOTAL STOCKHOLDER EQUITY'].fillna(0))
 
 
 
@@ -548,6 +528,6 @@ def load_data_All():
         
         
 
-    return dfC,dfF,multidfC,dfQ,dfM,dfT,dfSH,dfOff,dfEA,dfEH,dfET,gridOptions
+    return dfC,dfF,multidfC,dfM,dfT,dfOff,dfEA,dfEH,dfET,gridOptions
 
 
