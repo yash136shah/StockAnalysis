@@ -29,7 +29,7 @@ st.set_page_config(layout="wide")
 
 
 
-AdfC,AdfF,AmultidfC,AdfQ,dfM,dfT,dfSh,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
+AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
 
 
 # VARIABLE INITIALIZED 
@@ -86,7 +86,7 @@ if st.session_state["marketSelect"] == "USA":
         descriptive_screener = ["EXCHANGE"]
         dfC = AdfC[AdfC["Market Code"]=="US"]
         dfF = AdfF[AdfF["Market Code"]=="US"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="US"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="US"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
 
 elif st.session_state["marketSelect"] == "India":
@@ -94,7 +94,7 @@ elif st.session_state["marketSelect"] == "India":
         descriptive_screener = []
         dfC = AdfC[AdfC["Market Code"]=="IND"]
         dfF = AdfF[AdfF["Market Code"]=="IND"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
 
 
@@ -103,7 +103,7 @@ elif st.session_state["marketSelect"] == "Canada":
         descriptive_screener=[]
         dfC = AdfC[AdfC["Market Code"]=="CAN"]
         dfF = AdfF[AdfF["Market Code"]=="CAN"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
 
         #IS bifurcation IND and CAN
@@ -130,7 +130,7 @@ with st.expander("Company Selected"):
 
 #TABS
 
-tab1, tab2, tab3 , tab4, tab5, tab6, tab7, tab8,tab9,tab10,tab11,tab12 = st.tabs(["Peer Stats","Radar","Peer Financial Analysis","Common FS","Financial Statements","Value","Business Description","Earnings Date","Links","ShareHolding","Extra Stats","Perform Valuation"])
+tab1, tab2, tab3 , tab4, tab5, tab6, tab7, tab8,tab9 = st.tabs(["Peer Stats","Radar","Peer Financial Analysis","Common FS","Financial Statements","Value","Business Description","Earnings Date","Links"])
 #color scale
 heatmap_colorscale_percent = [[0,"red"],[0.1,"yellow"],[0.3,"orange"],[0.7,"green"],[1,"blue"]]
 heatmap_colorscale_growth = [[0,"red"],[0.1,"yellow"],[0.3,"green"],[0.7,"blue"],[1,"purple"]]
@@ -840,7 +840,7 @@ with tab5:
 
             
     with col2:
-            report_period = st.radio("Report Period:",("Annual","Quarterly"),index=1,horizontal=True,key="FSrp")
+            report_period = st.radio("Report Period:",("Annual","Quarterly"),index=0,horizontal=True,key="FSrp")
             
 
     if statement_type == "Income Statement":
@@ -1146,174 +1146,4 @@ with tab9:
         
         st.write(isdf, unsafe_allow_html=True)
     
-    
-with tab10: 
-    shareholdAnal = st.radio("See",("Individually","Peer Comparison"),index=0,horizontal=True)
-
-    if shareholdAnal == "Individually":
-        name_selected_sh = st.selectbox("Select Name:",st.session_state["name_selected"],index=0,key="ShareHoldName")
-        
-        dfSO = dfC[dfC[coName]==name_selected_sh][[coName,"SHARES OUTSTANDING","SHARES FLOAT"]]
-        dfSO["SHARES % FLOAT"] = dfSO["SHARES FLOAT"]/dfSO["SHARES OUTSTANDING"]
-        dfSO["SHARES % INSIDER"] = 1 - dfSO["SHARES % FLOAT"]
-        dfSO.set_index(coName,inplace=True)
-        dfSO = dfSO[["SHARES % FLOAT","SHARES % INSIDER"]].transpose()
-        dfSO.index.name="Shares"
-        dfSO.reset_index(inplace=True)
-
-        figSO = px.pie(dfSO, values=name_selected_sh,names="Shares",title='%FLOAT vs %INSIDER')
-
-        
-        dfShp = dfC[dfC[coName]==name_selected_sh][[coName,"PERCENT INSTITUTIONS","PERCENT INSIDERS"]]
-        dfShp.set_index(coName,inplace=True)
-        dfShp = dfShp.transpose()
-        dfShp.index.name = "Holding Percent"
-        dfShp.reset_index(inplace=True)
-
-        figP = px.pie(dfShp, values=name_selected_sh,names="Holding Percent",title='%INSTITUTE vs %INSIDER')
-
-
-        col1,col2 = st.columns(2)
-
-        with col1:
-            st.plotly_chart(figSO)
-
-        with col2:
-            st.plotly_chart(figP)
-            
-
-        if st.session_state["marketSelect"] == "USA":
-            tickerSh = dfC[dfC[coName]==name_selected_sh]["TICKER"].item()
-            
-            holdingType = st.radio("Holder Type:",("Institutions","Funds","Both"),index=2,horizontal=True)
-            
-            dfSh.columns = dfSh.columns.str.rstrip()
-
-            
-            if holdingType == "Instituions":
-                dfSH = dfSh[(dfSh["TICKER"]==tickerSh)&(dfSh["HOLDER TYPE"]=="Institutions")]
-
-            elif holdingType == "Funds":
-                dfSH = dfSh[(dfSh["TICKER"]==tickerSh)&(dfSh["HOLDER TYPE"]=="Funds")]
-            
-            else:
-                dfSH = dfSh[dfSh["TICKER"]==tickerSh]
-                
-            fig = px.pie(dfSH, values='TOTAL SHARES', names='NAME', title='SHAREHOLDING%')
-            st.plotly_chart(fig)
-
-            
-            #figS = go.Figure()
-
-            #figS.add_trace(go.Sunburst(
-            #    labels=dfSh["NAME"],
-            #    parents=dfSh["HOLDER TYPE"],
-            #    values=dfSh['TOTAL SHARES'],
-            #    domain=dict(column=1),
-            #   maxdepth=2,
-            #    insidetextorientation='radial'
-            #))
-
-            #st.plotly_chart(figS)
-            with st.expander("See Table"):
-                dfSH
-
-
-    else:
-        
-        
-        dfSO = dfC[dfC[coName].isin(st.session_state["name_selected"])][[coName,"SHARES OUTSTANDING","SHARES FLOAT"]]
-        dfSO["SHARES % FLOAT"] = dfSO["SHARES FLOAT"]/dfSO["SHARES OUTSTANDING"]
-        dfSO["SHARES % INSIDER"] = 1 - dfSO["SHARES % FLOAT"]
-        dfSO.set_index(coName,inplace=True)
-        
-        figSO = px.bar(dfSO, x=["SHARES % FLOAT","SHARES % INSIDER"],y=dfSO.index,title='%FLOAT vs %INSIDER',text_auto=".2%")
-
-        
-        dfShp = dfC[dfC[coName].isin(st.session_state["name_selected"])][[coName,"PERCENT INSTITUTIONS","PERCENT INSIDERS"]]
-        dfShp["PERCENT INSTITUTIONS"] =dfShp["PERCENT INSTITUTIONS"]/100
-        dfShp["PERCENT INSIDERS"]=dfShp["PERCENT INSIDERS"]/100
-        dfShp["PERCENT OTHERS/PUBLIC"] = 1 - (dfShp["PERCENT INSTITUTIONS"] + dfShp["PERCENT INSIDERS"])
-        dfShp.set_index(coName,inplace=True)
-        
-        figP = px.bar(dfShp, x=["PERCENT INSTITUTIONS","PERCENT OTHERS/PUBLIC","PERCENT INSIDERS"],y=dfShp.index,title='%INSTITUTE vs %INSIDER',text_auto=".2%")
-
-
-        col1,col2 = st.columns(2)
-
-        with col1:
-            st.plotly_chart(figSO)
-
-        with col2:
-            st.plotly_chart(figP)
-            
-        
-        if st.session_state["marketSelect"] == "USA":
-            tickerSh = dfC[dfC[coName].isin(st.session_state["name_selected"])]["TICKER"].to_list()
-        
-            dfSH = dfSh[dfSh["TICKER"].isin(tickerSh)]
-            
-
-            columnOrder = []
-            col3 = ["Company Name","TICKER","HOLDER TYPE"]
-            for cols in col3:
-                columnOrder.append(cols)
-
-            for cols in dfSH:
-                if cols not in columnOrder:
-                    columnOrder.append(cols)
-
-            colShAg = []
-            col_dict = {}
-            for col in columnOrder:
-                col_dict["field"]=col
-                colShAg.append(col_dict)
-                col_dict = {} 
-
-            gridOptions = {
-            "columnDefs": colShAg,
-                            
-            "defaultColDef": {
-                            "selection_mode":"multiple", 
-                            "use_checkbox":False, 
-                            "rowMultiSelectWithClick":True, 
-                            "suppressRowDeselection":True,
-                            "enableRowGroup": True,
-                            "filter":True, 
-                            "floatingFilter": True,
-                            "floatingFilterComponent":"x",
-                            "sortable":True,
-                            "resizable":True,
-                            "applyMiniFilterWhileTyping": True,
-                                },
-            "enableRangeSelection": True,
-            "enableCharts": True,
-            "enableChartToolPanelsButton": True,  
-            "sideBar": ['filters','columns'],
-                }
-            
-            return_mode_value = DataReturnMode.FILTERED_AND_SORTED
-            update_mode=GridUpdateMode.MANUAL
-            gSH = AgGrid(dfSH,height=300,gridOptions=gridOptions,data_return_mode=return_mode_value,update_mode=update_mode,theme="streamlit",allow_unsafe_jscode=True)
-
-            
-
-
-
-
-with tab11:
-    
-    st.dataframe(dfEH[dfEH["Company Name"].isin(st.session_state["name_selected"])])
-    st.dataframe(dfEA[dfEA["Company Name"].isin(st.session_state["name_selected"])])
-    st.dataframe(dfET[dfET["Company Name"].isin(st.session_state["name_selected"])])
-        
-
-
-with tab12:
-        vNameSel = st.selectbox("Select Name:",st.session_state["name_selected"])
-
-    
-        # WACC - Discount Rate 
-        # Growth Rate
-        # FCF 
-
+  
