@@ -51,10 +51,23 @@ OT = "Ratio"
 
 url ="https://github.com/yash136shah/StockAnalysis/blob/main/US_CompanyInfo.csv"
 dfC = pd.read_csv(url)
+dfC.columns = dfC.columns.str.lstrip()
+dfC.loc[dfC["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfC["TICKER"]
+
 
 st.header("TECHNICAL ANALYSIS")
 
 
+    
+name_uni = dfC.sort_values(by=marketCap,ascending=False)[coName].dropna().unique()
+name_list = []
+for i in name_uni:
+    name_list.append(i)
+
+if "name_selected" not in st.session_state:
+    st.session_state["name_selected"] = name_list[0]
+    
+st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["name_selected"])
 # ENTER DATE
 dtcol1,dtcol2 = st.columns(2)
 
@@ -86,16 +99,7 @@ else:
 # Get Historical Data from YahooFinance
 
 
-    
-name_uni = dfC.sort_values(by=marketCap,ascending=False)[coName].dropna().unique()
-name_list = []
-for i in name_uni:
-    name_list.append(i)
 
-if "name_selected" not in st.session_state:
-    st.session_state["name_selected"] = name_list[1]
-    
-st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["name_selected"])
 
 def ytickData():
     ticker_selected=dfC[dfC[coName].isin(st.session_state["name_selected"])].loc[:,updatedTicker].to_list()
