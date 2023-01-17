@@ -1,26 +1,14 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import yfinance as yf 
+import yfinance as yf
 import datetime
-import plotly.express as px 
-import plotly.graph_objects as go
+import pandas ad pd 
 from streamlit_plotly_events import plotly_events
-import  streamlit_toggle as tog
 from load_data_2 import load_data_All
-from plotly.subplots import make_subplots
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
-from eodhd import APIClient
-import os
-import urllib, json
-import re
-from Hmap import rhmap
-import plotly
-from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import plotly.express as px 
 from streamlit_extras.switch_page_button import switch_page
-
+import  streamlit_toggle as tog
 
 st.set_page_config(layout="wide")
 
