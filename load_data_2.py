@@ -73,7 +73,7 @@ def load_data_All():
     dfM = pd.read_csv("https://raw.githubusercontent.com/yash136shah/StockAnalysis/main/MetricRef.csv")
 
 
-    frames = [dfSh,dfOff,dfEH,dfET,dfEA,dfCI,dfT,dfM]
+    frames = [dfOff,dfCI,dfT,dfM]
     for df in frames:    
         df.columns = df.columns.str.lstrip()
     
