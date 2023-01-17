@@ -70,7 +70,7 @@ if st.session_state["marketSelect"] == "USA":
         descriptive_screener = ["EXCHANGE"]
         dfC = AdfC[AdfC["Market Code"]=="US"]
         dfF = AdfF[AdfF["Market Code"]=="US"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="US"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="US"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
 
 elif st.session_state["marketSelect"] == "India":
