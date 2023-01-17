@@ -49,7 +49,7 @@ OT = "Ratio"
 
 
 
-url ="https://github.com/yash136shah/StockAnalysis/blob/main/US_CompanyInfo.csv"
+url =r"https://github.com/yash136shah/StockAnalysis/blob/main/US_CompanyInfo.csv"
 dfC = pd.read_csv(url)
 dfC.columns = dfC.columns.str.lstrip()
 dfC.loc[dfC["EXCHANGE"].isin(['NASDAQ', 'NYSE', 'NYSE MKT', 'BATS', 'NYSE ARCA']),["YF TICKER"]] = dfC["TICKER"]
