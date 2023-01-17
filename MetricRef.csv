@@ -1,0 +1,128 @@
+title,Statement,Statement Category,Statement Totals ,Metric Order,Format Type ,Multi-Year Format
+TOTAL ASSETS,BS,assets,bsTotal,1,comma,growth
+INTANGIBLE ASSETS,BS,intangibles,,17,comma,growth
+EARNING ASSETS,BS,,,19,comma,growth
+OTHER CURRENT ASSETS,BS,currentAssets,,8,comma,growth
+TOTAL LIAB,BS,,bsTotal,21,comma,growth
+TOTAL STOCKHOLDER EQUITY,BS,,bsTotal,37,comma,growth
+DEFERRED LONG TERM LIAB,BS,noncurrentLiab,,33,comma,growth
+OTHER CURRENT LIAB,BS,currentLiab,,28,comma,growth
+COMMON STOCK,BS,equity,,38,comma,growth
+CAPITAL STOCK,BS,equity,,39,comma,growth
+RETAINED EARNINGS,BS,equity,,40,comma,growth
+OTHER LIAB,BS,otherLiab,,36,comma,growth
+GOOD WILL,BS,intangibles,,18,comma,growth
+OTHER ASSETS,BS,otherAssets,,20,comma,growth
+CASH,BS,currentAssets,,3,comma,growth
+CASH AND EQUIVALENTS,BS,currentAssets,,4,comma,growth
+TOTAL CURRENT LIABILITIES,BS,currentLiab,,22,comma,growth
+CURRENT DEFERRED REVENUE,BS,currentLiab,,27,comma,growth
+NET DEBT,BS,noncurrentLiab,,32,comma,growth
+SHORT TERM DEBT,BS,currentLiab,,23,comma,growth
+SHORT LONG TERM DEBT,BS,currentLiab,,24,comma,growth
+SHORT LONG TERM DEBT TOTAL,BS,currentLiab,,25,comma,growth
+OTHER STOCKHOLDER EQUITY,BS,equity,,41,comma,growth
+PROPERTY PLANT EQUIPMENT,BS,noncurrentAssets,,14,comma,growth
+TOTAL CURRENT ASSETS,BS,currentAssets,,2,comma,growth
+LONG TERM INVESTMENTS,BS,noncurrentAssets,,16,comma,growth
+NET TANGIBLE ASSETS,BS,noncurrentAssets,,15,comma,growth
+SHORT TERM INVESTMENTS,BS,currentAssets,,5,comma,growth
+NET RECEIVABLES,BS,currentAssets,,6,comma,growth
+LONG TERM DEBT,BS,noncurrentLiab,,30,comma,growth
+INVENTORY,BS,currentAssets,,7,comma,growth
+ACCOUNTS PAYABLE,BS,currentLiab,,26,comma,growth
+TOTAL PERMANENT EQUITY,BS,equity,,42,comma,growth
+NONCONTROLLING INTEREST IN CONSOLIDATED ENTITY,BS,equity,,43,comma,growth
+TEMPORARY EQUITY REDEEMABLE NONCONTROLLING INTERESTS,BS,equity,,44,comma,growth
+ACCUMULATED OTHER COMPREHENSIVE INCOME,BS,equity,,45,comma,growth
+ADDITIONAL PAID IN CAPITAL,BS,equity,,46,comma,growth
+COMMON STOCK TOTAL EQUITY,BS,equity,,47,comma,growth
+PREFERRED STOCK TOTAL EQUITY,BS,equity,,48,comma,growth
+RETAINED EARNINGS TOTAL EQUITY,BS,equity,,49,comma,growth
+TREASURY STOCK,BS,equity,,50,comma,growth
+ACCUMULATED AMORTIZATION,BS,noncurrentAssets,,11,comma,growth
+NON CURRRENT ASSETS OTHER,BS,noncurrentAssets,,9,comma,growth
+DEFERRED LONG TERM ASSET CHARGES,BS,tax,,,comma,growth
+NON CURRENT ASSETS TOTAL,BS,noncurrentAssets,,3,comma,growth
+CAPITAL LEASE OBLIGATIONS,BS,noncurrentLiab,,31,comma,growth
+LONG TERM DEBT TOTAL,BS,noncurrentLiab,,34,comma,growth
+NON CURRENT LIABILITIES OTHER,BS,noncurrentLiab,,35,comma,growth
+NON CURRENT LIABILITIES TOTAL,BS,noncurrentLiab,,29,comma,growth
+NEGATIVE GOODWILL,BS,intangibles,,,comma,growth
+WARRANTS,BS,equity,,,comma,growth
+PREFERRED STOCK REDEEMABLE,BS,equity,,,comma,growth
+CAPITAL SURPLUSE,BS,equity,,,comma,growth
+LIABILITIES AND STOCKHOLDERS EQUITY,BS,,bsTotal,51,comma,growth
+CASH AND SHORT TERM INVESTMENTS,BS,currentAssets,,,comma,growth
+PROPERTY PLANT AND EQUIPMENT GROSS,BS,noncurrentAssets,,10,comma,growth
+PROPERTY PLANT AND EQUIPMENT NET,BS,noncurrentAssets,,13,comma,growth
+ACCUMULATED DEPRECIATION,BS,noncurrentAssets,,12,comma,growth
+NET WORKING CAPITAL,BS,,,,comma,growth
+NET INVESTED CAPITAL,BS,,,,comma,growth
+COMMON STOCK SHARES OUTSTANDING,BS,equity,,,comma,growth
+TOTAL CASH FROM OPERATING ACTIVITIES,CF,cfo,cfTotal,1,comma,growth
+NET INCOME,CF,operations,,2,,
+DEPRECIATION,CF,operations,,3,comma,growth
+CHANGE TO INVENTORY,CF,operations,,4,comma,growth
+CHANGE TO ACCOUNT RECEIVABLES,CF,operations,,5,comma,growth
+CHANGE RECEIVABLES,CF,operations,,6,comma,growth
+CHANGE IN WORKING CAPITAL,CF,operations,,8,comma,growth
+OTHER NON CASH ITEMS,CF,operations,,9,comma,growth
+CASH FLOWS OTHER OPERATING,CF,operations,,10,comma,growth
+CHANGE TO OPERATING ACTIVITIES,CF,operations,,11,comma,growth
+TOTAL CASHFLOWS FROM INVESTING ACTIVITIES,CF,investments,cfTotal,13,comma,growth
+CAPITAL EXPENDITURES,CF,investments,,14,comma,growth
+INVESTMENTS,CF,investments,,15,comma,growth
+CHANGE TO LIABILITIES,CF,operations,,7,comma,growth
+NET BORROWINGS,CF,financing,,18,comma,growth
+TOTAL CASH FROM FINANCING ACTIVITIES,CF,financing,cfTotal,17,comma,growth
+CHANGE IN CASH,CF,,,26,comma,growth
+BEGIN PERIOD CASH FLOW,CF,,,24,comma,growth
+END PERIOD CASH FLOW,CF,,,25,comma,growth
+ISSUANCE OF CAPITAL STOCK,CF,financing,,20,comma,growth
+OTHER CASHFLOWS FROM INVESTING ACTIVITIES,CF,investments,,16,comma,growth
+DIVIDENDS PAID,CF,financing,,19,comma,growth
+SALE PURCHASE OF STOCK,CF,financing,,21,comma,growth
+OTHER CASHFLOWS FROM FINANCING ACTIVITIES,CF,financing,,22,comma,growth
+CHANGE TO NETINCOME,CF,operations,,12,comma,growth
+EXCHANGE RATE CHANGES,CF,,,23,comma,growth
+CASH AND CASH EQUIVALENTS CHANGES,CF,,,27,comma,growth
+FREE CASH FLOW,CF,fcf,,28,comma,growth
+RESEARCH DEVELOPMENT,IS,expense,,6,comma,growth
+EFFECT OF ACCOUNTING CHARGES,IS,others,,31,comma,growth
+INCOME BEFORE TAX,IS,income,,22,comma,growth
+MINORITY INTEREST,IS,,,28,comma,growth
+NET INCOME,IS,income,,27,comma,growth
+SELLING GENERAL ADMINISTRATIVE,IS,expense,,5,comma,growth
+SELLING AND MARKETING EXPENSES,IS,expense,,4,comma,growth
+GROSS PROFIT,IS,income,,3,comma,growth
+RECONCILED DEPRECIATION,IS,expense,,11,comma,growth
+EBIT,IS,income,,12,comma,growth
+EBITDA,IS,income,,9,comma,growth
+DEPRECIATION AND AMORTIZATION,IS,expense,,10,comma,growth
+NON OPERATING INCOME NET OTHER,IS,income,,18,comma,growth
+OPERATING INCOME,IS,income,,13,comma,growth
+OTHER OPERATING EXPENSES,IS,expense,,7,comma,growth
+INTEREST EXPENSE,IS,expense,,14,comma,growth
+TAX PROVISION,IS,expense,,23,comma,growth
+INTEREST INCOME,IS,income,,15,comma,growth
+NET INTEREST INCOME,IS,income,,16,comma,growth
+EXTRAORDINARY ITEMS,IS,others,,19,comma,growth
+NON RECURRING,IS,others,,20,comma,growth
+OTHER ITEMS,IS,others,,21,comma,growth
+INCOME TAX EXPENSE,IS,expense,,24,comma,growth
+TOTAL REVENUE,IS,,,1,comma,growth
+TOTAL OPERATING EXPENSES,IS,expense,,8,comma,growth
+COST OF REVENUE,IS,expense,,2,comma,growth
+TOTAL OTHER INCOME EXPENSE NET,IS,expense,,17,comma,growth
+DISCONTINUED OPERATIONS,IS,others,,26,comma,growth
+NET INCOME FROM CONTINUING OPS,IS,income,,25,comma,growth
+NET INCOME APPLICABLE TO COMMON SHARES,IS,income,,29,comma,growth
+PREFERRED STOCK AND OTHER ADJUSTMENTS,IS,others,,30,comma,growth
+Net Profit Margin,Ratio ,,,,percentage,average
+Operating Profit Margin,Ratio ,,,,percentage,average
+EBITDA Margin,Ratio ,,,,percentage,average
+Gross Profit Margin,Ratio ,,,,percentage,average
+D/E,Ratio ,,,,decimal,average
+C/R,Ratio ,,,,decimal,average
+ROIC,Ratio ,,,,percentage,average
