@@ -48,7 +48,7 @@ OT = "Ratio"
 
 
 
-AdfC,AdfF,AmultidfC,dfM,dfT,dfSh,dfOff,gridOptions = load_data_All()
+AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
 
     
 st.header("TECHNICAL ANALYSIS")
