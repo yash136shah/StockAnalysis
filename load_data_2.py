@@ -70,9 +70,10 @@ def load_data_All():
     dfET = dictDf["EarningTrend"]
     dfEA = dictDf["EarningAnnual"]
 
-    dfCI = dictDf["CompanyInfo"]    
-    dfT = pd.read_csv("D:\EQUITY DATA\india_america_canada_2023-01-04.csv")
-    dfM = pd.read_csv("D:\EQUITY DATA\MetricRef.csv")
+    dfCI = dictDf["CompanyInfo"] 
+
+    dfT = pd.read_csv("https://raw.githubusercontent.com/yash136shah/StockAnalysis/main/india_america_canada_2023-01-04.csv")
+    dfM = pd.read_csv("https://raw.githubusercontent.com/yash136shah/StockAnalysis/main/MetricRef.csv")
 
 
     frames = [dfSh,dfOff,dfEH,dfET,dfEA,dfCI,dfT,dfM]
