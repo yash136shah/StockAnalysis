@@ -106,6 +106,27 @@ if "name_selected" not in st.session_state:
     st.session_state["name_selected"] = name_list[0]
 
 st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["name_selected"])
+
+
+
+col1,col2 = st.columns([10,2])
+
+with col1:
+    st.header("TECHNICAL ANALYSIS")
+
+with col2:
+    homePage = st.button("Home")
+    
+    if homePage:
+        switch_page("stockAnalysis-2")
+    
+    if st.button("Fundamental Analysis"):
+        switch_page("Fundamental")
+    
+    if st.button("Industry Overview"):
+        switch_page("Industry-Analysis-2")
+
+
 # ENTER DATE
 dtcol1,dtcol2 = st.columns(2)
 
@@ -164,7 +185,7 @@ ticker_data,ticker_selected,tickdata,vol_data=ytickData()
 
 
 # Price and Indexed Chart 
-tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Price','Indexed',"Relative Strength","RSI-Analysis","EMA-Analysis","Perfromance","HEATMAP","Option-Analysis"])
+tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9 = st.tabs(['Price','Indexed',"Relative Strength","RSI-Analysis","EMA-Analysis","Technical Rating","Perfromance","HEATMAP","Option-Analysis"])
 
 
 
@@ -175,20 +196,20 @@ with tab1:
     #fig.add_scatter(y=plot_ps.columns, row=1, col=1)
     colors = px.colors.qualitative.Dark24
     for k,col in enumerate(tickdata):
-
+        
         fig.add_trace(go.Scatter(x=tickdata.index,y=tickdata[col],name=col,legendgroup = col,line=dict(width=2, color=colors[k])),secondary_y = False,row=1, col=1)
-
+        
     for k,col in enumerate(vol_data):
         fig.add_trace(go.Scatter(x=vol_data.index,y=vol_data[col],name=col,legendgroup = col,showlegend=False,line=dict(width=2, color=colors[k])),secondary_y = False,row=2, col=1)
 
-
+        
     fig.update_xaxes(showspikes=True, spikecolor="black", spikesnap="cursor", spikemode="across",spikethickness=1,row=1)
     fig.update_xaxes(showspikes=True, spikecolor="black", spikesnap="cursor", spikemode="across",spikethickness=1,title="Date",row=2,matches="x1")
     fig.update_yaxes(showspikes=True, spikesnap="cursor",spikecolor="black", spikemode="across",spikethickness=1,title="Price",row=1,col=1)
     fig.update_yaxes(showspikes=True, spikesnap="cursor",spikecolor="black", spikemode="across",spikethickness=1,title="Volume",row=2)
     fig.update_layout(spikedistance=1000, hoverdistance=10,title="Price-Volume CHART",height=600)
     fig.update_traces(xaxis="x2")
-
+    
     st.plotly_chart(fig,use_container_width=True)
 
 
@@ -198,90 +219,90 @@ with tab2:
     indexData = tickdata.copy()
     dtFreq = st.radio("Date Frequency:",("Quarterly","Monthly","Weekly","Daily"),index=1,horizontal=True)
     #indexData.index.resample("M")#strftime("%Y-%m") #tickdata.index.date
-
+    
     if dtFreq == "Quarterly":
         indexMData=indexData.resample("Q").mean()
-
+    
     elif dtFreq == "Monthly":
         indexMData=indexData.resample("M").mean()
-
+    
     elif dtFreq == "Weekly":
         indexMData=indexData.resample("W").mean()
-
+    
     else:
         indexMData = indexData
 
     date_list = indexMData.index.date
+    
 
-
-
+    
     ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexdatesl")
 
     def Indexed_Price():
         try:
             idx_close = indexMData.loc[ds:de].reset_index()
-
+        
         except:
             idx_close = indexMData.loc[ds:de].to_frame().reset_index()
 
         index = idx_close.assign(**idx_close.drop('Date',axis=1).pipe(
     lambda d: d.div(d.shift().bfill()).cumprod().mul(100)))
-
+        
         indexed = index.set_index('Date')
         return indexed
-
+    
 
     indexed = Indexed_Price()    
 
     fig1 = px.line(indexed,title=f"Indexed Chart",height=600)
-
+    
 
     fig1.update_xaxes(showspikes=True, spikecolor="black", spikesnap="cursor", spikemode="across",spikethickness=1,title="Date")
     fig1.update_yaxes(showspikes=True, spikesnap="cursor",spikecolor="black", spikemode="across",spikethickness=1,title="Price")
     st.plotly_chart(fig1,use_container_width=True)
-
-
-
+      
+                
+        
 with tab3:
-    #if st.session_state["marketSelect"] == "USA":
-    col1,col2 = st.columns([3,13])
-    with col1:
-         benchmark = st.selectbox("Select Benchmark:",options=['SPY','XLE','XLY','XLI','XLF','XLU','XLV','XLP','XLC','XLB','XLRE','XLK'],index=0)
-
-
+    if st.session_state["marketSelect"] == "USA":
+        col1,col2 = st.columns([3,13])
+        with col1:
+             benchmark = st.selectbox("Select Benchmark:",options=['SPY','XLE','XLY','XLI','XLF','XLU','XLV','XLP','XLC','XLB','XLRE','XLK'],index=0)
+    
+    
     def benchmarkData():
         benchmark_data = yf.download(benchmark,start=sd,end=ed)
         bd=benchmark_data[closeType].to_frame()
         bd.rename(columns={bd.columns[0]:benchmark},inplace=True)
         rsdb=pd.concat([ticker_data[closeType],bd],axis=1)
-
+        
         colname = {}
         for t in rsdb:
                 if t == benchmark:
                     colname[t] = benchmark
                 else:
                     colname[t]=' '.join(dfC[dfC[updatedTicker]==t][coName].to_list())
-
+                
         rsdb.rename(columns=colname,inplace=True)
         return rsdb
-
+    
     rsdb = benchmarkData()
 
 
     dtFreq = st.radio("Date Frequency:",("Quarterly","Monthly","Weekly","Daily"),index=1,horizontal=True,key="RSdtFreq")
-
+   
     if dtFreq == "Quarterly":
         rsdbDtF=rsdb.resample("Q").mean()
-
+    
     elif dtFreq == "Monthly":
         rsdbDtF=rsdb.resample("M").mean()
-
+    
     elif dtFreq == "Weekly":
         rsdbDtF=rsdb.resample("W").mean()
-
+    
     else:
         rsdbDtF = indexData
-
+        
     date_list = rsdbDtF.index.date
 
     ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="rsdatesli")
@@ -289,32 +310,32 @@ with tab3:
 
 
 
-
+    
     def Indexed_Price_RS():
             try:
                 adj_close = rsdbDtF.loc[ds:de].reset_index()
-
+            
             except:
                 adj_close = rsdbDtF.loc[ds:de].to_frame().reset_index()
 
             index = adj_close.assign(**adj_close.drop('Date',axis=1).pipe(
         lambda d: d.div(d.shift().bfill()).cumprod().mul(100)))
-
+            
             indexed = index.set_index('Date')
             return indexed
-
+     
     indexedRS=Indexed_Price_RS()
 
 
-
+    
     def RS():
         rs = pd.DataFrame()
         for i in range(len(indexedRS.columns)):
             rs[indexedRS.columns[i]] = indexedRS.iloc[:,i]/indexedRS.loc[:,benchmark]
-
+        
         fig = px.line(rs,x=rs.index,y=rs.columns,color_discrete_map={benchmark:"black"},height=600)
         return fig
-
+        
     fig = RS()
     st.plotly_chart(fig,use_container_width=True)    
 
@@ -373,11 +394,11 @@ with tab4:
                 rsitable =rsi(ticker_data_rsi[closeType],window=14,fillna=False)
                 rsitable.dropna(inplace=True)
                 rsidf = rsitable.to_frame()
+                
 
-
-
-
-
+            
+            
+            
             def signal():
                 global rsidf
                 global signalBuy
@@ -387,7 +408,7 @@ with tab4:
                 close_price()
                 RSI.table()
 
-
+                
 
                 signalBuy = []
                 signalSell = []
@@ -399,8 +420,8 @@ with tab4:
                     if rsidf.iloc[i].item()<os:
                         if position == False :
                             crossingBelowOs = True
-
-
+                
+                
                     elif rsidf.iloc[i].item()>os and rsidf.iloc[i].item()<ob :
                         if position == False:
                             if crossingBelowOs == True:
@@ -412,8 +433,8 @@ with tab4:
                                 signalSell.append(rsidf.iloc[i].name)
                                 position = False
                                 crossingAboveOb = False
-
-
+                            
+                    
                     elif rsidf.iloc[i].item()>ob:
                         if position == True:
                             if crossingAboveOb == False:
@@ -425,8 +446,8 @@ with tab4:
 
                 rsi_signal = pd.DataFrame()
 
-
-
+                
+                
                 buy_list=[]  
                 buy_date = []
 
@@ -451,7 +472,7 @@ with tab4:
 
                 if len(sell_list) != len(buy_list):    
                     sell_list.append("TBD")
-
+                
                     sell_date.append("TBD")
 
 
@@ -459,7 +480,7 @@ with tab4:
                 rsi_signal['Sell Date']=sell_date    
                 rsi_signal['Sell']=sell_list
 
-
+                
 
                 rsi_signal['Profit/Loss%'] =" "*len(buy_list)
 
@@ -476,14 +497,14 @@ with tab4:
 
                         rsi_signal['Holding Period'] = rsi_signal['Sell Date'] - rsi_signal['Buy Date']
 
-
+                    
                     rsi_signal['Buy Date'] = rsi_signal['Buy Date'].dt.strftime("%Y-%m-%d")
                     rsi_signal['Holding Period'] = rsi_signal['Holding Period'].astype('timedelta64[D]')
                     rsi_signal['Sell Date'] = rsi_signal['Sell Date'].dt.strftime("%Y-%m-%d")
 
-
-
-
+                                        
+                    
+                    
                 except:
                     st.write("Some Error in Data! Try another Company!")
 
@@ -494,17 +515,17 @@ with tab4:
             @st.experimental_memo
             def chart():
                 global rsi_signal
-
+                
                 fig = make_subplots(rows=2, cols=1,row_heights=[0.7, 0.3],shared_xaxes=True,vertical_spacing=0)
 
                 fig.add_trace(go.Scatter(x=ticker_data_rsi[closeType].index, y=ticker_data_rsi[closeType],name=closeType),secondary_y = False,row=1, col=1)
 
-
+                
                 fig.add_trace(go.Scatter(x=rsidf.index, y=rsidf['rsi'],name="RSI"),secondary_y = False,row=2, col=1)
-
+                
                 fig.add_trace(go.Scatter(x=rsi_signal["Buy Date"], y=rsi_signal["Buy"],name="Buy Signal",mode='markers', marker_symbol="triangle-up",marker_color="green"),secondary_y = False,row=1, col=1,)
 
-
+                
                 fig.add_trace(go.Scatter(x=rsi_signal["Sell Date"], y=rsi_signal["Sell"],name="Sell Signal",mode='markers', marker_symbol="triangle-down",marker_color="red"),secondary_y = False,row=1, col=1,)
 
 
@@ -519,7 +540,7 @@ with tab4:
                 fig.add_hline(y=os,line_dash="dot", row=2, col=1, line_color="black", line_width=1)
 
                 #fig.update_layout(dragmode='pan', hovermode='x unified')
-
+                
                 fig.update_xaxes(showspikes=True, spikecolor="black", spikesnap="cursor", spikemode="across",spikethickness=1,row=1)
                 fig.update_xaxes(showspikes=True, spikecolor="black", spikesnap="cursor", spikemode="across",spikethickness=1,title="Date",row=2)
                 fig.update_yaxes(showspikes=True, spikesnap="cursor",spikecolor="black", spikemode="across",spikethickness=1,title="Price",row=1,col=1)
@@ -527,23 +548,23 @@ with tab4:
                 fig.update_layout(spikedistance=1000, hoverdistance=10,title="RSI-CHART",height=600)
                 fig.update_traces(xaxis="x2")
                 return fig
-
+            
             @st.experimental_memo
             def optimum ():
-
+                
                 RSI.table()    
 
                 optimum_rsi = pd.DataFrame() 
-
+                
                 rsi_range_list=[]
                 profit_sum_list=[]
                 for ob in range(10,50,5):
                     for os in range(90,50,-5):
-
+                        
                         rsi_range = f"{ob}-{os}"
-
+                        
                         rsi_range_list.append(rsi_range)
-
+            
                         signalBuy = []
                         signalSell = []
                         position = False
@@ -615,10 +636,10 @@ with tab4:
 
 
                         profit_sum=rsi_signal['Profit/Losst%'].sum()
-
+                        
                         profit_sum_list.append(profit_sum)
-
-
+                                            
+                        
                 optimum_rsi['Range'] =  rsi_range_list
                 optimum_rsi['Profit'] = profit_sum_list
                 optimum_rsi.set_index("Range",inplace=True)
@@ -627,16 +648,16 @@ with tab4:
                 fig
 
 
+                                
+              
 
 
 
-
-
-
+        
         RSI.signal()
         fig = RSI.chart()
         st.plotly_chart(fig,use_container_width=True)
-
+        
         with st.expander("See Table:"):
             rsi_signal
 
@@ -646,16 +667,16 @@ with tab4:
         if get_optimum:
             fig=RSI.optimum()
             st.plotly_chart(fig,use_container_width=True)
+            
 
-
-
+    
 
 with tab5:
     ema_name = st.selectbox("Select Company:",st.session_state["name_selected"],index=0,key="emas")
     ticker_selected_ema=dfC[dfC[coName]==ema_name].loc[:,updatedTicker].to_list()
     ticker_data_ema = yf.download(ticker_selected_ema,start=sd,end=ed)
     ticker_sel  = ticker_selected_ema
-
+    
     col1,col2 = st.columns(2)
 
     with col1:
@@ -671,12 +692,12 @@ with tab5:
         close = ticker_data_ema[closeType]
 
     class EMA:
-
+        
 
         def table(window=200): 
             global ema 
             from ta.trend import ema_indicator
-
+            
             ematable = ema_indicator(ticker_data_ema[closeType], window=window, fillna= False)
 
             ema = pd.DataFrame.from_dict(ematable)
@@ -690,8 +711,8 @@ with tab5:
             ema.rename(columns={colum:'ema'},inplace=True)
 
             return ema
-
-
+        
+           
         def signal(ema1,ema2):
             global EMA_Signals,ema_signal,ema_signalSell,ema_signalBuy
 
@@ -727,7 +748,7 @@ with tab5:
                     else:
                         pass
 
-
+            
             ema_signal = pd.DataFrame()
 
             buy_list=[]  
@@ -777,26 +798,26 @@ with tab5:
 
 
 
-
+                
             #ema_signal['Buy Date'] = ema_signal['Buy Date'].dt.strftime("%Y-%m-%d")
             ema_signal['Holding Period'] = ema_signal['Holding Period'].astype('timedelta64[D]')
 
-
+                
         def chart():
 
             EMA.signal(ema1,ema2)
-
+            
             close_price()
 
             global close 
-
+            
             fig = go.Figure(data=[go.Candlestick(x=ticker_data_ema.index,
                     open=ticker_data_ema['Open'],
                     high=ticker_data_ema['High'],
                     low=ticker_data_ema['Low'],
                     close=ticker_data_ema[closeType],name="Price",increasing_line_color= 'green', decreasing_line_color= 'red')])
-
-
+            
+          
             EMA.table(ema1)
 
             fig.add_trace(go.Scatter(x=ema.index, y=ema["ema"],name=ema1))
@@ -804,27 +825,27 @@ with tab5:
             EMA.table(ema2)
             fig.add_trace(go.Scatter(x=ema.index, y=ema["ema"],name=ema2))
 
-
+            
             fig.add_trace(go.Scatter(x=ema_signal['Buy Date'], y=ema_signal['Buy'],name="Buy Signal",mode='markers', marker_symbol="triangle-up",marker=dict(color='blue',size=10)))
             fig.add_trace(go.Scatter(x=ema_signal['Sell Date'], y=ema_signal['Sell'],name="Sell Signal",mode='markers', marker_symbol="triangle-down",marker=dict(color='brown',size=10)))
 
 
-
+            
             fig.update_xaxes(showspikes=True, spikecolor="black", spikesnap="cursor", spikemode="across",spikethickness=1,title="Date")
             fig.update_yaxes(showspikes=True, spikesnap="cursor",spikecolor="black", spikemode="across",spikethickness=1,title="Price")
             fig.update_layout(spikedistance=1000, hoverdistance=10,title="EMA-CHART",height=600)
 
             st.plotly_chart(fig,use_container_width=True)
-
-
-
-
+        
+        
+            
+    
         def optimum():
-
+            
             global optimumEMA
-
+            
             optimumEMA = pd.DataFrame()
-
+            
             profit = []
             ema_range = [] 
             for i in range(10,110,10):
@@ -845,10 +866,10 @@ with tab5:
             fig1= px.histogram(optimumEMA,x="Profit")
 
             fig2df = optimumEMA.set_index("EMA-RANGE").iloc[0:110]
-
+            
             fig2=px.bar(fig2df,x=fig2df.index,y=fig2df['Profit'])
 
-
+            
             fig3df = optimumEMA.set_index("EMA-RANGE").iloc[110:]
             fig3=px.bar(fig3df,x=fig3df.index,y=fig3df['Profit'])
 
@@ -858,22 +879,22 @@ with tab5:
             st.plotly_chart(fig3)
 
 
-
+        
 
     EMA.signal(ema1,ema2)
     EMA.chart()
-
+                    
     max_profit = " "
     if round(ema_signal.iloc[:,4].max(),2) < 0:
         max_profit = "NA"
-
+    
     else:
         max_profit = round(ema_signal.iloc[:,4].max(),2)
 
     max_loss = " "
     if round(ema_signal.iloc[:,4].min(),2) > 0:
         max_loss = "NA"
-
+    
     else:
         max_loss = round(ema_signal.iloc[:,4].min(),2)
 
@@ -896,11 +917,17 @@ with tab5:
 
 
 
-
 with tab6:
+    isdfC = dfC[dfC[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
+    tr=isdfC[[coName,marketCap,'Technical Rating','Moving Averages Rating','Oscillators Rating']].set_index(coName)
+    tr
+
+
+
+with tab7:
 
         perf_type = st.radio("Performance Type:",("Yearly","Quarterly","Monthly"),horizontal=True,key="ptype")
-
+        
         if perf_type == "Yearly":      
             x=tickdata.resample("Y").ffill().pct_change().reset_index()
             x['Year'] = x['Date'].dt.year
@@ -930,40 +957,40 @@ with tab6:
                 else:
                     isdfMany=ticker_data[closeType][ticker_selected_perf].resample(freq).ffill().pct_change().reset_index()
                     isdf = isdfMany
-
+                
                 isdf['Year'] = isdf['Date'].dt.year
                 isdf['Month'] = isdf['Date'].dt.month_name()
-
-
+                
+                
                 months= isdf['Month'].unique().tolist()
                 ispdf=isdf.pivot_table(index="Year",columns="Month",values=ticker_selected_perf)
                 ispdf.columns =ispdf.columns.droplevel()    
                 ispdf = ispdf.reindex(columns=months)
 
                 z = ispdf.values
-
+                
                 fig = px.imshow(z, text_auto=".2%",x=ispdf.columns,y=ispdf.index,aspect="auto",title=f"Monthly Performance-{per_name}")
                 fig.update_coloraxes(colorbar_tickformat=".0%",cmin=0,cmax=1,colorscale=[[0,"red"],[0.1,"yellow"],[0.3,"orange"],[0.7,"green"],[1,"blue"]])
                 st.plotly_chart(fig,use_container_width=True)
-
+            
             else:
                 st.write("Have to work on this!")
+        
 
 
 
-
-with tab7:
+with tab8:
 
         date_list=tickdata.index.date
         ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="Hmapdatesl")
         def HeatMap():
             mrh = pd.DataFrame()  
-
+            
             cldf = ticker_data["Close"].dropna()
 
             mrh['return']=cldf.iloc[-1]/cldf.iloc[0] - 1
 
-
+            
             color_bin = [-100000000,-0.2,-0.01,0, 0.01, 0.2,100000000]
             mrh['colors'] = pd.cut(mrh['return'], bins=color_bin, labels=['red','indianred','lightpink','lightgreen','green','lime'])
             mrh.index.set_names("Ticker",inplace=True)
@@ -977,7 +1004,7 @@ with tab7:
             from numerize import numerize as nu
             mrheat['return']=mrheat['return'].fillna(0).astype("float64")
             mrheat[marketCap]=mrheat[marketCap].fillna(0).astype("int64")
-
+            
             returns = []
             for i in mrheat['return']:
                 returns.append("{:.2%}".format(i))
@@ -990,7 +1017,7 @@ with tab7:
 
 
             mrheat.dropna(subset=[coName,updatedTicker],inplace=True)   #'Market Cap','return','colors'
-
+            
             # extra processing
             mrheat[sector].replace(0,"Others",inplace=True)
             mrheat[industry].replace(0,"Others",inplace=True)
@@ -1004,20 +1031,20 @@ with tab7:
             st.plotly_chart(fig,use_container_width=True)
 
         Hmap = HeatMap()
+            
 
 
 
-
-with tab8:
+with tab9:
     try:
         option_name= st.selectbox("See Options for:",st.session_state["name_selected"],index=0)
-
+        
         ticker=dfC[dfC[coName]==(option_name)].loc[:,updatedTicker].to_list()
 
         ytick = " "
         for i in ticker:
             ytick = i   
-
+    
         yftick = yf.Ticker(ytick)
         opt_expiry_list=yftick.options
         opt_expiry=st.selectbox("Option Expiry",options=opt_expiry_list,index=0)
@@ -1028,11 +1055,12 @@ with tab8:
 
         if opt_type =="Call":
             opt.calls
-
+        
         else:
             opt.puts 
 
-
+         
 
     except:
         st.write("Select a different Company Name or reload page!")
+
