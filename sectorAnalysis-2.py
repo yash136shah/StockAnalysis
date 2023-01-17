@@ -1,25 +1,18 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import yfinance as yf 
-import stockDatabase as sd 
-import requests
-from pandas_datareader.nasdaq_trader import get_nasdaq_symbols
-import matplotlib.pyplot as plt 
-import matplotlib as mpl
-import datetime
 import plotly.express as px
 from load_data_2 import load_data_All
 
 
 st.set_page_config(layout="wide")
 
-market_select =  st.sidebar.radio("Select Market:",("USA","Canada","India"))
+market_select =  st.sidebar.radio("Select Market:",("USA","Canada","India"),index=2)
 
 
 
 
-AdfC,AdfF,AdfQ,dfM,dfT,dfSh,dfOff,dfEA,dfEH,dfET = load_data_All()
+AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
 
 
 # VARIABLE INITIALIZED 
