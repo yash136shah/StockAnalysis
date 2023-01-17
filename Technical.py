@@ -86,7 +86,16 @@ else:
 # Get Historical Data from YahooFinance
 
 
+    
+name_uni = dfC.sort_values(by=marketCap,ascending=False)[coName].dropna().unique()
+name_list = []
+for i in name_uni:
+    name_list.append(i)
 
+if "name_selected" not in st.session_state:
+    st.session_state["name_selected"] = name_list[1]
+    
+st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["name_selected"])
 
 def ytickData():
     ticker_selected=dfC[dfC[coName].isin(st.session_state["name_selected"])].loc[:,updatedTicker].to_list()
@@ -113,7 +122,7 @@ ticker_data,ticker_selected,tickdata,vol_data=ytickData()
 
 
 # Price and Indexed Chart 
-tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9 = st.tabs(['Price','Indexed',"Relative Strength","RSI-Analysis","EMA-Analysis","Technical Rating","Perfromance","HEATMAP","Option-Analysis"])
+tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Price','Indexed',"Relative Strength","RSI-Analysis","EMA-Analysis","Perfromance","HEATMAP","Option-Analysis"])
 
 
 
@@ -845,14 +854,8 @@ with tab5:
 
 
 
+
 with tab6:
-    isdfC = dfC[dfC[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
-    tr=isdfC[[coName,marketCap,'Technical Rating','Moving Averages Rating','Oscillators Rating']].set_index(coName)
-    tr
-
-
-
-with tab7:
 
         perf_type = st.radio("Performance Type:",("Yearly","Quarterly","Monthly"),horizontal=True,key="ptype")
         
@@ -907,7 +910,7 @@ with tab7:
 
 
 
-with tab8:
+with tab7:
 
         date_list=tickdata.index.date
         ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="Hmapdatesl")
@@ -963,7 +966,7 @@ with tab8:
 
 
 
-with tab9:
+with tab8:
     try:
         option_name= st.selectbox("See Options for:",st.session_state["name_selected"],index=0)
         
