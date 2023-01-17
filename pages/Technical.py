@@ -50,6 +50,49 @@ OT = "Ratio"
 
 AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
 
+
+markets = ["USA","Canada","India"]
+
+
+#MARKET SELECT 
+if "marketSelect" not in st.session_state:
+    st.session_state["marketSelect"] = markets[0]
+    st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
+
+def MarketSelect ():
+    st.session_state["marketIndex"] = markets.index(st.session_state["marketSelrad"])
+
+st.session_state["marketSelect"] = st.sidebar.radio("Market:",markets,index=st.session_state["marketIndex"],key="marketSelrad",on_change=MarketSelect)
+
+
+
+
+if st.session_state["marketSelect"] == "USA":
+        benchmark = "SPY"
+        descriptive_screener = ["EXCHANGE"]
+        dfC = AdfC[AdfC["Market Code"]=="US"]
+        dfF = AdfF[AdfF["Market Code"]=="US"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="US"]
+        multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
+
+elif st.session_state["marketSelect"] == "India":
+        benchmark = '^NSEI'
+        descriptive_screener = []
+        dfC = AdfC[AdfC["Market Code"]=="IND"]
+        dfF = AdfF[AdfF["Market Code"]=="IND"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
+        multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
+
+
+elif st.session_state["marketSelect"] == "Canada":
+        benchmark = '^GSPTSE'
+        descriptive_screener=[]
+        dfC = AdfC[AdfC["Market Code"]=="CAN"]
+        dfF = AdfF[AdfF["Market Code"]=="CAN"]
+        #dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
+        multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
+
+        #IS bifurcation IND and CAN
     
 st.header("TECHNICAL ANALYSIS")
 
