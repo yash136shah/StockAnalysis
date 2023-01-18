@@ -111,7 +111,7 @@ with col1:
     if "sectorSel" not in st.session_state:
         st.session_state["sectorSel"] = multidfC[sector].unique()[0]
         st.session_state["sectorDefault"] = st.session_state["sectorSel"]    
-        st.session_state["sectorBoxValue"] = True
+        st.session_state["sectorBoxValue"] = False
 
     def SectorSel ():   
         st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]            
@@ -124,9 +124,9 @@ with col1:
             else:
                     st.session_state["sectorBoxValue"] = True
 
-    #all_sector = st.checkbox("Select all",value=st.session_state["sectorBoxValue"],key="sectorAll",on_change=SectorAllSel)
-    #if all_sector:
-    #        st.session_state["sectorSel"] = multidfC[sector].unique()
+    all_sector = st.checkbox("Select all",value=st.session_state["sectorBoxValue"],key="sectorAll",on_change=SectorAllSel)
+    if all_sector:
+            st.session_state["sectorSel"] = multidfC[sector].unique()
 
 
     if len(st.session_state["sectorSel"]) == 0:   # ERROR RAISED IF NO SECTOR
