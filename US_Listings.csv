@@ -1,0 +1,1395 @@
+ TICKER, CODE, EXCHANGE, NAME
+AAPL,0R2V,LSE,Apple Inc.
+AAPL,0R2V,IL,Apple Inc.
+AAPL,6689,TSE,Apple Inc
+AAPL,AAPL,SN,Apple Inc
+AAPL,AAPL,MX,Apple Inc
+AAPL,AAPL,NEO,Apple Inc CDR
+AAPL,AAPL,LIM,Apple Inc
+AAPL,AAPL,BA,Apple Inc DRC
+AAPL,AAPL,MI,Apple Inc.
+AAPL,AAPL34,SA,Apple Inc
+AAPL,APC,DU,Apple Inc
+AAPL,APC,HM,Apple Inc
+AAPL,APC,F,Apple Inc
+AAPL,APC,STU,Apple Inc
+AAPL,APC,HA,Apple Inc
+AAPL,APC,XETRA,Apple Inc
+AAPL,APC,BE,Apple Inc
+AAPL,APC,MU,Apple Inc
+MSFT,MSFT34,SA,Microsoft Corporation
+GOOGL,GOGL34,SA,Alphabet Inc
+GOOGL,GOGL35,SA,Alphabet Inc
+GOOGL,GOOG,US,Alphabet Inc Class C
+GOOGL,GOOGL,BA,Alphabet Inc Class A CEDEAR
+AMZN,AMZO34,SA,Amazon.com Inc
+UNH,UNHH34,SA,UnitedHealth Group Incorporated
+JNJ,JNJ,BA,Johnson & Johnson Co DRC
+JNJ,JNJB34,SA,Johnson & Johnson
+XOM,EXXO34,SA,Exxon Mobil Corporation
+V,VISA34,SA,Visa Inc
+JPM,JPM,BA,JPMorgan Chase & Co. CEDEAR
+JPM,JPMC34,SA,JPMorgan Chase & Co
+TSLA,TSLA34,SA,Tesla Inc
+WMT,WALM34,SA,Walmart Inc
+WMT,WMT,BA,Walmart Inc
+TSM,2330,TW,Taiwan Semicon
+TSM,TSMC34,SA,Taiwan Semiconductor Manufacturing Company Limited
+LLY,LILY34,SA,Eli Lilly and Company
+PG,PG,BA,Procter & Gamble DRC
+PG,PGCO34,SA,The Procter & Gamble Company
+NVDA,NVDC34,SA,NVIDIA Corporation
+CVX,CHVX34,SA,Chevron Corporation
+CVX,CVX,BA,Chevron Corp. CEDEAR
+MA,MSCD34,SA,Mastercard Incorporated
+HD,HD,BA,The Home Depot Inc.
+HD,HOME34,SA,The Home Depot Inc
+META,FB2A,XETRA,Meta Platforms Inc
+META,FB2A,F,Meta Platforms Inc
+META,FBOK34,SA,Facebook Inc
+NVO,NOVOB,CO,Novo Nordisk A/S
+MRK,MRCK34,SA,Merck & Co. Inc
+KO,COCA34,SA,The Coca-Cola Company
+KO,KO,BA,The Coca-Cola Company
+PEP,PEP,F,PepsiCo Inc
+PEP,PEP,XETRA,PepsiCo Inc
+PEP,PEPB34,SA,PepsiCo Inc
+BABA,9988,HK,Alibaba Group Holding Ltd
+BABA,BABA34,SA,Alibaba Group Holding Limited
+AVGO,1YD,F,Broadcom Inc
+AVGO,1YD,XETRA,Broadcom Inc.
+AVGO,AVGO34,SA,Broadcom Inc
+AVGO,AVGOP,US,Broadcom Mandatory Conv Pref
+ASML,0QB8,LSE,ASML Holding NV
+ASML,ASME,F,ASML Holding NV
+ASML,ASML,AS,ASML Holding NV
+ORCL,ORCL34,SA,Oracle Corporation
+TMO,TMOS34,SA,Thermo Fisher Scientific Inc
+AZN,AZN,LSE,AstraZeneca PLC
+COST,COWC34,SA,Costco Wholesale Corporation
+CSCO,CSCO,BA,Cisco Systems Inc. CEDEAR
+CSCO,CSCO34,SA,Cisco Systems Inc
+MCD,MCDC34,SA,McDonald's Corporation
+DHR,DHER34,SA,Danaher Corporation
+ABT,ABTT34,SA,Abbott Laboratories
+TM,7203,TSE,Toyota Motor Corp
+TM,TM,BA,Toyota Motor Corp. CEDEAR
+TM,TMCO34,SA,Toyota Motor Corporation
+NKE,NIKE34,SA,NIKE Inc
+NKE,NKE,BA,NIKE Inc.
+TMUS,TM5,XETRA,T-MOBILE US INC.DL-00001
+VZ,VERZ34,SA,Verizon Communications Inc
+VZ,VZ,BA,Verizon Communications Inc.
+BHP,BHP,AU,BHP Group Limited
+BHP,BHP1,F,BHP Group Limited
+BHP,BHPG34,SA,BHPG34
+WFC,0R2F,LSE,Wells Fargo & Company
+WFC,0R2F,IL,Wells Fargo & Company
+WFC,NWT,DU,Wells Fargo & Company
+WFC,NWT,HM,Wells Fargo & Company
+WFC,NWT,MU,Wells Fargo & Company
+WFC,NWT,BE,Wells Fargo & Company
+WFC,NWT,HA,Wells Fargo & Company
+WFC,NWT,XETRA,Wells Fargo & Company
+WFC,NWT,F,Wells Fargo & Company
+WFC,NWT,STU,Wells Fargo & Company
+WFC,WFC,MX,Wells Fargo & Company
+WFC,WFC,LIM,Wells Fargo & Company
+WFC,WFC,BA,Wells Fargo & Company
+WFC,WFC,SN,Wells Fargo & Company
+WFC,WFCO34,SA,Wells Fargo & Company
+PM,PHMO34,SA,Philip Morris International Inc
+SCHW,SCHW34,SA,The Charles Schwab Corporation
+ADBE,ADBE34,SA,Adobe Inc
+BMY,BMYB34,SA,Bristol-Myers Squibb Company
+CMCSA,CMCS34,SA,Comcast Corporation
+UPS,UPSS34,SA,United Parcel Service Inc
+TXN,TEXA34,SA,Texas Instruments Incorporated
+COP,COP,F,ConocoPhillips
+COP,COPH34,SA,ConocoPhillips
+HON,HONB34,SA,Honeywell International Inc
+MS,MSBR34,SA,Morgan Stanley
+AMGN,AMGN34,SA,Amgen Inc
+CRM,SSFO34,SA,salesforce.com inc
+T,ATTB34,SA,AT&T Inc.
+T,TBB,US,AT&T Inc
+T,TBC,US,AT&T Inc ELKS
+RY,RY,TO,Royal Bank of Canada
+NFLX,NFLX34,SA,Netflix Inc
+UL,ULVR,LSE,Unilever PLC
+IBM,IBM,BA,International Business Machines Corporation
+IBM,IBMB34,SA,International Business Machines Corp
+LMT,LMT,BA,Lockheed Martin Corp. CEDEAR
+LMT,LMTB34,SA,Lockheed Martin Corporation
+UNP,UPAC34,SA,Union Pacific Corporation
+HSBC,0005,HK,HSBC Holdings PLC
+HSBC,HSBA,LSE,HSBC Holdings PLC
+CAT,CAT,BA,Caterpillar Inc. CEDEAR
+CAT,CATP34,SA,Caterpillar Inc
+SAP,SAPP34,SA,SAP SE
+CVS,CVSH34,SA,CVS Health Corporation
+ELV,A58,F,Anthem Inc
+QCOM,QCOM,BA,QUALCOMM Incorporated
+QCOM,QCOM34,SA,Qualcomm Inc
+BUD,ABI,BR,Anheuser Busch Inbev SA NV
+BUD,ABI,XETRA,Anheuser-Busch InBev SA/NV
+LOW,LOWC34,SA,Lowe's Companies Inc
+TD,TD,TO,Toronto Dominion Bank
+GS,GSGI34,SA,The Goldman Sachs Group Inc
+EQNR,DNQ,F,Equinor ASA
+EQNR,EQNR,OL,Equinor ASA
+SBUX,SBUB34,SA,Starbucks Corporation
+BA,BA,BA,Boeing Co. CEDEAR
+BA,BOEI34,SA,The Boeing Company
+AXP,AXP,BA,American Express Co DRC
+AXP,AXPB34,SA,American Express Company
+INTC,INTC,BA,Intel Corp. CEDEAR
+INTC,ITLC34,SA,Intel Corporation
+BLK,BLAK34,SA,BlackRock Inc
+BP,BP,LSE,BP PLC
+AMD,A1MD34,SA,Advanced Micro Devices Inc
+AMD,AMD,F,Advanced Micro Devices Inc
+AMD,AMD,XETRA,Advanced Micro Devices Inc
+AMT,A0T,F,American Tower Corp
+DEO,DEO,BA,Diageo PLC CEDEAR
+DEO,DGE,LSE,Diageo PLC
+ADP,AUD,F,Autodesk Inc
+GE,GE,BA,General Electric Co. CEDEAR
+GE,GEOO34,SA,General Electric Company
+MDLZ,MDLZ34,SA,Mondelez International Inc
+BTI,BATS,LSE,British American Tobacco PLC
+EL,0JTM,LSE,The Estée Lauder Companies Inc
+C,,,
+C,CTGP34,SA,Citigroup Inc
+MO,MOOO34,SA,Altria Group Inc
+MUFG,8306,TSE,Mitsubishi UFJ Financial Group Inc
+CNI,CNIC34,SA,Canadian National Railway Company
+CNI,CNR,TO,Canadian National Railway Co
+PYPL,2PP,XETRA,PayPal Holdings Inc
+PYPL,PYPL34,SA,PayPal Holdings Inc
+ENB,ENB,TO,Enbridge Inc
+ENB,ENBA,US,Enbridge 6.375 Fixed to Floating Rate Subordinated Notes Series 2018 B Exp 2078
+DUK,DUKB,US,Duke Energy Corp
+DUK,DUKB34,SA,Duke Energy Corporation
+DUK,DUKH,US,Duke Energy Corporation JR SUB DEB 73
+BKNG,BKNG34,SA,Booking Holdings Inc
+BKNG,PCE1,XETRA,Booking Holdings Inc
+BKNG,PCE1,F,Booking Holdings Inc
+NOW,4S0,F,ServiceNow Inc
+SO,SOJA,US,The Southern Company JR SUB NT 2015A
+SO,SOJB,US,The Southern Company JR SUB NT 76
+SO,SOJC,US,Southern Co
+SO,SOJD,US,Southern Co
+SO,SOLN,US,Southern Co
+JD,9618,HK,Jd Com Inc
+JD,JDCO34,SA,JD.com Inc
+SLB,SLBG34,SA,Schlumberger Limited
+PGR,PGR,F,Progressive Corp
+BDX,BDXB,US,Becton Dickinson and Company
+GSK,,,
+GSK,GSK,LSE,GSK plc
+CP,CP,TO,Canadian Pacific Railway Ltd
+TGT,TGTB34,SA,Target Corporation
+MRNA,0QF,STU,MODERNA
+GD,GDBR34,SA,General Dynamics Corporation
+MMM,MMM,F,3M Company
+MMM,MMMC34,SA,3M Company
+CL,COLG34,SA,Colgate-Palmolive Company
+CSX,CSX,MU,CS GROUP N
+CSX,CSX,F,Credit Suisse Group AG
+CSX,CSXC34,SA,CSX Corporation
+HUM,HUM,F,Humana Inc
+CNQ,CNQ,TO,Canadian Natural Resources Ltd
+BMO,BMO,TO,Bank of Montreal
+CME,CHME34,SA,CME Group Inc
+CME,MX4A,F,CME Group Inc
+CME,MX4A,STU,CME GROUP-A (MX4A.SG)
+CCI,8CW,F,Crown Castle International Corp
+EMR,EMR,F,Emerson Electric Co
+DG,DGCO34,SA,Dollar General Corporation
+TRI,TRI,TO,Thomson Reuters Corp
+SMFG,8316,TSE,Sumitomo Mitsui Financial
+MU,,,
+MU,,,
+MU,0R2T,LSE,Micron Technology Inc
+MU,MUTC34,SA,Micron Technology Inc
+RELX,REL,LSE,Relx PLC
+ADM,ADM,F,Archer-Daniels-Midland Company
+D,DCUE,US,Dominion Energy Inc
+D,DRUA,US,Dominion Energy Inc. ENHCD SUB NT16 A
+KDP,DP5,F,Keurig Dr Pepper Inc
+KHC,KHCB34,SA,The Kraft Heinz Company
+KHC,KHNZ,XETRA,Kraft Heinz Co
+GIS,GIS,F,General Mills Inc
+PSX,PSX,F,Phillips 66
+SRE,SREA,US,DBA Sempra 5.750% Junior Subordinated Notes due 2079
+F,FDMO34,SA,Ford Motor Company
+CNC,QEN,F,Centene Corp
+ING,INGA,AS,ING Groep NV
+ING,INN1,XETRA,ING Groep NV
+AFL,AFL,F,Aflac Incorporated
+NTES,9999,HK,NetEase Inc
+NGG,NG,LSE,National Grid PLC
+NGG,NGG,BA,NATIONAL GRID CEDEAR EACH REP 1
+NGG,NNGF,XETRA,National Grid plc
+ITUB,ITUB3,SA,Itaú Unibanco Holding S.A
+ITUB,ITUB4,SA,Itaú Unibanco Holding S.A
+SU,SU,TO,Suncor Energy Inc
+WDAY,W7D,STU,WORKDAY-A (W7D.SG)
+WDAY,W7D,MU,WORKDAY-A
+WDAY,W7D,F,Workday Inc
+LULU,33L,BE,LULULEMON ATHL
+LULU,33L,F,Lululemon Athletica Inc
+CTVA,2X0,XETRA,CORTEVA INC.      DL -01
+PANW,5AP,F,Palo Alto Networks Inc
+NXPI,NXPI,XETRA,NXP Semiconductors NV
+FIS,F1NI34,SA,Fidelity National Information Services Inc
+TRP,TRP,TO,TC Energy Corp
+BIIB,BIIB34,SA,Biogen Inc
+NTR,NTR,TO,Nutrien Ltd
+LYG,LLOY,LSE,Lloyds Banking Group PLC
+LYG,LYG,BA,Lloyds Banking Group PLC CEDEAR
+PUK,2378,HK,Prudential PLC
+PUK,PRU,LSE,Prudential PLC
+CVE,CVE,TO,Cenovus Energy Inc
+NEM,NGT,TO,Newmont Goldcorp Corp
+SHOP,307,F,Shopify Inc
+SHOP,SHOP,TO,Shopify Inc
+BK,BONY34,SA,The Bank of New York Mellon Corporation
+CM,CM,TO,Canadian Imperial Bank Of Commerce
+PRU,PFH,US,Prudential Financial Inc Preferred
+PRU,PJH,US,Prudential Financial Inc. JR SUB NT 52
+PRU,PRH_old,US,PRH
+PRU,PRS,US,Prudential Financial Inc
+YUM,,,
+YUM,YUM,F,SHK Hong Kong Industries Limited
+ENPH,E0P,STU,ENPHASE ENERGY (E0P.SG)
+ENPH,E0P,F,Enphase Energy Inc
+DOW,2OY,XETRA,DOW INC.           DL-01
+COF,CAON34,SA,Capital One Financial Corporation
+MFG,8411,TSE,Mizuho Financial Group Inc
+TDG,T7D,F,TransDigm Group Incorporated
+WCN,WCN,TO,Waste Connections Inc
+DD,DD,BA,Dupont De Nemours Inc DRC
+DD,DDNB34,SA,DuPont de Nemours Inc
+CMI,CUM,F,Cummins Inc
+AMP,A4S,F,Ameriprise Financial Inc
+AMP,A4S,XETRA,Ameriprise Financial Inc
+PCG,PCGU,US,PG&E Corp
+MTD,MTD,F,MEITO TRANSPORT - Frankfurt Stock Exchang
+NWG,NWG,LSE,NatWest Group PLC
+NWG,RYS1,XETRA,NatWest Group PLC
+NWG,RYS1,F,NatWest Group PLC
+WELL,HCW,F,Welltower Inc
+BCS,BARC,LSE,Barclays PLC
+BCS,BCS,BA,Barclays PLC CEDEAR
+PEG,PEG,F,Public Service Enterprise Group Inc
+RMD,RMD,AU,Resmed Inc DRC
+CRH,CRH,LSE,CRH PLC
+IMO,IMO,TO,Imperial Oil Ltd
+IMO,IMO,F,Immofinanz AG
+ES,NWJ,F,Eversource Energy
+BBD,BBD,BA,Banco Bradesco DRC
+BBD,BBDC3,SA,Banco Bradesco S.A
+BBD,BBDC4,SA,Banco Bradesco S.A
+BBD,BBDO,US,Banco Bradesco S/A ADR
+CHT,2412,TW,Chunghwa Telecom Co
+DELL,12DA,XETRA,DELL TECHS INC. C  DL-01
+VOD,VOD,BA,VODAFONE GROUP CEDEAR EA REP 1/
+VOD,VOD,LSE,Vodafone Group PLC
+VOD,VODI,XETRA,Vodafone Group PLC
+GMAB,GMAB,CO,Genmab A/S
+GWW,GWW,F,W.W. Grainger Inc
+VRSK,VA7A,F,Verisk Analytics Inc
+VRSK,VA7A,STU,VERISK ANALYTICS (VA7A.SG)
+VRSK,VA7A,MU,VERISK ANLYTCS-A
+SE,931,F,Sea Limited
+TU,BCZ,F,TELUS  - Frankfurt Stock Exchang
+TU,T,TO,Telus Corp
+SLF,SLF,TO,Sun Life Financial Inc.
+GLW,GLW,F,Corning Incorporated
+ORAN,FTE,XETRA,Orange SA
+ORAN,ORAN,PA,Orange SA
+IFF,IFF,F,International Flavors & Fragrances Inc
+IFF,IFFT,US,International Flavors & Fragrances Inc
+NOK,NOKIA,PA,Nokia Oyj
+NOK,NOKIA,HE,Nokia Oyj
+FNV,FNV,TO,Franco-Nevada Corporation
+LEN,LENB_failed,US,Lennar Corp B
+VEEV,VEE,F,Veeva Systems Inc
+CRWD,45C,F,CrowdStrike Holdings Inc
+DTE,DTJ,US,DTE Energy Company JR SUB DEB 76
+DTE,DTP,US,DTE Energy Co
+DTE,DTQ,US,DTE Energy Company SUB DEB 62
+DTE,DTW,US,DTE Energy Co Pref Series E
+DTE,DTY,US,DTE Energy Company
+EIX,EIX,F,Edison International
+HIG,HGH,US,The Hartford Financial Services Group Inc. DEB FIX/FLT 42
+TLK,TCID,F,Telkom Indonesia (Persero) Tbk PT
+TLK,TLKM,JK,Telkom Indonesia (Persero) Tbk PT
+FANG,7DB,F,Diamondback Energy Inc
+BGNE,6160,HK,Beigene Ltd
+EFX,EFX,F,Equifax Inc
+ACGL,ACGLO,US,Arch Capital Group Ltd.
+ACGL,ACGLP,US,Arch Capital Group Ltd
+VMC,VMC,F,Vulcan Materials Company
+YUMC,0YU,XETRA,YUM CHINA HLDGS    DL-01
+RJF,RJF,F,Raymond James Financial Inc
+AVB,AVB,F,Asiatravel.com Holdings Ltd
+EQR,EQR,F,Equity Residential
+MT,ARRD,XETRA,ArcelorMittal SA
+MT,MT,AS,ArcelorMittal SA
+MT,MTCN,US,Arcelormittal
+MT,MTS,MC,ArcelorMittal SA
+SIRI,0L6Z,LSE,Sirius XM Holdings Inc
+SIRI,RDO,XETRA,Sirius Xm Holdings Inc
+SIRI,RDO,F,Sirius XM Holding Inc
+FITB,FITBI,US,Fifth Third Bancorp
+FITB,FITBO,US,Fifth Third Bancorp
+FITB,FITBP,US,Fifth Third Bancorp
+EBAY,EBAY34,SA,eBay Inc.
+EBAY,EBAYL,US,eBay Inc. NT 56
+CAJ,7751,TSE,Canon Inc
+TTD,TT8,F,The Trade Desk Inc
+CNHI,37C,F,CNH Industrial NV
+CNHI,CNHI,MI,CNH Industrial NV
+PPL,PPL,F,PannErgy Nyrt.
+TEF,,,
+TEF,TEF,MC,Telefonica
+GIB,CJ5A,F,CGI Inc
+ERIC,ERICA,ST,L.M. Ericsson Telephone Co. Series A
+ERIC,ERICB,ST,Telefon AB L.M. Ericsson Series B
+QSR,QSR,TO,Restaurant Brands International Inc
+TECK,TEKB,F,Teck Resources Ltd Class B
+FTS,FTS,TO,Fortis Inc
+MOH,MHC,F,MegaChips Corporation
+AES,AES,XETRA,The AES Corporation
+AES,AES,F,The AES Corporation
+DOV,DOV,F,Dover Corporation
+CNP,CNP,F,Ingredion Incorporated
+PBA,PPL,TO,Pembina Pipeline Corp
+EPAM,E3M,F,EPAM Systems Inc
+PAYC,0PY,F,Paycom Soft
+EBR,EBRB,US,Centrais Electricas Brasileiras S.A.- Eletrobr?!s American Depositary Shares (Each representing one Preferred Share)
+EBR,ELET3,SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás
+EBR,ELET5,SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás
+EBR,ELET6,SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás
+NTRS,NTRSO,US,Northern Trust Corporation
+SUI,SUI,F,Sekisui Chemical Co. Ltd
+AMCR,AMC,AU,Amcor PLC
+MKL,MKL,F,Atea ASA
+WPM,WPM,TO,Wheaton Precious Metals Corp
+ZNH,1055,HK,China Southern Airlines Co Ltd
+ZNH,600029,SHG,China Southern Airlines Co Ltd Class A
+FMX,FEMSAUBD,MX,Fomento Económico Mexicano S.A.B. de C.V
+STLD,STLD,MX,Steel Dynamics Inc
+DRI,DRI,F,1&1 Drillisch AG
+SJM,SJM,XETRA,Steven Madden Ltd.
+SJM,SJM,F,JM SMUCKER - Frankfurt Stock Exchang
+UMC,2303,TW,United Microelectronics Corporation
+AGR,12A,F,Avangrid Inc
+PKX,005490,KO,POSCO Holdings
+MGA,MG,TO,Magna International Inc
+MGA,MGA,F,Magna International Inc
+BRO,BRO,F,BROOKEMONT CAPITAL - Frankfurt Stock Exchang
+ZS,0ZC,F,Zscaler Inc
+LYV,LYV,F,Lundin Energy AB (publ)
+LYV,LYV,XETRA,Lundin Petroleum
+FOXA,FOX,US,Fox Corp Class B
+ATO,ATO,F,ATS Automation Tooling Systems Inc.
+RYAAY,,,
+RYAAY,RYA,LSE,Ryanair Holdings plc
+BG,BU3,F,Bunge Limited
+MOS,02M,XETRA,The Mosaic Company
+MOS,02M,F,The Mosaic Company
+SPOT,639,XETRA,Spotify Technology SA
+SPOT,639,F,Spotify Technology SA
+NVR,NVE,F,NVR Inc
+KB,105560,KO,KB Financial Group
+IRM,I5M,F,Iron Mountain Incorporated
+AVY,AV3,F,Avery Dennison Corp
+LDOS,S6IA,F,Leidos Holdings Inc
+SHG,055550,KO,Shinhan Financial Group
+SPLK,S0U,BE,SPLUNK
+SPLK,S0U,F,Splunk Inc
+PTC,PMTA,BE,PTC Inc
+PTC,PMTA,F,PTC Inc
+PTC,PMTA,XETRA,Ptc Inc
+PTC,PMTA,STU,PTC (PMTA.SG)
+HUBS,096,F,HubSpot Inc
+PHG,PHI1,F,Koninklijke Philips NV
+PHG,PHI1,XETRA,Koninklijke Philips NV
+SIVB,SIVBP,US,SVB Financial Group
+MDB,526,F,MongoDB
+BURL,BUI,F,Burlington Stores Inc
+ASX,3711,TW,ASE Industrial Holding Co Ltd
+BEN,BEN,F,Franklin Resources Inc
+IPG,IPG,F,The Interpublic Group of Companies Inc
+LSXMA,BATRA,US,Liberty Media Corp Braves A
+LSXMA,BATRK,US,Liberty Media Corp Braves C
+LSXMA,FWONA,US,Liberty Media Formula One Corp A
+LSXMA,FWONK,US,Liberty Media Formula One Corp C
+LSXMA,LSXMB,US,Liberty Media Corp SiriusXM B
+LSXMA,LSXMK,US,Liberty Media Corp SiriusXM C
+TECH,TE1,F,Bio-Techne Corporation
+RCL,0I1W,LSE,Royal Caribbean Group
+OVV,OVV,TO,Ovintiv Inc
+WTRG,A2A,F,Aqua America Inc.
+WTRG,WTRU,US,Aqua America Inc
+UAL,UAL1,F,United Airlines Holdings Inc
+UAL,UAL1,BE,UNITED CONTL
+SUZ,SUZB3,SA,Suzano S.A
+NICE,NICE,TA,Nice Ltd
+PKG,PKG,F,PKC Group Oyj
+POOL,SP1,F,Pool Corporation
+AXON,TCS,STU,Axon Enterprise Inc.
+AXON,TCS,F,Axon Enterprise Inc.
+AXON,TCS,MU,Axon Enterprise Inc.
+AXON,TCS,BE,Axon Enterprise Inc.
+CEA,0670,HK,China Eastern Airlines Corp Ltd
+CEA,600115,SHG,China Eastern Airlines Corp Ltd
+CEA,CIAH,F,China Eastern Airlines Corporation Limited
+ACM,E6Z,F,AECOM
+AFG,AFGB,US,American Financial Group Inc
+AFG,AFGC,US,American Financial Group Inc
+AFG,AFGD,US,American Financial Group Inc
+AFG,AFGH,US,American Financial Group Inc. 6% SUB DEB 2055
+GDDY,38D,F,Godaddy Inc
+SNN,SN,LSE,Smith & Nephew PLC
+MTCH,4MGN,F,Match Group Inc
+SWK,SWT,US,Stanley Black Decker Inc
+QGEN,QIA,XETRA,Qiagen NV
+QGEN,QIA,F,QIAGEN N.V
+TAP,NY7,F,Molson Coors Brewing Co Class B
+SRPT,AB3A,F,Sarepta Therapeutics Inc
+SRPT,AB3A,BE,SAREPTA THERAP
+SRPT,AB3A,MU,SAREPTA THERAP
+SRPT,AB3A,STU,SAREPTA THERAP (AB3A.SG)
+NMR,,,
+NMR,8604,TSE,Nomura Holdings Inc
+GFL,GFL,TO,Gfl Environmental Holdings Inc
+GFL,GFLU,US,GFL Environmental Inc
+KEP,015760,KO,Korea Electric Power Corp
+CE,DG3,F,Celanese Corporation
+OKTA,0OK,F,Okta Inc
+PCTY,0P7,F,Paylocity Holding Corporation
+WPP,0WP,F,WPP PLC
+WPP,WPP,LSE,WPP PLC
+AEG,AEB,US,Aegon N.V. PERP CAP FLTG RT
+NWSA,NC0,F,News Corporation
+NWSA,NWS,AU,News Corp B DRC
+NWSA,NWS,US,News Corp B
+NWSA,NWSLV,AU,News Corp DRC B
+IHG,IC1H,F,InterContinental Hotels Group PLC
+IHG,IHG,LSE,InterContinental Hotels Group PLC
+JAZZ,J7Z,STU,JAZZ PHARMACEUTICAL (J7Z.SG)
+JAZZ,J7Z,F,Jazz Pharmaceuticals plc
+JAZZ,J7Z,BE,JAZZ PHARMACEUTICAL
+DAR,43D,F,Darling Ingredients Inc
+FIVE,6F1,F,Five Below Inc
+CCJ,CCO,TO,Cameco Corp
+CCJ,CCO,F,Cameco Corp
+LAMR,6LA,XETRA,Lamar Advertising Company (REIT)
+LAMR,6LA,F,Lamar Advertising Company
+ARCC,AFC,US,Allied Capital Corporation NT 6.875 2047
+BLDR,B1F,F,Builders FirstSource Inc
+RGA,RZA,US,Reinsurance Group of America Inc
+RGA,RZB,US,Reinsurance Group of America Inc
+BWA,BWA,F,BORGWARNER - Frankfurt Stock Exchang
+AR,7A6,F,Antero Resources Corporation
+JBL,JBL,F,Jabil Inc
+HII,HI4,F,Huntington Ingalls Industries Inc
+UHS,UHS,F,Universal Health Services Inc
+WRK,1WR,F,WestRock Co
+WRK,1WR,XETRA,WestRock Company
+CZR,2ER,F,Eldorado Resorts Inc
+LBTYA,1LG,F,Liberty Global PLC
+LBTYA,LBTYB,US,Liberty Global PLC Class B
+LBTYA,LBTYK,US,Liberty Global PLC Class C
+TFII,9TF,F,TRANSFORCE
+TFII,TFII,TO,TFI International Inc
+AOS,3SM,F,Smith AO Corporation
+AAP,AWN,F,Advance Auto Parts Inc
+PNW,PNW,F,PINNACLE WEST CAP - Frankfurt Stock Exchang
+LII,LXI,F,Lennox International Inc
+AU,AGG,AU,AngloGold Ashanti Ltd DRC
+AAL,A1G,XETRA,American Airlines Group Inc
+AAL,A1G,F,American Airlines Group
+AAL,AALL34,SA,American Airlines Group Inc
+UNM,UNMA,US,Unum Group
+OTEX,OTEX,TO,Open Text Corp
+RHI,RHI,F,Red Hat Inc
+AA,185,XETRA,ALCOA CORP. O.N.
+JEF,LN3,F,Jefferies Financial Group Inc
+UGI,UGI,F,Sugi Holdings Co.Ltd
+WHR,WHR,XETRA,Whirlpool Corp.
+WHR,WHR,F,Whirlpool Corporation
+CHE,CHE,F,China Huarong Asset Management Co. Ltd
+BERY,BP0,F,Berry Global Group Inc
+ACHC,7RA,F,Acadia Healthcare Company Inc
+ZG,0ZG,F,Zillow Group Inc
+ZG,Z,US,Zillow Group Inc Class C
+PNR,PNT,F,Pentair plc
+GMED,GM0N,F,Globus Medical Inc
+ESLT,ESLT,TA,Elbit Systems Ltd
+COTY,CO3A,XETRA,Coty Inc
+COTY,CO3A,F,Coty Inc
+KBR,K6B,F,KBR Inc
+SEE,SEE,F,Sears Holdings Corporation
+DCI,DCI,F,DCI DATABASE - Frankfurt Stock Exchang
+WEX,WL9,F,WEX Inc
+EME,EM4,F,EMCOR Group Inc
+PLNT,3PL,F,Planet Fitness Inc
+PLUG,PLUN,STU,PLUG POWER (PLUN.SG)
+PLUG,PLUN,XETRA,Plug Power Inc
+PLUG,PLUN,F,Plug Power Inc
+GLOB,2G2,F,Globant SA
+XRAY,DY2,XETRA,DENTSPLY International Inc
+XRAY,DY2,F,Dentsply Sirona Inc
+CAR,CUCA,BE,AVIS BUDGET GROUP
+CAR,CUCA,STU,AVIS BUDGET GROUP (CUCA.SG)
+CAR,CUCA,F,Avis Budget Group Inc
+CROX,C7N,MU,Crocs Inc
+CROX,C7N,STU,CROCS (C7N.SG)
+CROX,C7N,F,Crocs Inc
+CROX,C7N,BE,Crocs Inc
+ALV,,,
+ALV,LIV,F,Autoliv Inc.
+MTZ,MTZ,F,M&T Bank Corp
+FR,F5W,F,First Industrial Realty Trust Inc
+AIZ,AIZP,US,Assurant Inc
+WAL,WAL,F,WALTER ENERGY  - Frankfurt Stock Exchang
+WAL,WALA,US,Western Alliance Bancorporation SUB DEBENTURS 56
+YPF,YPFD,BA,YPF S.A. D
+RBA,RBA,TO,Ritchie Bros Auctioneers
+SWN,SWN,F,Southwest Airlines Co
+KT,030200,KO,KT Corporation
+RH,RS1,F,RH Inc.
+SF,SFB,US,Stifel Financial Corporation 5.20% Senior Notes due 2047
+ST,S94,F,SATERI HOLDINGS
+CAE,CAE,TO,CAE Inc.
+CAE,CAE,F,CAE INC - Frankfurt Stock Exchang
+LEVI,LV2B,XETRA,LEVI STRAUSS + CO. CL.A
+HOG,HOG,F,HOLOGRAM - Frankfurt Stock Exchang
+STAG,SW6,F,STAG Industrial Inc
+COUP,2C0,F,Coupa Software Inc
+COUP,2C0,BE,CARLISLE GOLDFIELDS
+DOOO,B15A,F,BRP Inc
+DOOO,DOO,TO,BRP Inc
+AGNC,AGNCM,US,AGNC Investment Corp
+AGNC,AGNCN,US,AGNC Investment Corp.
+AGNC,AGNCO,US,AGNC Investment Corp
+AGNC,AGNCP_old,US,American Capital Agency Corp.
+RRC,RRC,F,Range Resources Corp
+CHH,CHH,F,CK Infrastructure Holdings Limited
+RLI,RL1,F,RLI Corp
+AMG,MGR,US,Affiliated Managers Group Inc
+NTNX,0NU,F,Nutanix Inc
+X,X,BA,United States Steel Corp
+PII,PL6,F,Polaris Inc
+TPX,TPX,F,Toppan Inc
+NFG,NFG,F,National Fuel Gas Company
+ELAN,5EA,XETRA,ELANCO ANIMAL HEALTH.
+ELAN,ELAT,US,Elanco Animal Health Inc
+SIM,SIMECB,MX,Grupo Simec S.A.B. de C.V
+VLY,VLYPO,US,Valley National Bancorp B Pref
+VLY,VLYPP,US,Valley National Bancorp A Pref
+MSA,M07,F,MSA Safety Incorporated
+HRB,HRB,F,H&R Block Inc
+LAD,LMO,F,Lithia Motors Inc
+M,MACY34,SA,Macy's Inc
+SAIA,SQR,F,Saia Inc
+ROKU,R35,F,Roku Inc
+IDA,IDA,F,Indra Sistemas S.A
+NVST,0HV,XETRA,ENVISTA HOLDINGS   DL-01
+FTI,FTI,PA,TechnipFMC plc
+FSV,FSV,TO,FirstService Corp
+ALK,ALK,F,Alaska Air Group Inc
+NWL,NWL,MU,NEWELL RUBBERMAID
+NWL,NWL,F,Newell Brands Inc
+SIGI,SV2,F,Selective Insurance Group Inc
+LUMN,CTL,F,Creative Technology Ltd
+AUY,YRI,TO,Yamana Gold Inc
+STN,STN,TO,Stantec Inc
+ONB,ON1,F,Old National Bancorp
+POST,2PO,F,Post Holdings Inc
+IONS,ISI,STU,Ionis Pharmaceuticals Inc
+IONS,ISI,F,Ionis Pharmaceuticals Inc
+IONS,ISI,MU,ISIS PHARMACEUTICAL
+IONS,ISI,BE,ISIS PHARMACEUTICAL
+BWXT,4BW,F,BWX Technologies Inc
+ENSG,EGB,F,The Ensign Group Inc
+THC,THC1,F,Tenet Healthcare Corporation
+VAC,M8V,F,Marriott Vacations Worldwide Corporation
+SMAR,3SE,F,SEPURA - Frankfurt Stock Exchang
+WTFC,WTFCM,US,Wintrust Financial Corp Pref
+WTFC,WTFCP,US,Wintrust Financial Corp
+NCLH,1NC,F,Norwegian Cruise Line Holdings Ltd
+KGC,K,TO,Kinross Gold Corp
+GWRE,0GS,F,Guidewire Software Inc
+RUN,3S9,BE,Sunrun Inc.
+RUN,3S9,STU,SUNRUN (3S9.SG)
+LHCG,LH6,F,LHC Group Inc
+EXPO,EP5,F,Exponent Inc
+HXL,HXL,F,Hexcel Corporation
+GIL,GIL,TO,Gildan Activewear Inc.
+GIL,GIL,F,DMG MORI AKTIENGESELLSCHAFT
+ORA,HNM,XETRA,Ormat Technologies Inc
+ORA,HNM,F,Ormat Technologies Inc
+BPOP,PP4A,F,Popular Inc
+THG,AF4,F,The Hanover Insurance Group Inc
+THG,THGA,US,The Hanover Insurance Group Inc. SUB DB 6.35%53
+NJR,NJR,F,New Japan Radio Co. Ltd
+TSEM,TSEM,TA,Tower Semiconductor Ltd
+CC,2CU,XETRA,Chemours Company
+CC,2CU,F,Chemours Co
+IPGP,0J86,LSE,IPG Photonics Corporation
+IPGP,IPGP,MU,FID AUSTRALIA AC
+IPGP,IPGP,BE,FID AUSTRALIA AC
+AXS,AXS,F,ABAXIS
+MSM,98M,F,MSC Industrial Direct Co. Inc
+RHP,4RH,F,Ryman Hospitality Properties Inc
+PVH,PVH,F,PVH Corp
+AMN,AHS,F,Admiralty Resources NL
+MMS,MMS,F,MAXIMUS - Frankfurt Stock Exchang
+AQN,AQN,TO,Algonquin Power & Utilities Corp
+AQN,AQNA,US,Algonquin Power Utilities Corp
+AQN,AQNB,US,Algonquin Power Utilities Corp
+MTSI,1MA,F,MACOM Technology Solutions Holdings Inc
+SEB,S0V,F,Seaboard Corporation
+FIZZ,20V,F,National Beverage Corp
+SJI,J4S,F,South Jersey Industries Inc
+SJI,SJIJ,US,South Jersey Industries Inc
+SJI,SJIU,US,South Jersey Industries Inc. CORP UNITS
+SMCI,MS5,BE,SUPER MICRO COMPUT
+SMCI,MS5,F,Super Micro Computer Inc
+BIPC,BIPC,TO,Brookfield Infrastructure Corp
+NSP,ASF,F,Insperity Inc
+NTRA,45E,F,Natera Inc
+UAA,UA,US,Under Armour Inc C
+CYTK,KK3A,F,Cytokinetics Incorporated
+CYTK,KK3A,MU,CYTOKINETICS
+ALKS,8AK,MU,ALKERMES
+ALKS,8AK,STU,ALKERMES (8AK.SG)
+LEG,LEG,F,LEG Immobilien SE
+ARWR,HDP1,MU,ARROWHEAD RESEARCH
+ARWR,HDP1,F,Arrowhead Pharmaceuticals Inc
+ARWR,HDP1,BE,ARROWHEAD RESEARCH
+QLYS,3L7A,F,Qualys Inc
+AL,AVLA,F,Air Lease Corporation
+TNET,TN3,F,TRINET GROUP INC
+MAN,MAN,F,MAN SE
+HWC,HH1,F,Hancock Whitney Corporation
+HWC,HWCPL,US,Hancock Whitney Corporation 5.95% SUB NT 45
+HWC,HWCPZ,US,HWCPZ
+SLM,SLMBP,US,SLM Corp Pb Pref
+SWX,SWX,F,STEWART ENTERPR-A - Frankfurt Stock Exchang
+FIX,9CF,F,Comfort Systems USA Inc
+GPS,GPS,F,GAP - Frankfurt Stock Exchang
+GPS,GPSI34,SA,The Gap Inc
+ESGR,ESGRO,US,Enstar Group Limited
+ESGR,ESGRP,US,Enstar Group Ltd Pref Series D
+TEO,TECO2,BA,Telecom Argentina
+OGS,OG9,F,ONE Gas Inc
+ASGN,OA2,F,ASGN Incorporated
+UMBF,UMB,F,UMB Financial Corporation
+AAON,AAO,STU,AAON INC
+ABG,AWG,F,Asbury Automotive Group Inc
+AGI,AGI,TO,Alamos Gold Inc
+CIGI,CIGI,TO,Colliers International Group Inc Bats
+CPG,016,F,Crescent Point Energy Corp.
+CPG,CPG,TO,Crescent Point Energy Corp.
+ERF,E17,F,Enerplus Corporation
+ERF,ERF,TO,Enerplus Corporation
+LYFT,LY0,XETRA,LYFT Inc
+JHG,0RPW,LSE,Janus Henderson Group plc
+JHG,JHG,AU,Janus Henderson Group PLC DRC
+ATI,ATI,F,Allegheny Technologies Incorporated
+XPO,UX2A,F,XPO Logistics Inc
+MAXR,MAXR,TO,Maxar Technologies Inc
+FOXF,FF0,F,Fox Factory Holding Corp
+ALSN,1A7,F,Allison Transmission Holdings Inc
+BTG,BTO,TO,B2Gold Corp
+MANU,MUF,F,Manchester United Ltd
+NEWR,2NR,F,New Relic Inc
+WHD,43C,F,CARDTRONICS - Frankfurt Stock Exchang
+AVT,AVT,F,AviChina Industry & Technology Company Limited
+AVT,AVT,MU,AVICHINA IND -H-
+AVT,AVT,BE,AVICHINA IND -H-
+HHC,HHE,F,The Howard Hughes Corporation
+CBT,CBT,F,Cabot Corporation
+ZD,JXC1,F,J2 Global Inc
+ZD,JXC1,MU,J2 GLOBAL
+ZD,JXC1,STU,J2 GLOBAL (JXC1.SG)
+ALE,AEBA,F,ALLETE Inc
+KOF,KOFUBL,MX,Coca-Cola FEMSA S.A.B. de C.V
+UCBI,UCBIO,US,United Community Banks Inc
+UCBI,UCBN,F,United Community Banks Inc
+LPL,034220,KO,LG Display
+AWR,FDK,F,American States Water Company
+SFM,1FA,BE,SPROUTS FARMERS MKT
+SFM,1FA,MU,SPROUTS FARMERS MKT
+SFM,1FA,F,Sprouts Farmers Market Inc
+AYX,3AI,F,Alteryx Inc
+PAAS,PAA,F,PARTNERRE - Frankfurt Stock Exchang
+PAAS,PAAS,TO,Pan American Silver Corp
+ENV,30E,F,Envestnet Inc
+NWE,NWZA,F,NorthWestern Corporation
+GEF,GEFB,US,GEFB
+SEAS,W2L,F,SeaWorld Entertainment Inc
+CWT,CWT,F,Curtiss-Wright Corporation
+ONTO,NNM,F,Onto Innovation Inc
+RNG,3RCA,F,Ringcentral Inc
+TMHC,THM,F,Taylor Morn Home
+AVA,AVA,F,Ascopiave S.p.A.
+SANM,SAYN,MU,SANMINA CORP. NEW DL-01
+SANM,SAYN,BE,SANMINA
+SANM,SAYN,F,Sanmina Corporation
+SANM,SAYN,STU,SANMINA (SAYN.SG)
+STNG,SBBA,US,SBBA
+BMI,33B,F,Badger Meter Inc
+TGS,TGSU2,BA,Transportadora de Gas del Sur SA B
+AMBA,A8B,BE,AMBARELLA
+CVI,FL9,F,CVR Energy Inc
+CNS,FG9,F,Cohen & Steers Inc
+PAM,PAMP,BA,Pampa Energia SA
+IPAR,JF1,F,Inter Parfums Inc
+PRTA,0PT,F,Prothena Corporation plc
+SPR,SPR,F,Axel Springer SE
+SXT,SXT,F,SINGHAIYI GRP - Frankfurt Stock Exchang
+NTCO,NTCO3,SA,Natura &Co Holding S.A
+TCBI,TCBIL,US,Texas Capital Bancshares Inc
+TCBI,TCBIP,US,Texas Capital Bancshares Inc
+TR,TZ3,F,Tootsie Roll Industries Inc
+OFC,WX7,F,Corporate Office Properties Trust
+SPXC,SPW,F,SPX Corporation
+RUSHA,RUSHB,US,Rush Enterprises B Inc
+FOCS,2JE,F,Focus Financial Partners Inc
+KOS,KOS,LSE,Kosmos Energy Ltd
+VET,CVZ,F,Vermilion Energy Inc
+VET,VET,TO,Vermilion Energy Inc.
+MAIN,13M,F,Main Street Capital Corporation
+GT,GT,BE,GOODYEAR T & RUBBER
+GT,GT,STU,GOODYEAR T & RUBBER (GTR.SG)
+GT,GT,F,GOODYEAR T & RUBBER - Frankfurt Stock Exchang
+ISEE,O2T,F,IVERIC bio Inc
+ISEE,O2T,BE,OPHTHOTECH
+PSEC,PBB,US,Prospect Capital Corporation NT 061524
+PSEC,PBC,US,Prospect Capital Corporation 6.875% Notes due 2029
+PSEC,PBY,US,Prospect Capital Corp ELKS
+THS,THS,F,TheStreet Inc
+PI,27J,F,Impinj Inc
+KBH,KBH,F,KB Home
+BCC,BC0,F,Boise Cascade Company
+AMED,AMED,F,Amundi Index Solutions - Amundi ETF MSCI EMU ESG Leaders Select
+SMG,SMG,F,Magnachip Semiconductor Corporation
+PTCT,P91,F,PTC Therapeutics Inc
+HCM,HCM,LSE,HUTCHMED China Ltd
+MEOH,MX,TO,Methanex Corporation
+PTON,2ON,F,Peloton Interactive Inc
+MXL,JMX,F,MaxLinear Inc
+AUB,AUBAP,US,Atlantic Union Bankshares Corporation
+VRNS,VS2,F,Varonis Systems Inc
+UGP,UGPA3,SA,Ultrapar Participações S.A
+BPMC,2L9,F,Blueprint Medicines Corp
+CCU,CCU,SN,Compania Cervecerias Unidas SA
+LAC,LAC,TO,Lithium Americas Corp
+LAC,WUC1,F,Lithium Americas Corp
+ACAD,DR6,F,ACADIA Pharmaceuticals Inc
+MRTX,26M,F,Mirati Ther
+TRIP,T6A,F,TripAdvisor Inc
+TRIP,T6A,XETRA,TripAdvisor Inc
+BCO,BCO,F,The Boeing Company
+PRMW,GC6,F,Primo Water Corp
+PRMW,PRMW,TO,Primo Water Corp
+FRPT,7FP,F,Freshpet Inc
+MAC,M6G,F,The Macerich Company
+TAC,TA,TO,TransAlta Corp
+TAC,TZ1,F,TransAlta Corporation
+TRN,TTA,F,Trinity Industries Inc
+TRMD,TRMDA,CO,Torm PLC A
+NOG,NOG,F,NORICUM GOLD  - Frankfurt Stock Exchang
+MATX,68M,F,MATSON INC
+VIAV,UNS1,BE,JDS UNIPHASE
+VIAV,UNS1,STU,VIAVI SOLUTIONS (UNS1.SG)
+VIAV,UNS1,F,Viavi Solutions Inc
+VIAV,UNS1,MU,JDS UNIPHASE
+NVMI,NVMI,TA,Nova Ltd
+BRC,BRC,F,Brembo SpA
+APAM,AP0,F,Artisan Partners Asset Management Inc
+TV,TLEVISACPO,MX,Grupo Televisa S.A.B
+TV,TVY,F,Tivoly
+MGPI,M1I,STU,MGP Ingredients Inc
+PIPR,PJR,F,Piper Sandler Companies
+AX,AXO,US,Axos Financial Inc
+ABR,ABR,F,Barrick Gold Corporation
+BHC,BHC,TO,Bausch Health Companies Inc
+BHC,BVF,F,Bausch Health Companies Inc
+GBDC,OGL,F,Golub Capital BDC Inc
+JOE,JOE,F,St Joe Company
+ROG,RG6,F,Rogers Corporation
+SAGE,SG7,F,Sage Therapeutics Inc
+NAVI,10D,F,Navient Corp
+NAVI,JSM,US,Navient Corporation SR NT 6% 121543
+WSBC,WSBCP,US,WesBanco Inc
+AG,FR,TO,First Majestic Silver Corp
+DAN,4DH,F,Dana Inc
+THRM,QA4A,F,Gentherm Incorporated
+THRM,QA4A,BE,GENTHERM
+LGIH,LG1,F,LGI Homes Inc
+KW,13K,F,Kennedy-Wilson Holdings Inc
+AVAV,JPX,F,AeroVironment Inc
+AVAV,JPX,STU,AEROVIRONMENT (JPX.SG)
+AVAV,JPX,BE,AEROVIRONMENT
+SAVE,S64,F,Spirit Airlines Inc
+CPK,CPK,F,Capcom Co. Ltd
+NUVA,NK8,STU,NuVasive Inc. (NK8.SG)
+NUVA,NK8,F,NuVasive Inc
+TROX,T5X,F,TAL INTERNATIONAL
+NXE,NXE,TO,NexGen Energy Ltd.
+ITCB,ITAUCORP,SN,Itau CorpBanca
+JBLU,JBLU,MX,JetBlue Airways Corporation
+NUS,NUS,F,Nu Skin Enterprises Inc
+AMC,AH9,F,AMC Entertainment Holdings Inc
+NOVA,7SE,F,Sino Gas & Energy Holdings Limited
+GKOS,6GJ,F,Glaukos Corporation
+ERJ,EMBR3,SA,Embraer S.A
+NG,NG,TO,NovaGold Resources Inc
+NG,NGR,F,NovaGold Resources Inc
+HTLF,HTLFP,US,Heartland Financial USA Inc
+SBLK,SBLKZ,US,Star Bulk Carriers Corp. 8.30% SR NT 22
+CENT,CENTA,US,Central Garden & Pet Company A
+CENT,GP7,F,Central Garden & Pet Company
+CSIQ,L5A,F,Canadian Solar Inc
+CSIQ,L5A,BE,CANADIAN SOLAR
+CSIQ,L5A,MU,CANADIAN SOLAR
+CSIQ,L5A,STU,CANADIAN SOLAR (L5A.SG)
+STRA,SQE,BE,STRAYER EDUCATION
+STRA,SQE,F,Strategic Education Inc
+SUPN,S49,F,Supernus Pharmaceuticals Inc
+SUPN,S49,STU,Singapore Reinsurance Corporation Limited
+RES,RES,F,CLAUDE RESOURCES - Frankfurt Stock Exchang
+YELP,Y9L,F,Yelp Inc
+IRWD,I76,F,Ironwood Pharmaceuticals Inc
+ATSG,ATSG,MX,Air Transport Services Group Inc
+GOGO,G0G,F,Gogo Inc
+GOGO,G0G,STU,GOGO  (G0G.SG)
+MCY,MCY,F,Mercury Systems Inc
+MCY,MCY,MU,MERCURY SYSTEM
+BB,BB,TO,BlackBerry Ltd
+BB,RIM,F,Richmont Mines Inc
+SSTK,S3T,F,SHUTTERSTOCK - Frankfurt Stock Exchang
+GOOS,GOOS,TO,Canada Goose Holdings Inc
+VGR,VGR,F,Vector Group Ltd
+INSW,IS5,F,INTEGR SILICON SOL - Frankfurt Stock Exchang
+VRNA,VRP,LSE,Verona Pharma plc
+USM,UZA,US,United States Cellular Corporation CALL SR NT 60
+USM,UZB,US,United States Cellular Corporation SR NT 120163
+USM,UZC,US,United States Cellular Corporation SR NT 64
+USM,UZD,US,UZD
+HLIO,SH7,BE,SUN HYDRAULICS
+NWBI,NHS,F,Northwest Bancshares Inc
+BLMN,BOO,F,Bloomin' Brands Inc
+OII,OII,F,Oceaneering International Inc
+NMIH,6NM,F,NMI Holdings Inc
+ARCO,AD8,F,Arcos Dorados Holdings Inc
+HTGC,HCXY,US,Hercules Capital Inc
+HTGC,HCXZ,US,Hercules Capital Inc
+FLNG,FLNG,OL,FLEX LNG Ltd
+ARCB,AQY,F,ArcBest Corporation
+INT,WFK,F,World Fuel Services Corporation
+CMP,CM8,F,Compass Minerals International Inc
+RFP,7AB1,F,Resolute Forest Products Inc
+RFP,RFP,TO,Resolute Forest Products Inc
+TGTX,NKB2,F,TG Therapeutics Inc
+VCYT,12V,F,Veracyte Inc
+LILA,LILAK,US,Liberty Latin America Ltd Class C
+CEPU,CEPU,BA,Central Puerto S.A.
+TLRY,2HQ,XETRA,Tilray Inc
+SAND,AYS1,F,Sandstorm Gold Ltd
+SAND,SSL,TO,Sandstorm Gold Ltd N
+MAG,MAG,TO,MAG Silver Corp
+MYRG,MYP,F,MYR Group Inc
+XNCR,XE9,F,Xencor Inc
+XNCR,XE9,MU,XENCOR
+XNCR,XE9,STU,XENCOR (XE9.SG)
+QTWO,0Q2,F,Q2 Holdings
+MODN,2MD,F,Model N Inc
+APPS,4MD,F,Digital Turbine Inc
+OMI,6OM,F,Owens & Minor Inc
+TGH,TGH,F,Logwin AG
+LTC,LTC,F,LINEAR TECHNOLOGY - Frankfurt Stock Exchang
+LTC,LTC,MU,LINEAR TECHNOLOGY
+DHT,D8EN,F,DHT Holdings Inc
+JACK,JBX,BE,JACK IN THE BOX
+JACK,JBX,STU,JACK IN THE BOX (JBX.SG)
+JACK,JBX,F,Jack in the Box Inc
+JACK,JBX,MU,JACK IN THE BOX
+PARR,61P,F,Par Pacific Holdings Inc
+KAR,XKR,F,KAR Auction Services Inc
+AROC,54E,F,Archrock Inc
+BLDP,BLD,F,Ballard Power Systems Inc
+BLDP,BLDP,TO,Ballard Power Systems Inc
+CLS,CLS,TO,Celestica Inc.
+MNKD,NNFN,F,MannKind Corporation
+VSTO,5VO,F,Vista Outdoor Inc
+AKR,WX1,F,Acadia Realty Trust
+ALEX,ABU,F,Alexander & Baldwin Inc
+PTNR,PTNR,TA,Partner
+HBM,HBM,F,HORNBACH Baumarkt AG
+HBM,HBM,TO,HudBay Minerals Inc
+FCF,FCF,F,First Commonwealth Financial
+UVV,UVV,F,Universal Corporation
+LADR,LD1A,F,Ladder Capital Corp
+NXGN,QY1,F,NextGen Healthcare Inc
+NXGN,QY1,BE,QUALITY SYSTEMS
+SFL,UG6,F,SFL Corporation Ltd
+MHO,4MI,F,M/I Homes Inc
+CTS,CTS,F,AVIC International Holdings Limited
+OCFC,OCFCP,US,OceanFirst Financial Corp
+FDP,FDP,F,FRESH DEL MONTE - Frankfurt Stock Exchang
+DCOM,DCOMP,US,Dime Community Bancshares Inc PR
+SXI,9SI,F,Silver Spring Networks Inc
+IAG,IMG,TO,IAMGold Corporation
+VCEL,ATQP,BE,VERICEL
+VCEL,ATQP,MU,VERICEL
+VCEL,ATQP,F,Vericel Corporation
+VCEL,ATQP,STU,VERICEL (ATQP.SG)
+AGM,AGMA,US,Federal Agricultural Mortgage Corp
+NEO,NG9,F,NeoGenomics Inc
+BORR,BDRILL,OL,Borr Drilling Limited
+SWIR,SW,TO,Sierra Wireless Inc.
+CGC,11L1,F,Canopy Growth Corp
+CGC,WEED,TO,Canopy Growth Corp
+PERI,IW2,F,Perion Network
+PERI,IW2,STU,PERION NETWORK (IW2.SG)
+PERI,PERI,TA,Perion Network
+ALX,ALX,F,Alexanderwerk Aktiengesellschaft
+ANF,ANF,F,ABERCROMBIE FTCH-A - Frankfurt Stock Exchang
+FORTY,FORTY,TA,Formula
+GRBK,2G1,F,Green Brick Partners Inc
+PMT,8PM,F,PennyMac Mortgage Investment Trust
+FCEL,FEY2,F,FuelCell Energy Inc
+LXU,LXU,F,Tongaat Hulett Limited
+SSP,SQ6B,F,E. W. Scripps Co Class A
+FSM,FVI,TO,Fortuna Silver Mines Inc
+FSM,FVI,F,Fortuna Silver Mines Inc
+COWN,COWNL,US,Cowen Group Inc
+COWN,COWNZ,US,Cowen Inc. 7.35% SR NT 27
+PGTI,P9I,F,PGT Innovations Inc
+SPTN,SRJ,F,SpartanNash Company
+SPTN,SRJ,BE,SPARTAN STORES 
+SPTN,SRJ,STU,SPARTANNASH (SRJ.SG)
+FVRR,11V,F,Fiverr International Ltd
+RDNT,PQIA,F,RadNet Inc
+MGI,9M1N,F,Moneygram Int
+MGI,9M1N,STU,MONEYGRAM INTER (9M1N.SG)
+MBIN,MBINO,US,Merchants Bancorp
+MBIN,MBINP,US,Merchants Bancorp PR
+MOD,MMF,F,Modine Manufacturing Company
+GTN,GTNA,US,Gray Television Inc
+BLU,BLU,TO,BELLUS Health Inc.
+SPNS,SPNS,TA,Sapiens International Corporation NV
+MFA,MFO,US,MFA Financial Inc. SR NT 42
+SA,SEA,TO,Seabridge Gold Inc.
+SA,SEA,F,STELLA ENTERTAINM - Frankfurt Stock Exchang
+DIN,IHP,F,Dine Brands Global Inc
+AMSF,A3I,F,AMERISAFE Inc
+EQX,EQX,TO,Equinox Gold Corp
+FSLY,2Y7,F,Fastly Inc
+MRC,37M,F,MRC Global Inc
+CAMT,CAMT,TA,Camtek Ltd
+NYMT,NYMTM,US,New York Mortgage Trust Inc PR
+NYMT,NYMTN,US,New York Mortgage Trust Inc Pref
+NYMT,NYMTO,US,New York Mortgage Trust Inc
+NYMT,NYMTP,US,New York Mortgage Trust Inc
+TWI,TWI,F,Tower International Inc
+CDE,CDE,XETRA,City Developments Ltd
+CDE,CDE,F,Coeur Mining Inc
+SLCA,USI,F,U.S. Silica Holdings Inc
+CLB,CLB,AS,Core Laboratories NV
+DNN,DML,TO,Denison Mines Corp
+CUBI,CUBB,US,Customers Bancorp Inc
+INVA,HVE,MU,THERAVANCE
+INVA,HVE,BE,THERAVANCE
+INVA,HVE,F,THERAVANCE - Frankfurt Stock Exchang
+AMTB,AMTBB,US,Amerant Bancorp Inc
+GPRK,GPK,F,GOLDEN OCEAN - Frankfurt Stock Exchang
+TITN,3TY,F,Titan Machinery Inc
+CNDT,4C0,F,CROCOTTA ENERGY - Frankfurt Stock Exchang
+SILV,SIL,TO,SilverCrest Metals Inc
+HIBB,HB6,F,Hibbett Inc
+RICK,RIK,F,RCI Hospitality Holdings Inc
+CUTR,TJ9,BE,CUTERA
+ZUO,2ZU,F,Zuora Inc
+CBD,PCAR3,SA,Companhia Brasileira de Distribuição
+NVAX,NVV1,F,Novavax Inc
+AMWD,AHQ,F,American Woodmark Corporation
+IMAX,IMX,F,Intime Retail (Group) Co Ltd
+NEXA,NEXA,TO,Nexa Resources S.A
+MGIC,MGIC,TA,Magic Software Enterprises Ltd
+IMOS,8150,TW,ChipMOS Technologies
+SSYS,SCY,BE,STRATASYS LTD
+AMBC,FGPN,F,Ambac Financial Group Inc
+LPG,0DA,F,Dorian LPG Ltd
+UBP,UBA,US,Urstadt Biddle Properties Inc
+ASPN,AP1,F,Aspen Aerogels Inc
+BYND,0Q3,XETRA,Beyond Meat Inc
+GOOD,GOODM,US,Gladstone Commercial Corporation
+GOOD,GOODN,US,Gladstone Commercial Corp Pref
+DLX,DLX,F,Delignit AG
+AZUL,AZUL4,SA,Azul S.A
+SXC,S01,F,SunCoke Energy Inc
+TRST,TC5,F,TrustCo Bank Corp NY
+MBI,MBI,F,Mitsubishi Corporation
+ALLK,37Z,STU,INTELIQUENT (37Z.SG)
+ALLK,37Z,F,INTELIQUENT - Frankfurt Stock Exchang
+ALLK,37Z,BE,INTELIQUENT
+MMX,MMX,TO,Maverix Metals Inc
+HSKA,HSKN,F,Heska Corporation
+TGI,TGI,F,TETRA Technologies Inc
+STAR,SFI,F,ShiFang Holding Limited
+AMCX,9AC,F,AMC Networks Inc
+OPI,OPINI,US,Office Properties Income Trust
+OPI,OPINL,US,Office Properties Income Trust
+TA,TANNI,US,TravelCenters of America LLC SR NT 8.25%2028
+TA,TANNL,US,TravelCenters of America LLC SR NT
+TA,TANNZ,US,TravelCenters of America LLC 8% SR NT 2030
+EDN,EDN,BA,Empresa Distribuidora y Comercializadora Norte S.A.
+AVD,AVD,F,American Vanguard Corporation
+AVD,AVD,BE,Avid Technology Inc
+KELYA,KELYB,US,Kelly Services B Inc
+NAT,B3O,F,Nordic American Tankers Limited
+LAND,LANDP,US,Gladstone Land Corporation
+EXK,EDR,TO,Endeavour Silver Corp.
+EXK,EJD,F,Endeavour Silver Corp
+BLX,BLX,F,Black Box Corporation
+GSL,GSLD,US,GSLD
+AUPH,AUP,TO,Aurinia Pharmaceuticals Inc
+DX,DYT1,F,Dynex Capital Inc
+CEVA,PVJA,STU,CEVA (PVJA.SG)
+CEVA,PVJA,F,CEVA Inc
+GCO,GN8,F,Genesco Inc
+EBS,ER4,F,Emergent BioSolutions Inc
+TILE,IF6N,F,Interface Inc
+TILE,IF6N,BE,INTERFACE
+SNBR,SL2,F,Sleep Number Corp
+AUDC,AUDC,TA,AudioCodes Ltd
+BLUE,BLE,F,bluebird bio Inc
+CSWC,CSWCL,US,Capital Southwest Corporation 5.95% NT 22
+ACCO,A3B,F,ACCO Brands Corporation
+HA,1HW,F,Hawaiian Holdings Inc
+DXPE,DX7,F,DXP Enterprises Inc
+SVM,S9Y,F,Silvercorp Metals Inc
+SVM,SVM,TO,Silvercorp Metals Inc
+MOV,MV4,F,Movado Group Inc
+AMRS,3A01,F,Amyris Inc
+ICPT,I4P,F,Intercept Pharmaceuticals Inc
+BKD,B7S,F,Brookdale Senior Living Inc
+PFLT,PFLT,TA,PennantPark Floating Rate Capital Ltd
+CCNE,CCNEP,US,CNB Financial Corporation
+ASC,A61,F,Ardmore Shipping Corporation
+SCU,35OB,F,Sculptor Capital Management Inc
+DOMO,1ON,F,Domo Inc
+DGICA,DGICB,US,Donegal Group B Inc
+SENEA,SENEB,US,Seneca Foods Corp B
+OIS,OIS,F,Oil Search Limited
+ORMP,OJU1,STU,ORAMED (OJU1.SG)
+FDUS,FDUSG,US,FDUSG
+FDUS,FDUSL,US,FDUSL
+FDUS,FDUSZ,US,Fidus Investment Corporation - 6% Notes due 2024
+VTNR,5VE,F,Vertex Energy Inc
+RBBN,NU42,F,Ribbon Communications Inc
+ESPR,0ET,F,Esperion Therapeutics Inc
+HDSN,HT4,F,Hudson Technologies Inc
+INGN,6IO,F,Inogen Inc
+TTI,TTI,F,Tom Tailor Holding SE
+NVTA,IV8,F,Invitae Corporation
+BIG,4B3,F,Big Lots Inc
+GAIN,GAINL,US,Gladstone Investment Corporation
+GAIN,GAINM,US,Gladstone Investment Corporation
+HY,HYEA,F,Hyster-Yale Materials Handling Inc
+CVEO,44C,F,Civeo Corporation
+DXLG,DE2A,F,Destination XL Group Inc
+REI,KWE1,F,Ring Energy Inc
+TGB,TKO,TO,Taseko Mines Ltd
+VERU,FMW,BE,FEMALE HEALTH
+VNDA,VM4,F,Vanda Pharmaceuticals Inc
+VNDA,VM4,STU,VANDA PHARMA (VM4.SG)
+HROW,3IP,F,IPC HOSPITALIST - Frankfurt Stock Exchang
+BELFA,BELFB,US,Bel Fuse B Inc
+SRNE,8STN,F,Sorrento Therapeutics Inc
+NEWT,NEWTI,US,Newtek Business Services Corp
+NEWT,NEWTL,US,Newtek Business Services Corp
+GLDD,5GL,F,Great Lakes Dredge & Dock
+NR,NRA,F,NRG Energy Inc
+MVIS,MVIN,MU,MICROVISION
+MVIS,MVIN,F,MicroVision Inc
+MVIS,MVIN,STU,MICROVISION (MVIN.SG)
+BOOM,DM5,F,DYNAMIC MATERIALS - Frankfurt Stock Exchang
+PNNT,12P,F,PennantPark Investment Corporation
+PNNT,PNNTG,US,PNNTG
+LOCO,EP6,F,El Pollo Loco Holdings Inc
+INO,GBMB,F,Inovio Pharmaceuticals Inc
+TCX,TC,TO,Tucows Inc.
+KPTI,25K,F,Karyopharm Therapeutics Inc
+TPVG,TPVY,US,TriplePoint Venture Growth BDC Corp
+NOA,N5Z,F,North American Construction Group Ltd
+NOA,NOA,TO,North American Construction Group Ltd
+SUPV,SUPV,BA,Grupo Supervielle S.A. B
+ABUS,I9DN,BE,TEKMIRA PHARM
+BNFT,BTF,STU,BENEFITFOCUS (BTF.SG)
+BBW,FPW,F,Build-A-Bear Workshop Inc
+UIS,UIS,XETRA,Uranium Participation Corporation
+GBLI,GBLIL,US,Global Indemnity Limited SUB NT 47
+GLAD,GLADD,US,GLADD
+GLAD,GLADL,US,GLADL
+SFIX,SYJ,STU,SYJ
+SFIX,SYJ,F,Stitch Fix Inc
+DESP,D3G,F,DRESSER-RAND GRP - Frankfurt Stock Exchang
+GILT,GILT,TA,Gilat Satellite Networks Ltd
+UVE,5UI,F,Universal Insurance Holdings Inc
+DBVT,DBV,F,DBV Technologies S.A
+DBVT,DBV,PA,DBV Technologies
+GWRS,GWR,TO,Global Water Resources Inc
+HRZN,HTFA,US,Horizon Technology Finance Corporation 6.25% NT 22
+SAR,SAF,US,SAFECO CORP
+SAR,SAK,US,SAK
+ATRA,AT2,F,Atara Biotherapeutics Inc
+HRTX,AXD2,F,Heron Therapeutics Inc
+EGAN,EGCA,F,EGAIN - Frankfurt Stock Exchang
+VMD,VMD,TO,Viemed Healthcare Inc
+GNE,6GE,F,Genie Energy Ltd
+PKE,PKE,F,Park Aerospace Corp
+MUX,MUX,TO,McEwen Mining Inc.
+MUX,US8A,XETRA,Mcewen Mining Inc
+MUX,US8A,F,McEwen Mining Inc
+PLM,POM,TO,Polymet Mining Corp
+WRN,31WN,F,Western Copper and Gold Corporation
+WRN,WRN,TO,Western Copper and Gold Corp
+WW,WW6,MU,WGHT WTCHER INTL
+WW,WW6,STU,WGHT WTCHER INTL (WW6.SG)
+WW,WW6,F,WW International Inc
+WW,WW6,BE,WGHT WTCHER INTL
+MYFW,33Q,F,Qunxing Paper Holdings Co Ltd
+TREE,T77,BE,TREE.COM
+PFMT,PF3,F,Performant Financial Corporation
+FENC,FRX,TO,Fennec Pharmaceuticals Inc
+EPM,EP7,BE,EVOLUTION PETE
+EPM,EP7,F,Evolution Petroleum Corporation
+OGI,0OG,F,OrganiGram Holdings Inc
+OGI,OGI,TO,OrganiGram Holdings Inc
+KBAL,KB1B,F,Kimball International Inc
+ACB,21P1,F,Aurora Cannabis Inc
+ACB,ACB,TO,Aurora Cannabis Inc
+VUZI,V7XN,F,Vuzix Corporation
+VUZI,V7XN,STU,VUZIX (V7XN.SG)
+VUZI,V7XN,BE,Vuzix Corp
+MPAA,54M,F,Motorcar Parts of America Inc
+INBK,INBKL,US,First Internet Bancorp SB NT FXD FLG MA
+INBK,INBKZ,US,INBKZ
+QUAD,QGU,F,Quad/Graphics Inc
+BCOV,2BV,F,Brightcove Inc
+MTA,MTA,V,Metalla Royalty & Streaming Ltd
+PROF,PRN,TO,Profound Medical Corp
+PTMN,KCAPL,US,KCAP Financial Inc. 6.125% NT 2022
+PTMN,KJ7,F,Portman Ridge Finance Corporation
+NGVC,N2V,F,Natural Grocers by Vitamin Cottage Inc
+VOXX,VOX,F,VOXX International Corporation
+CSTE,19C,F,Caesarstone Ltd
+CATO,CO2A,F,The Cato Corporation
+UONE,UONEK,US,Urban One Inc Class D
+FRGI,F4R,F,Fiesta Restaurant Group Inc
+LCTX,BT3,F,Lineage Cell Therapeutics Inc
+PBYI,0PB,F,Puma Biotechnology Inc
+RAD,RTA1,F,Rite Aid Corporation
+MRCC,MRCCL,US,Monroe Capital Corporation 5.75% Notes due 2023
+MHLD,MHLA,US,Maiden Holdings Ltd
+CPSS,FC8,F,Consumer Portfolio Services Inc
+GHL,GHL,F,GREENHILL - Frankfurt Stock Exchang
+KMDA,KMDA,TA,Kamada
+TUP,TUP,F,Tupperware Brands Corporation
+FET,1FE,F,FORUM ENERGY TECH - Frankfurt Stock Exchang
+FET,1FE,STU,FORUM ENERGY TECH (1FE.SG)
+IMMP,IMM,AU,Immutep Ltd
+MFIN,MFINL,US,Medallion Financial Corp
+CONN,CN4,F,Conn's Inc
+UFI,36A,F,athenahealth Inc
+CPS,C31,F,Cooper-Standard Holdings Inc
+DHC,DHCNI,US,DHCNI
+DHC,DHCNL,US,Diversified Healthcare Trust
+NGS,NGS,BE,NATURAL GAS SRVCS
+ALYA,ALYA,TO,Alithya Group inc Class A
+EHTH,M5V,BE,EHEALTH
+EHTH,M5V,F,eHealth Inc
+WPRT,WPRT,TO,Westport Fuel Systems Inc
+DTIL,PBS,BE,PEP BOYS-MANNY M&J
+DTIL,PBS,F,PEP BOYS-MANNY M&J - Frankfurt Stock Exchang
+VFF,02V,BE,AVANTI MINING
+VFF,02V,F,AVANTI MINING - Frankfurt Stock Exchang
+VFF,VFF,TO,Village Farms International Inc
+MITT,8AG,F,AG Mortgage Investment Trust Inc
+CMT,XQN,BE,CORE MOLDING TECH
+CMT,XQN,F,Core Molding Technologies Inc
+CSSE,CSSEN,US,Chicken Soup for The Soul Entertainment 9 50 Notes due 2025
+CSSE,CSSEP,US,Chicken Soup for The Soul Entertainment Inc Pref Series A
+NAK,NDM,TO,Northern Dynasty Minerals Ltd
+CMCT,CMCTP,US,Creative Media & Community Trust Corporation Preferred Series L
+DBD,DBD,XETRA,Diebold Nixdorf Inc
+SLDB,B6C,BE,R.G.BARRY
+XBIT,4XB,F,XBiotech Inc
+MNOV,4875,TSE,MediciNova Inc
+MNOV,RMN,F,MediciNova Inc
+PRTK,N4CN,F,Paratek Pharmaceuticals Inc
+ONCY,ONC,TO,Oncolytics Biotech Inc
+AGBA,AGBAR,US,AGBA Acquisition Limited
+AGBA,AGBAU,US,AGBA Acquisition Ltd
+PCYG,PJ4A,F,Park City Group Inc
+RDI,RDIB,US,Reading International B Inc
+CBAT,B6JA,MU,CHINA BAK BATTERY
+CBAT,B6JA,F,China BAK Battery Inc
+CBAT,B6JA,STU,China BAK Battery Inc. (B6JA.S
+SPRO,2HA,F,HOMEAWAY - Frankfurt Stock Exchang
+SPRO,2HA,STU,2HA
+THTX,TH,TO,Theratechnologies Inc.
+THM,ITH,TO,International Tower Hill Mines Ltd
+FAT,FATBP,US,FAT Brands Inc
+ASM,ASM,TO,Avino Silver & Gold Mines Ltd
+ASM,GV6,F,Avino Silver & Gold Mines Ltd
+ASM,GV6,BE,AVINO SILVER & GOLD
+AXAS,ABP,F,PANERA BREAD-A - Frankfurt Stock Exchang
+ORN,0OM,F,Orion Group Holdings Inc
+CODX,C97,F,CB GOLD - Frankfurt Stock Exchang
+CODX,C97,STU,CB GOLD (C97.SG)
+CODX,C97,BE,CB GOLD
+TMDI,TMD,TO,Titan Medical Inc
+VSTM,2VS,F,Verastem Inc
+VSTM,2VS,STU,VERASTEM (2VS.SG)
+SPPI,NTR,F,Spectrum Pharmaceuticals Inc
+SPPI,NTR,STU,Spectrum Pharmaceuticals Inc
+SPPI,NTR,BE,Spectrum Pharmaceuticals Inc
+TAST,XQC,F,Carrols Restaurant Group Inc
+VAPO,VA21,F,Vapotherm Inc
+PIRS,PI6,F,Pieris Pharmaceuticals Inc
+ENZ,ENZ,F,ENZO BIOCHEM - Frankfurt Stock Exchang
+GALT,PHPN,F,Galectin Therapeutics Inc
+AXDX,1A8,F,Accelerate Diagnostics Inc
+ASMB,V7B1,F,Assembly Biosciences Inc
+VGZ,VGZ,TO,Vista Gold Corporation
+BCLI,GHDN,BE,BRAINSTORM CELL
+CGEN,CGEN,TA,Compugen
+TZOO,TXM1,F,Travelzoo
+GEOS,OYO,F,Geospace Technologies Corporation
+AAOI,A59,F,APPLIED OPTOELECTR
+CRIS,CUSA,F,Curis Inc
+SNCR,H6K,F,Synchronoss Technologies Inc
+RFIL,RF5,F,RF Industries Ltd
+APTO,APS,TO,Aptose Biosciences Inc
+TXMD,29T,F,TherapeuticsMD Inc
+NAII,NA2,F,Natural Alternatives International Inc
+NAII,NA2,STU,NAT ALTERN INTL (NA2.SG)
+GAIA,GA6,F,GAIAM-A - Frankfurt Stock Exchang
+GAIA,GA6,BE,GAIAM-A
+KTCC,KT1,F,Key Tronic Corp
+ADES,OXQ1,BE,ADVANCED EMISSIONS
+ADES,OXQ1,STU,Advanced Emissions Solutions Inc
+AUMN,AUMN,TO,Golden Minerals Company
+PLAG,A50,F,American Lorain Corporation
+PLAG,A50,STU,American Lorain Corporation
+DRTT,DRT,TO,Dirtt Environmen
+NVCN,NVCN,TO,Neovasc Inc
+SEED,39O1,F,Origin Agritech Ltd
+AWH,CUL1,F,Aspira Women's Health Inc
+PRTY,5PY,F,Party City Holdco Inc
+MOGO,MOGO,TO,Mogo Inc
+MOGO,SGCC,F,DIFFERENCE CAPITAL FINANCI
+XPL,SLR,TO,Solitario Exploration & Royalty Corp
+GP,GPV,V,GreenPower Motor Company Inc
+BWEN,9IRA,STU,BROADWIND ENRGY (9IRA.SG)
+BWEN,9IRA,BE,BROADWIND ENRGY
+BWEN,9IRA,F,Broadwind Inc
+UIHC,0UI,F,United Insurance Holdings Corp
+BLRX,BLRX,TA,BioLine RX Ltd
+EMKR,ER2N,STU,EMCORE (ER2N.SG)
+EMKR,ER2N,F,EMCORE Corporation
+EMKR,ER2N,MU,EMCORE
+LPCN,2VT,F,Lipocine Inc
+MEIP,MMIA,F,MEI Pharma Inc
+NTWK,NS9B,STU,NETSOL TECH (NS9B.SG)
+NTWK,NS9B,F,NetSol Technologies Inc
+UTSI,UT5A,F,UTStarcom Holdings Corp
+UTSI,UTSI,MX,UTStarcom Holdings Corp
+BCEL,0C1,MU,COLOSSUS MINERALS
+BCEL,0C1,STU,0C1
+BCEL,0C1,F,COLOSSUS MINERALS - Frankfurt Stock Exchang
+FRSX,FRSX,TA,Foresight Autonomous Holdings Ltd
+MDNA,MDNA,TO,Medicenna Therapeutics Corp
+WVVI,WVVIP,US,Willamette Valley Vineyards Inc PR
+NYMX,NYM,F,Nymox Pharmaceutical Corporation
+ENG,4EG,F,ENGlobal Corporation
+EVGN,EVGN,TA,Evogene
+RAVE,PZ1,F,RAVE Restaurant Group Inc
+ZYNE,6ZY,F,Zynerba Pharmaceuticals Inc
+SEAC,SEAC,F,UBS (Lux) Fund Solutions - MSCI World Socially Responsible UCITS ETF
+ACST,ACST,V,Acasti Pharma Inc
+IDRA,HXXB,F,Idera Pharmaceuticals Inc
+CLIR,4CC,F,ClearSign Technologies Corporation
+CNTG,39K,F,Centogene N.V
+APM,A1V,F,AVNEL GOLD MINING - Frankfurt Stock Exchang
+CANF,CANF,TA,Can Fite Biopharma Ltd
+IMV,IMV,TO,IMV Inc.
+CREG,CR9,BE,CHINA RECYCL
+CREG,CR9,STU,CHINA RECYCL (CR9.SG)
+CREG,CR9,F,CHINA RECYCL - Frankfurt Stock Exchang
+ECOR,43E,BE,ENTROPIC COMM
+ECOR,43E,F,ENTROPIC COMM - Frankfurt Stock Exchang
+GENE,GTG,AU,Genetic Technologies Ltd
+KIQ,KLS,TO,Kelso Technologies Inc
+IGC,IGS1,F,India Globalization Capital Inc
+MOXC,4QL,F,NAPEC Inc
+PZG,P9G,STU,PARAMOUNT GLD NV (P9G.SG)
+PZG,P9G,F,Paramount Gold Nevada Corp
+AEZS,AEZS,TO,Aeterna Zentaris Inc
+AEZS,ET82,F,Aeterna Zentaris Inc
+WHLR,WHLRD,US,Wheeler Real Estate Investment Trust Inc
+WHLR,WHLRP,US,Wheeler Real Estate Investment Trust Inc Pref
+SLGG,8LG,F,Super League Gaming Inc
+MDRR,MDRRP,US,Medalist Diversified Reit Inc PR
+MARK,3SWN,F,REMARK MED - Frankfurt Stock Exchang
+MARK,3SWN,BE,REMARK MED
+RMTI,RWM,F,Rockwell Medical Inc
+RMTI,RWM,BE,ROCKWELL MEDICAL
+RMTI,RWM,STU,ROCKWELL MEDICAL (RWM.SG)
+PSTV,XMPA,F,CYTORI THERAPEUTICS - Frankfurt Stock Exchang
+PSTV,XMPA,MU,CYTORI THERAPEUTICS
+PSTV,XMPA,BE,CYTORI THERAPEUTICS
+PSTV,XMPA,STU,CYTORI THERAPEUTICS (XMPA.SG)
+ALRN,015,STU,SPROTT RESOURCE (015.SG)
+ALRN,015,F,SPROTT RESOURCE - Frankfurt Stock Exchang
+KZIA,KZA,AU,Kazia Therapeutics Ltd
+KZIA,NV9,F,Kazia Therapeutics Limited
+HSDT,HSM,TO,Helius Medical Technologies Inc
+MDGS,MDGS,TA,Medigus Ltd
+CYAN,JC7A,BE,CYANOTECH
+MIND,MI7,STU,MITCHAM INDUSTRIES (MI7.SG)
+MIND,MI7,F,MIND Technology Inc
+MIND,MINDP,US,Mind Technology Inc Pref A
+BIMI,63NN,STU,BOQI International Medical Inc
+UUU,UUU,F,3U Holding AG
+NEPT,NEPT,TO,Neptune Wellness Solutions Inc
+CETX,CETXP,US,Cemtrex Inc Pref
+AGTC,2GT,F,Applied Genetic Technologies Corporation
+CO,6CB,STU,CHINA CORD BL (6CB.SG)
+CO,6CB,F,Global Cord Blood Corporation
+ESSC,ESSCR,US,East Stone Acquisition Corporation
+ESSC,ESSCU,US,East Stone Acquisition Corp
+RNWK,RNWA,F,RealNetworks Inc
+RNWK,RNWA,BE,REALNETWORKS
+RNWK,RNWA,STU,REALNETWORKS (RNWA.SG)
+TBK,TBKCP,US,Triumph Bancorp Inc
+THCA,THCAU,US,Tuscan Holdings Corp II
+TRQ,IHM,F,Turquoise Hill Resources Ltd
+TRQ,TRQ,TO,Turquoise Hill Resources Ltd.
+WETF,1WT,F,WisdomTree Investments Inc
+XSPA,V9G,F,VRINGO - Frankfurt Stock Exchang
+XSPA,V9G,BE,VRINGO
