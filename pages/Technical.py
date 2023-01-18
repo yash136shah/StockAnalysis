@@ -125,6 +125,8 @@ for i in name_uni:
 
 if "name_selected" not in st.session_state:
     st.session_state["name_selected"] = []
+
+if "nameSelDefault" not in st.session_state:
     st.session_state["nameSelDefault"] = name_list[0]
 
 
