@@ -109,9 +109,9 @@ with col2:
 col1,col2,col3 = st.columns(3)
 with col1:
     if "sectorSel" not in st.session_state:
-        st.session_state["sectorSel"] = multidfC[sector].unique()[0]
-        st.session_state["sectorDefault"] = st.session_state["sectorSel"]    
-        st.session_state["sectorBoxValue"] = False
+        st.session_state["sectorSel"] = []
+        st.session_state["sectorDefault"] = multidfC[sector].unique()[0]    
+        st.session_state["sectorBoxValue"] = True
 
     def SectorSel ():   
         st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]            
@@ -133,18 +133,18 @@ with col1:
         st.error("Please Enter a Sector")
         st.stop()
 
-
+    
 with col2:
     industry_list = multidfC[multidfC[sector].isin(st.session_state["sectorSel"])][industry].unique().tolist()
     if "industrySel" not in st.session_state:
-            st.session_state["industrySel"] = industry_list[:2]
-            st.session_state["industryDefault"] = st.session_state["industrySel"]
+            st.session_state["industrySel"] = []
+            st.session_state["industryDefault"] = industry_list[:2]
             st.session_state["industryBoxValue"] = False
 
     def IndustrySel ():   
         st.session_state["industryDefault"] = st.session_state["industrySelrad"]            
     
-    st.session_state["industryDefault"] = industry_list[:2]
+    #st.session_state["industryDefault"] = industry_list[:2]
     st.session_state["industrySel"] = st.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
     
     def IndustryAllSel():
