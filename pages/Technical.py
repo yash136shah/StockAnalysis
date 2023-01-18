@@ -140,10 +140,6 @@ else:
     csModeindex = 1
 
 csMode = st.radio("Company Selection Mode:",["Select your own","Peer-Selection"],index=csModeindex,horizontal=True)
-stoggle(
-        "⚡",
-        """ To have more control on multiple company selection use Peer-selection!""",
-    )
 
 if csMode == "Peer-Selection":
     if len(st.session_state["name_selected"]) == 0:
