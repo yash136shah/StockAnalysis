@@ -144,6 +144,7 @@ with col2:
     def IndustrySel ():   
         st.session_state["industryDefault"] = st.session_state["industrySelrad"]            
     
+    st.session_state["industryDefault"] = industry_list[:2]
     st.session_state["industrySel"] = st.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
     
     def IndustryAllSel():
