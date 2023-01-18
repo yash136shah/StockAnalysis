@@ -123,7 +123,8 @@ if st.session_state["name_search"]== 'Sector & Industry':
             st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]            
         #st.session_state["sectorSel"] = multidfC[sector].unique()[0]
         #st.session_state["sectorDefault"] = st.session_state["sectorSel"]
-        st.session_state["sectorSel"] = st.multiselect("Sector:",multidfC[sector].unique(),default=st.session_state["sectorDefault"] ,key="sectorSelrad",on_change=SectorSel)
+        
+        st.session_state["sectorSel"] = st.multiselect("Sector:",multidfC[sector].unique(),default=multidfC[sector].unique()[0] ,key="sectorSelrad",on_change=SectorSel)
         
         def SectorAllSel():
             if st.session_state["sectorBoxValue"] == True: 
@@ -150,10 +151,12 @@ if st.session_state["name_search"]== 'Sector & Industry':
                 st.session_state["industryBoxValue"] = False
 
         def IndustrySel ():   
-            st.session_state["industryDefault"] = st.session_state["industrySelrad"]            
-        st.session_state["industrySel"] = industry_list[:2]
-        st.session_state["industryDefault"] = st.session_state["industrySel"]
-        st.session_state["industrySel"] = st.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
+            st.session_state["industryDefault"] = st.session_state["industrySelrad"]
+            
+        #st.session_state["industrySel"] = industry_list[:2]
+        #st.session_state["industryDefault"] = st.session_state["industrySel"]
+        
+        st.session_state["industrySel"] = st.multiselect("Industry:",options=industry_list,default=industry_list[:2],key="industrySelrad",on_change=IndustrySel)
         
         def IndustryAllSel():
             if st.session_state["industryBoxValue"] == True: 
