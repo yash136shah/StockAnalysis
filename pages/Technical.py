@@ -164,7 +164,7 @@ else:
 
 
 
-
+@st.cache(allow_output_mutation=True)
 def ytickData():
     ticker_selected=dfC[dfC[coName].isin(st.session_state["name_selected"])].loc[:,updatedTicker].to_list()
     ticker_data = yf.download(ticker_selected,start=sd,end=ed)
