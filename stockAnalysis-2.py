@@ -385,14 +385,28 @@ if st.session_state["name_search"]== 'Sector & Industry':
             if i[coName] not in st.session_state["name_selected_table"]:
                 st.session_state["name_selected_table"].append(i[coName])
     
+    if "SInameDefault" not in st.session_state:
+        st.session_state["SInameDefault"] = [ ]
 
     name_combo=st.session_state["name_selected_table"]+st.session_state["name_selected_chart"]
+
+    if len(st.session_state["name_selected"]) == 0:
+        st.session_state["SInameDefault"] = [*set(name_combo)]
+       
+    else: 
+        st.session_state["name_selected"] += [*set(name_combo)]
+        st.session_state["SInameDefault"] = [*set(st.session_state["name_selected"])]
+        
+    def SINameSel ():   
+        st.session_state["SInameDefault"] = st.session_state["nameSelSI"]            
     
-    st.session_state["name_selected"] = [*set(name_combo)]
+
+    try:
+        st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique(),default=st.session_state["SInameDefault"],key="nameSelSI",on_change=SINameSel)
     
-    
-    st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique(),default=st.session_state["name_selected"])
-    
+    except:
+        st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique())
+
     if len(st.session_state["name_selected"]) == 0:
         st.warning("Select companies on Chart with Box Select or Lasso Select or Select from select box - to perform Analysis.")
         st.stop()
