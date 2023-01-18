@@ -386,21 +386,19 @@ if st.session_state["name_search"]== 'Sector & Industry':
                 st.session_state["name_selected_table"].append(i[coName])
     
     if "SInameDefault" not in st.session_state:
-        st.session_state["SInameDefault"] = [ ]
+        st.session_state["SInameDefault"] = []
 
     name_combo=st.session_state["name_selected_table"]+st.session_state["name_selected_chart"]
 
     if len(st.session_state["name_selected"]) == 0:
         st.session_state["SInameDefault"] = [*set(name_combo)]
        
-    else: 
-        st.session_state["name_selected"] += [*set(name_combo)]
-        st.session_state["SInameDefault"] = [*set(st.session_state["name_selected"])]
+    else:
+        st.session_state["SInameDefault"] = [*set(st.session_state["name_selected"]+name_combo)]
         
     def SINameSel ():   
         st.session_state["SInameDefault"] = st.session_state["nameSelSI"]            
-    
-
+   
     try:
         st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique(),default=st.session_state["SInameDefault"],key="nameSelSI",on_change=SINameSel)
     
