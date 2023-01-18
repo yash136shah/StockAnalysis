@@ -388,12 +388,9 @@ if st.session_state["name_search"]== 'Sector & Industry':
     
     def SINameSel ():   
         st.session_state["SInameDefault"] = st.session_state["nameSelSI"]
-        
-    st.session_state["SInameDefault"] = [*set(name_combo)]
-       
-   
+         
     try:
-        st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique(),default=st.session_state["SInameDefault"],key="nameSelSI",on_change=SINameSel)
+        st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique(),default=[*set(name_combo)],key="nameSelSI",on_change=SINameSel)
     
     except:
         st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique())
