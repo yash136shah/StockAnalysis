@@ -113,6 +113,10 @@ with col4:
     if st.button("Industry Overview"):
         switch_page("Industry-Analysis-2")
 
+if "name_selected" not in st.session_state:
+    st.session_state["name_selected"] = []
+    
+    
 with st.expander("Company Selected"):
     st.session_state["name_selected"] = st.multiselect("Companies Selected:",st.session_state["name_selected"],default=st.session_state["name_selected"],label_visibility="hidden")
 
@@ -130,8 +134,7 @@ if len(period_check)==0:
     st.warning("No Data Available for these Companies")
     st.stop()
 
-if "name_selected" not in st.session_state:
-    st.session_state["name_selected"] = []
+
 
 with tab1:
     # PEER STATS 
