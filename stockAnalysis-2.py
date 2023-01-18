@@ -456,6 +456,7 @@ elif st.session_state["name_search"]== "Peers":
                 
                 if sector_in not in sector_selected:
                         st.warning("Sector of the company selected must be present in the selection!")
+                        st.warning(f"Select {sector_in} in Sector to continue!")
                         st.stop()
         with col2:
            
@@ -467,6 +468,7 @@ elif st.session_state["name_search"]== "Peers":
 
                 if industry_in not in industry_selected:
                     st.warning("Industry of the company selected must be present in the selection!")
+                    st.warning(f"Select {industry_in} in Industry to continue!")
                     st.stop()
 
                       
