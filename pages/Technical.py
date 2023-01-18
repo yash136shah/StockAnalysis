@@ -51,6 +51,28 @@ OT = "Ratio"
 AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
 
 
+col1,col2 = st.columns([10,1,1,1])
+
+with col1:
+    st.header("TECHNICAL ANALYSIS")
+
+with col2:
+    homePage = st.button("Home")
+    
+    if homePage:
+        switch_page("stockAnalysis-2")
+        
+with col3:    
+    if st.button("Fundamental Analysis"):
+        switch_page("Fundamental")
+        
+with col4:
+    if st.button("Industry Overview"):
+        switch_page("Industry-Analysis-2")
+
+
+
+
 markets = ["USA","Canada","India"]
 
 
@@ -93,10 +115,9 @@ elif st.session_state["marketSelect"] == "Canada":
         multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
 
         #IS bifurcation IND and CAN
-    
-st.header("TECHNICAL ANALYSIS")
 
 
+        
 name_uni = dfC.sort_values(by=marketCap,ascending=False)[coName].dropna().unique()
 name_list = []
 for i in name_uni:
@@ -109,22 +130,6 @@ st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_li
 
 
 
-col1,col2 = st.columns([10,2])
-
-with col1:
-    st.header("TECHNICAL ANALYSIS")
-
-with col2:
-    homePage = st.button("Home")
-    
-    if homePage:
-        switch_page("stockAnalysis-2")
-    
-    if st.button("Fundamental Analysis"):
-        switch_page("Fundamental")
-    
-    if st.button("Industry Overview"):
-        switch_page("Industry-Analysis-2")
 
 
 # ENTER DATE
