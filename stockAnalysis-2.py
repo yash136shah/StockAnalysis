@@ -332,11 +332,9 @@ if st.session_state["name_search"]== 'Sector & Industry':
         with col4: 
             marker_color = st.selectbox("Marker Color",multidfCStr.columns,index=indusindex,key="markercolor")
 
-        if len(st.session_state["name_selected_table"])>0:
-            fig = px.scatter(isdfn[isdfn[coName].isin(st.session_state["name_selected_table"])],x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
-        else:
-            fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
-        
+  
+        fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
+
         col1,col2,col3,col4 = st.columns([1,1,4,4])
         x_min = isdfn[x_axis_met].min()
         x_max = isdfn[x_axis_met].max()
