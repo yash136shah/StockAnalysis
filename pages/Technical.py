@@ -132,31 +132,9 @@ def NameSel ():
     st.session_state["nameSelDefault"] = st.session_state["nameSeltech"]            
 
 
-
-if len(st.session_state["name_selected"]) == 0: 
-    csModeindex = 0
-
-else:
-    csModeindex = 1
-
-csMode = st.radio("Company Selection Mode:",["Select your own","Peer-Selection"],index=csModeindex,horizontal=True)
-
-if csMode == "Peer-Selection":
-    if len(st.session_state["name_selected"]) == 0:
-        switch_page("stockAnalysis-2")
-
-    else:
-        st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["nameSelDefault"],on_change=NameSel,key="nameSeltech")
-        if st.button("Change Peer Selection"):
-            switch_page("stockAnalysis-2")
-else:
-    st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list)
-
-
-    
-if len(st.session_state["name_selected"]) == 0:
-    st.warning("Select Companies to see Analysis!")
-    st.stop()
+st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["nameSelDefault"],on_change=NameSel,key="nameSeltech")
+if st.button("Change Peer Selection"):
+    switch_page("stockAnalysis-2")
 
 
 
