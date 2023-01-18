@@ -154,7 +154,7 @@ else:
 
 
     
-if len(st.session_state["name_selected_fundamental"]) == 0:
+if len(st.session_state["name_selected"]) == 0:
     st.warning("Select Companies to see Analysis!")
     st.stop()
 
