@@ -455,7 +455,7 @@ elif st.session_state["name_search"]== "Peers":
             try:
                 sector_selected = st.multiselect("Sector:",multidfC[sector].unique(),sector_in)
             except:
-                st.warning("Sector of the company selected must be present in the selection!)
+                st.warning("Sector of the company selected must be present in the selection!")
                 st.stop()
         with col2:
             try:
@@ -465,7 +465,7 @@ elif st.session_state["name_search"]== "Peers":
                 if sel_all:
                     industry_selected = inudstry_list
             except:
-                st.warning("Industry of the company selected must be present in the selection!)
+                st.warning("Industry of the company selected must be present in the selection!")
                 st.stop()
                       
                       
