@@ -452,22 +452,23 @@ elif st.session_state["name_search"]== "Peers":
         col1,col2,col3 = st.columns(3)
         
         with col1:
-            try:
                 sector_selected = st.multiselect("Sector:",multidfC[sector].unique(),sector_in)
-            except:
-                st.warning("Sector of the company selected must be present in the selection!")
-                st.stop()
+                
+                if sector_in not in sector_selected:
+                        st.warning("Sector of the company selected must be present in the selection!")
+                        st.stop()
         with col2:
-            try:
+           
                 inudstry_list = multidfC[multidfC[sector].isin(sector_selected)][industry].unique().tolist()
                 industry_selected = st.multiselect("Industry:",inudstry_list,industry_in)
                 sel_all = st.checkbox("Select All")
                 if sel_all:
                     industry_selected = inudstry_list
-            except:
-                st.warning("Industry of the company selected must be present in the selection!")
-                st.stop()
-                      
+
+                if industry_in not in industry_selected:
+                    st.warning("Industry of the company selected must be present in the selection!")
+                    st.stop()
+
                       
 
         if st.session_state["marketSelect"] == "USA":
