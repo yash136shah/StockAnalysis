@@ -34,7 +34,7 @@ BS = "BS"
 CF = "CF"
 OT = "Ratio"
 
-@st.experimental_memo(ttl=24*3000,max_entries=10)
+@st.experimental_memo
 def load_data_All():
     countries = ["CAN","IND"]
     infoType = ["CompanyInfo","AF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
