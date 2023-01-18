@@ -228,7 +228,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
             mscale_selected = st.select_slider('Market Cap Scale',
             options=['small','mid-small','mid-large', 'large', 'mega'],value="large")
 
-    @st.cache(suppress_st_warning=True)
+    #@st.cache(suppress_st_warning=True)
     def McapSlide():
         nmg = len(ism[(ism[marketCap] >= mega)])
         nl = len(ism[(ism[marketCap] >= large) & (ism[marketCap] <= mega)])
