@@ -124,13 +124,47 @@ for i in name_uni:
     name_list.append(i)
 
 if "name_selected" not in st.session_state:
-    st.session_state["name_selected"] = name_list[0]
-
-st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["name_selected"])
-
+    st.session_state["name_selected"] = []
+    st.session_state["nameSelDefault"] = name_list[0]
 
 
+def NameSel ():   
+    st.session_state["nameSelDefault"] = st.session_state["nameSeltech"]            
 
+
+
+if len(st.session_state["name_selected"]) == 0: 
+    csModeindex = 0
+
+else:
+    csModeindex = 1
+
+csMode = st.radio("Company Selection Mode:",["Select your own","Peer-Selection"],index=csModeindex,horizontal=True)
+stoggle(
+        "⚡",
+        """ To have more control on multiple company selection use Peer-selection!""",
+    )
+
+if csMode == "Peer-Selection":
+    if len(st.session_state["name_selected"]) == 0:
+        switch_page("stockAnalysis-2")
+
+    else:
+        st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["nameSelDefault"],key="nameSeltech")
+        if st.button("Change Peer Selection"):
+            switch_page("stockAnalysis-2")
+else:
+    st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list)
+
+
+    
+if len(st.session_state["name_selected_fundamental"]) == 0:
+    st.warning("Select Companies to see Analysis!")
+    st.stop()
+
+
+
+ 
 
 # ENTER DATE
 dtcol1,dtcol2 = st.columns(2)
