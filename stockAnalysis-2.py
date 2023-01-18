@@ -396,8 +396,8 @@ if st.session_state["name_search"]== 'Sector & Industry':
     if len(st.session_state["name_selected"]) == 0:
         st.session_state["SInameDefault"] = [*set(name_combo)]
        
-    else:
-        st.session_state["SInameDefault"] = [*set(st.session_state["name_selected"]+name_combo)]
+    #else:
+    #    st.session_state["SInameDefault"] = [*set(st.session_state["name_selected"]+name_combo)]
           
    
     try:
