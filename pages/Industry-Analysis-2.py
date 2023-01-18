@@ -168,8 +168,8 @@ with col3:
     for country in country_counts.index:
         country_list.append(country)
     if "countrySel" not in st.session_state:
-        st.session_state["countrySel"] = country_list[0]
-        st.session_state["countryDefault"] = st.session_state["countrySel"]
+        st.session_state["countrySel"] = []
+        st.session_state["countryDefault"] = country_list[0]
         st.session_state["countryBoxValue"] = False
 
     def CountrySel ():   
