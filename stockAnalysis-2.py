@@ -185,14 +185,13 @@ if st.session_state["name_search"]== 'Sector & Industry':
             country_list.append(country)
 
         if "countrySel" not in st.session_state:
-            st.session_state["countrySel"] = country_list[0]
-            st.session_state["countryDefault"] = st.session_state["countrySel"]
+            st.session_state["countrySel"] = []
+            st.session_state["countryDefault"] = country_list[0]
             st.session_state["countryBoxValue"] = False
 
         def CountrySel ():   
-            st.session_state["countryDefault"] = st.session_state["countrySelrad"]            
-        st.session_state["countrySel"] = country_list[0]
-        st.session_state["countryDefault"] = st.session_state["countrySel"]
+            st.session_state["countryDefault"] = st.session_state["countrySelrad"]
+
         st.session_state["countrySel"] = st.multiselect("Country:",options=country_list,default=st.session_state["countryDefault"],key="countrySelrad",on_change=CountrySel)
         
         def CountryAllSel():
