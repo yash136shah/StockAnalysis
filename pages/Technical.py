@@ -51,7 +51,7 @@ OT = "Ratio"
 AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
 
 
-col1,col2 = st.columns([10,1,1,1])
+col1,col2,col3,col4 = st.columns([10,1,1,1])
 
 with col1:
     st.header("TECHNICAL ANALYSIS")
