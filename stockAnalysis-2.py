@@ -226,7 +226,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
             mscale_selected = st.select_slider('Market Cap Scale',
             options=['small','mid-small','mid-large', 'large', 'mega'],value="large")
 
-    #@st.cache(suppress_st_warning=True)
+    
     def McapSlide():
         nmg = len(ism[(ism[marketCap] >= mega)])
         nl = len(ism[(ism[marketCap] >= large) & (ism[marketCap] <= mega)])
@@ -391,12 +391,8 @@ if st.session_state["name_search"]== 'Sector & Industry':
     def SINameSel ():   
         st.session_state["SInameDefault"] = st.session_state["nameSelSI"]
         
-    if len(st.session_state["name_selected"]) == 0:
-        st.session_state["SInameDefault"] = [*set(name_combo)]
+    st.session_state["SInameDefault"] = [*set(name_combo)]
        
-    #else:
-    #    st.session_state["SInameDefault"] = [*set(st.session_state["name_selected"]+name_combo)]
-          
    
     try:
         st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique(),default=st.session_state["SInameDefault"],key="nameSelSI",on_change=SINameSel)
