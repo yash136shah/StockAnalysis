@@ -146,7 +146,7 @@ if csMode == "Peer-Selection":
         switch_page("stockAnalysis-2")
 
     else:
-        st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["nameSelDefault"],key="nameSeltech")
+        st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["nameSelDefault"],on_change=NameSel,key="nameSeltech")
         if st.button("Change Peer Selection"):
             switch_page("stockAnalysis-2")
 else:
