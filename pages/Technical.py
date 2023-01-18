@@ -8,7 +8,7 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import plotly.express as px 
 from load_data_2 import load_data_All
-
+from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout="wide")
 
