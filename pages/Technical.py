@@ -78,7 +78,7 @@ markets = ["USA","Canada","India"]
 
 #MARKET SELECT 
 if "marketSelect" not in st.session_state:
-    st.session_state["marketSelect"] = markets[0]
+    st.session_state["marketSelect"] = markets[2]
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
 
 def MarketSelect ():
