@@ -390,7 +390,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
         
         try:
-            issi = multidfC[multidfC[coName].isin(name_selected)]
+            issi = multidfC[multidfC[coName].isin(st.session_state["name_selected_SI"])]
             xh = issi[x_axis_met].tolist()
             yh= issi[y_axis_met].tolist()
             fig.add_trace(go.Scatter(x=xh, y=yh, mode = 'markers',marker_symbol = 'star',marker_size = 60,opacity=0.5,fillcolor="orange",name="Selected Companies"))
@@ -464,15 +464,15 @@ if st.session_state["name_search"]== 'Sector & Industry':
     
     
     try:
-        name_selected=containerName.multiselect("Company Name Selected:",dfC[coName].unique(),default=st.session_state["SInameDefault"],key="nameSel",on_change=SINameSel)
+        st.session_state["name_selected_SI"]=containerName.multiselect("Company Name Selected:",dfC[coName].unique(),default=st.session_state["SInameDefault"],key="nameSel",on_change=SINameSel)
         
         
     except:
-        name_selected=containerName.multiselect("Company Name Selected:",dfC[coName].unique())
+        st.session_state["name_selected_SI"]=containerName.multiselect("Company Name Selected:",dfC[coName].unique())
 
 
     
-    if len(name_selected) == 0:
+    if len(st.session_state["name_selected_SI"]) == 0:
         st.warning("Select companies on Chart with Box Select or Lasso Select or Select from select box - to perform Analysis.")
         st.stop()
 
@@ -713,10 +713,10 @@ else:
 
 
 if st.button("Technical Analysis"):
-    st.session_state["name_selected"]=name_selected
+    st.session_state["name_selected"]=st.session_state["name_selected_SI"]
     switch_page("Technical")
 
 if st.button("Fundamental Analysis"):
-    st.session_state["name_selected"]=name_selected
+    st.session_state["name_selected"]=st.session_state["name_selected_SI"]
     switch_page("Fundamental")
 
