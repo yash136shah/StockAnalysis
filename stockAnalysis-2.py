@@ -188,7 +188,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
   
     with col2:
-        containterIndustry = st.container()
+        containerIndustry = st.container()
         industry_list = multidfC[multidfC[sector].isin(st.session_state["sectorSel"])][industry].unique().tolist()
         industryOptions = industry_list + ["All"]
         if "industrySel" not in st.session_state:
