@@ -146,7 +146,6 @@ with col1:
 
 
 if st.session_state["name_search"]== 'Sector & Industry':
-    sstype = st.sidebar.radio("Select Sector",("single","multi-select","all"),index=0,key="sector",horizontal=True)
 
     #ROW 1 of Selection
     col1,col2,col3 = st.columns(3)
