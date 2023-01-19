@@ -48,13 +48,12 @@ OT = "Ratio"
 
 
 
-
 markets = ["USA","Canada","India"]
 
 
 #MARKET SELECT 
 if "marketSelect" not in st.session_state:
-    st.session_state["marketSelect"] = markets[2]
+    st.session_state["marketSelect"] = markets[0]
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
 
 def MarketSelect ():
@@ -63,6 +62,42 @@ def MarketSelect ():
 st.session_state["marketSelect"] = st.sidebar.radio("Market:",markets,index=st.session_state["marketIndex"],key="marketSelrad",on_change=MarketSelect)
 
 
+if "name_selected" not in st.session_state:
+    st.session_state["name_selected"] = []
+
+if "name_selected_chart" not in st.session_state:
+    st.session_state["name_selected_chart"] = []
+    st.session_state["name_selected_table"] = []
+
+if "name_selected_SI" not in st.session_state:
+    st.session_state["name_selected_SI"] = []
+
+try: 
+    st.session_state["name_selected"] = st.session_state["nameSelFundamental"] 
+except:
+    pass
+
+try:
+    st.session_state["name_selected"] = st.session_state["nameSelTechnical"]
+except:
+    pass
+
+if len(st.session_state["name_selected"] )>0:
+    st.warning("You have some old selections!")
+    def ClearName():
+            st.session_state["name_selected"] = []
+            try:
+                st.session_state["nameSelFundamental"] =[]
+            
+            except:
+                pass
+            try:
+                st.session_state["nameSelTechnical"] =[]
+            
+            except:
+                pass
+
+    clearName = st.button("Clear old selection",on_click=ClearName)
 
 
 if st.session_state["marketSelect"] == "USA":
@@ -70,7 +105,7 @@ if st.session_state["marketSelect"] == "USA":
         descriptive_screener = ["EXCHANGE"]
         dfC = AdfC[AdfC["Market Code"]=="US"]
         dfF = AdfF[AdfF["Market Code"]=="US"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="US"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="US"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
 
 elif st.session_state["marketSelect"] == "India":
@@ -78,7 +113,7 @@ elif st.session_state["marketSelect"] == "India":
         descriptive_screener = []
         dfC = AdfC[AdfC["Market Code"]=="IND"]
         dfF = AdfF[AdfF["Market Code"]=="IND"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
 
 
@@ -87,7 +122,7 @@ elif st.session_state["marketSelect"] == "Canada":
         descriptive_screener=[]
         dfC = AdfC[AdfC["Market Code"]=="CAN"]
         dfF = AdfF[AdfF["Market Code"]=="CAN"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
 
         #IS bifurcation IND and CAN
@@ -102,8 +137,10 @@ if "name_search" not in st.session_state:
 def NameSearch():
     st.session_state["name_searchIndex"] = nameSearchoptions.index(st.session_state["nameSerrad"])
 
- 
-st.session_state["name_search"] = st.sidebar.radio('Search Company:',nameSearchoptions,index=st.session_state["name_searchIndex"],key="nameSerrad",on_change=NameSearch,horizontal=True)
+col1,blankCol = st.columns([5,10])
+
+with col1:
+    st.session_state["name_search"] = st.selectbox('Search Company by:',nameSearchoptions,index=st.session_state["name_searchIndex"],key="nameSerrad",on_change=NameSearch)
 
 
 
@@ -120,9 +157,9 @@ if st.session_state["name_search"]== 'Sector & Industry':
             st.session_state["sectorBoxValue"] = False
 
         def SectorSel ():   
-            st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]            
-        
-        st.session_state["sectorSel"] = st.multiselect("Sector:",multidfC[sector].unique(),default=st.session_state["sectorDefault"],key="sectorSelrad",on_change=SectorSel)
+            st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]
+
+        st.session_state["sectorSel"] = st.multiselect("Sector:",multidfC[sector].unique(),default=st.session_state["sectorDefault"] ,key="sectorSelrad",on_change=SectorSel)
         
         def SectorAllSel():
             if st.session_state["sectorBoxValue"] == True: 
@@ -135,7 +172,6 @@ if st.session_state["name_search"]== 'Sector & Industry':
              st.session_state["sectorSel"] = multidfC[sector].unique()
 
 
-
     if len(st.session_state["sectorSel"]) == 0:   # ERROR RAISED IF NO SECTOR
         st.error("Please Enter a Sector")
         st.stop()
@@ -144,13 +180,14 @@ if st.session_state["name_search"]== 'Sector & Industry':
     with col2:
         industry_list = multidfC[multidfC[sector].isin(st.session_state["sectorSel"])][industry].unique().tolist()
         if "industrySel" not in st.session_state:
-                st.session_state["industrySel"] = []
+                st.session_state["industrySel"] = [] 
                 st.session_state["industryDefault"] = industry_list[:2]
                 st.session_state["industryBoxValue"] = False
 
+
         def IndustrySel ():   
-            st.session_state["industryDefault"] = st.session_state["industrySelrad"]
-         
+            st.session_state["industryDefault"] = st.session_state["industrySelrad"]            
+        
         
         st.session_state["industrySel"] = st.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
         
@@ -164,7 +201,8 @@ if st.session_state["name_search"]== 'Sector & Industry':
         
         if all_ind:
             st.session_state["industrySel"]=industry_list
-            
+    
+
         if len(st.session_state["industrySel"]) == 0:        # ERROR RAISED IF NO INDUSTRY 
             st.error("Please Enter a Industry")
             st.stop()
@@ -185,13 +223,14 @@ if st.session_state["name_search"]== 'Sector & Industry':
             country_list.append(country)
 
         if "countrySel" not in st.session_state:
-            st.session_state["countrySel"] = []
-            st.session_state["countryDefault"] = country_list[0]
+            st.session_state["countrySel"] = country_list[0]
+            st.session_state["countryDefault"] = st.session_state["countrySel"]
             st.session_state["countryBoxValue"] = False
 
         def CountrySel ():   
-            st.session_state["countryDefault"] = st.session_state["countrySelrad"]
-
+            st.session_state["countryDefault"] = st.session_state["countrySelrad"]            
+        st.session_state["countrySel"] = country_list[0]
+        st.session_state["countryDefault"] = st.session_state["countrySel"]
         st.session_state["countrySel"] = st.multiselect("Country:",options=country_list,default=st.session_state["countryDefault"],key="countrySelrad",on_change=CountrySel)
         
         def CountryAllSel():
@@ -302,14 +341,6 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
 
     tab1,tab2 = st.tabs(["Peer Chart","Peer Table"])
-
-    if "name_selected" not in st.session_state:
-        st.session_state["name_selected"] = []
-    
-    if "name_selected_chart" not in st.session_state:
-        st.session_state["name_selected_chart"] = []
-        st.session_state["name_selected_table"] = []
-    
     
     with tab1:
         
@@ -332,9 +363,9 @@ if st.session_state["name_search"]== 'Sector & Industry':
         with col4: 
             marker_color = st.selectbox("Marker Color",multidfCStr.columns,index=indusindex,key="markercolor")
 
-  
+   
         fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
-
+    
         col1,col2,col3,col4 = st.columns([1,1,4,4])
         x_min = isdfn[x_axis_met].min()
         x_max = isdfn[x_axis_met].max()
@@ -351,7 +382,11 @@ if st.session_state["name_search"]== 'Sector & Industry':
         selection = plotly_events(fig,click_event=False,select_event=True)
         
         # CLICKABLE EVENTS GENERATED 
-        st.session_state["name_selected_chart"]= []
+        nameSelectMode = st.radio("Selection Mode:",("Continued","Refreshed"),index=1,horizontal=True)
+
+        if nameSelectMode == "Refreshed":
+            st.session_state["name_selected_chart"]= []
+        
         for el in selection:
             try:
                 x=el['x']      
@@ -363,9 +398,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
                     st.session_state["name_selected_chart"].append(name_sel)
             
             except:
-                pass
-        
-        
+                pass        
 
     with tab2:      
         return_mode_value = DataReturnMode.FILTERED_AND_SORTED
@@ -376,26 +409,36 @@ if st.session_state["name_search"]== 'Sector & Industry':
         grid_returnSI = AgGrid(isdfn,height=400,gridOptions=gridOptions,data_return_mode=return_mode_value,update_mode=update_mode,theme="streamlit",allow_unsafe_jscode=True)      
         screendfC = grid_returnSI['selected_rows']
 
+
         st.session_state["name_selected_table"]= []
         for i in screendfC:
             if i[coName] not in st.session_state["name_selected_table"]:
                 st.session_state["name_selected_table"].append(i[coName])
     
+    
+
     if "SInameDefault" not in st.session_state:
         st.session_state["SInameDefault"] = []
 
     name_combo=st.session_state["name_selected_table"]+st.session_state["name_selected_chart"]
+
+    st.session_state["SInameDefault"] = [*set(st.session_state["name_selected"]+name_combo)]
+    
     
     def SINameSel ():   
-        st.session_state["SInameDefault"] = st.session_state["nameSelSI"]
-         
-    try:
-        st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique(),default=[*set(name_combo)],key="nameSelSI",on_change=SINameSel)
+        st.session_state["SInameDefault"] = st.session_state["nameSel"]            
     
+    
+    try:
+        name_selected=st.multiselect("Company Name Selected:",dfC[coName].unique(),default=st.session_state["SInameDefault"],key="nameSel",on_change=SINameSel)
+        
+        
     except:
-        st.session_state["name_selected"]=st.multiselect("Company Name Selected:",isdfn[coName].unique())
+        name_selected=st.multiselect("Company Name Selected:",dfC[coName].unique())
 
-    if len(st.session_state["name_selected"]) == 0:
+
+    
+    if len(name_selected) == 0:
         st.warning("Select companies on Chart with Box Select or Lasso Select or Select from select box - to perform Analysis.")
         st.stop()
 
@@ -454,26 +497,15 @@ elif st.session_state["name_search"]== "Peers":
         col1,col2,col3 = st.columns(3)
         
         with col1:
-                sector_selected = st.multiselect("Sector:",multidfC[sector].unique(),sector_in)
-                
-                if sector_in not in sector_selected:
-                        st.warning("Sector of the company selected must be present in the selection!")
-                        st.warning(f"Select {sector_in} in Sector to continue!")
-                        st.stop()
+            sector_selected = st.multiselect("Sector:",multidfC[sector].unique(),sector_in)
+        
+        #ISSUE ************************************
         with col2:
-           
-                inudstry_list = multidfC[multidfC[sector].isin(sector_selected)][industry].unique().tolist()
-                industry_selected = st.multiselect("Industry:",inudstry_list,industry_in)
-                sel_all = st.checkbox("Select All")
-                if sel_all:
-                    industry_selected = inudstry_list
-
-                if industry_in not in industry_selected:
-                    st.warning("Industry of the company selected must be present in the selection!")
-                    st.warning(f"Select {industry_in} in Industry to continue!")
-                    st.stop()
-
-                      
+            inudstry_list = multidfC[multidfC[sector].isin(sector_selected)][industry].unique().tolist()
+            industry_selected = st.multiselect("Industry:",inudstry_list,industry_in)
+            sel_all = st.checkbox("Select All")
+            if sel_all:
+                industry_selected = inudstry_list
 
         if st.session_state["marketSelect"] == "USA":
             with col3:
@@ -531,7 +563,7 @@ elif st.session_state["name_search"]== "Peers":
     selection = plotly_events(fig,click_event=False,select_event=True)
 
         
-   
+   #ISSUE ************************************ Duplicate Names
     # CLICKABLE EVENTS GENERATED 
     st.session_state["name_selected"]=[]
     for el in selection:
@@ -556,15 +588,7 @@ elif st.session_state["name_search"]== "Screener":
     update_mode=GridUpdateMode.MANUAL
     
     col1,col2 = st.columns([12,2])
-    #with col2:
-    #    resetFilter = st.button("Reset Filters")
-     
 
-    #if resetFilter:
-        #grid_return = AgGrid(multidfC,height=400,gridOptions=gridOptions,update_mode=update_mode,data_return_mode=return_mode_value,theme="streamlit",allow_unsafe_jscode=True,key="resetAg")      
-        #screendfC = grid_return['data']
-    
-    #else:
     grid_return = AgGrid(multidfC,height=400,gridOptions=gridOptions,update_mode=update_mode,data_return_mode=return_mode_value,theme="streamlit",allow_unsafe_jscode=True,key="Aggrid")    
     screendfC = grid_return['data']
 
@@ -637,13 +661,12 @@ else:
     name_list = []
     for i in name_uni:
         name_list.append(i)
-    st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["name_selected"])
+    
+    st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=name_list[0])
 
 
 
-if len(st.session_state["name_selected"]) == 0 :
-    st.warning("No Companies Selected! Change above selections to continue!")
-    st.stop()
+
 
 #if len(st.session_state["name_selected"])>30:
 #    st.warning("Max 30 companies can be selected at a time!")
@@ -656,7 +679,10 @@ if len(st.session_state["name_selected"]) == 0 :
 
 
 if st.button("Technical Analysis"):
-            switch_page("Technical")
+    st.session_state["name_selected"]=name_selected
+    switch_page("Technical")
 
 if st.button("Fundamental Analysis"):
-     switch_page("Fundamental")
+    st.session_state["name_selected"]=name_selected
+    switch_page("Fundamental")
+
