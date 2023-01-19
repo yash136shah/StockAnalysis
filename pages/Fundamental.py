@@ -16,8 +16,12 @@ st.set_page_config(layout="wide")
 
 
 
+#SET PAGE CONFIG 
+st.set_page_config(layout="wide")
 
+#LOAD DATA 
 AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
+
 
 
 # VARIABLE INITIALIZED 
@@ -52,21 +56,18 @@ OT = "Ratio"
 
 
 
-
+#MARKET SELECT 
 markets = ["USA","Canada","India"]
 
-
-#MARKET SELECT 
 if "marketSelect" not in st.session_state:
     st.session_state["marketSelect"] = markets[2]
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
+    st.session_state["marketSelrad"]=[]
 
 def MarketSelect ():
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelrad"])
 
 st.session_state["marketSelect"] = st.sidebar.radio("Market:",markets,index=st.session_state["marketIndex"],key="marketSelrad",on_change=MarketSelect)
-
-
 
 
 if st.session_state["marketSelect"] == "USA":
@@ -94,7 +95,24 @@ elif st.session_state["marketSelect"] == "Canada":
         #dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
 
+
+
+#COMPANY NAME SELECTION 
+name_uni = dfC.sort_values(by=marketCap,ascending=False)[coName].dropna().unique()
+name_list = []
+for i in name_uni:
+    name_list.append(i)
+
+if "name_selected_fundamental" not in st.session_state:
+    st.session_state["name_selected_fundamental"] = dfC[coName].unique()[0]
+
+if "name_selected" not in st.session_state:
+    st.session_state["name_selected"] = []
         #IS bifurcation IND and CAN
+
+
+
+#HEADER COLUMNS 
 col1,col2,col3,col4 = st.columns([10,1,1,1])
 
 with col1:
@@ -103,47 +121,70 @@ with col1:
 with col2:
     homePage = st.button("Home")
     if homePage:
+        st.session_state["name_selected"]=st.session_state["name_selected_fundamental"] 
         switch_page("stockAnalysis-2")
 
 with col3:
     if st.button("Technical Analysis"):
+        st.session_state["name_selected"]=st.session_state["name_selected_fundamental"] 
         switch_page("Technical")
 
 with col4:
     if st.button("Industry Overview"):
+        st.session_state["name_selected"]=st.session_state["name_selected_fundamental"] 
         switch_page("Industry-Analysis-2")
 
-if "name_selected" not in st.session_state:
-    st.session_state["name_selected"] = []
+
+try:
+    if len(st.session_state["nameSel"])>0:
+        defaultName = st.session_state["nameSel"]
     
+    st.session_state["name_selected_fundamental"] = st.multiselect("Company Name:",name_list,key="nameSelFundamental",default=defaultName)
     
-with st.expander("Company Selected"):
-    st.session_state["name_selected"] = st.multiselect("Companies Selected:",st.session_state["name_selected"],default=st.session_state["name_selected"],label_visibility="hidden")
+
+except:
+    try:
+
+        if len(st.session_state["nameSelTechnical"])>0:
+            defaultName = st.session_state["nameSelTechnical"]
+        
+        st.session_state["name_selected_fundamental"] = st.multiselect("Company Name:",name_list,key="nameSelFundamental",default=defaultName)
+
+    except:  
+        st.session_state["name_selected_fundamental"] = st.multiselect("Company Name:",name_list,key="nameSelFundamental",default=st.session_state["name_selected"])
+
+
+if st.button("Change Peer Selection"):
+    switch_page("stockAnalysis-2")
+
+
+if len(st.session_state["name_selected_fundamental"]) == 0:
+    st.warning("Select Companies to see Analysis!")
+    st.stop()
+
 
 #TABS
-
-tab1, tab2, tab3 , tab4, tab5, tab6, tab7, tab8,tab9 = st.tabs(["Peer Stats","Radar","Peer Financial Analysis","Common FS","Financial Statements","Value","Business Description","Earnings Date","Links"])
+tab1, tab2, tab3 , tab4, tab5, tab6, tab7, tab8,tab9,tab10,tab11,tab12 = st.tabs(["Peer Stats","Radar","Peer Financial Analysis","Common FS","Financial Statements","Value","Business Description","Earnings Date","Links","ShareHolding","Extra Stats","Perform Valuation"])
 #color scale
 heatmap_colorscale_percent = [[0,"red"],[0.1,"yellow"],[0.3,"orange"],[0.7,"green"],[1,"blue"]]
 heatmap_colorscale_growth = [[0,"red"],[0.1,"yellow"],[0.3,"green"],[0.7,"blue"],[1,"purple"]]
 
 
-period_check = dfF[dfF[coName].isin(st.session_state["name_selected"])][year].unique()
+period_check = dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])][year].unique()
 
 if len(period_check)==0:
     st.warning("No Data Available for these Companies")
     st.stop()
 
 
-
 with tab1:
     # PEER STATS 
 
     #1 Market Cap,PE,PCF
-    isdfC = multidfC[multidfC[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
+    isdfC = multidfC[multidfC[coName].isin(st.session_state["name_selected_fundamental"])].sort_values(by=marketCap,ascending=False)
     mc_bar = isdfC[[coName,marketCap,pe,pcf]].sort_values(by=marketCap)
 
-    isdf = dfF[dfF[coName].isin(st.session_state["name_selected"])]
+    isdf = dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])]
     
         
     isrdf = isdf.pivot_table(index=coName,columns=year,values=rev_type)
@@ -215,7 +256,7 @@ with tab2:
     
     #period_selected=st.multiselect("Period:",options=dfF[year].unique(),default=dfF[year].unique()[:2])
     
-    isdf = dfF[dfF[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
+    isdf = dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])].sort_values(by=marketCap,ascending=False)
 
 
     col1,col2,col3 = st.columns(3)    
@@ -331,7 +372,7 @@ with tab2:
                 negative=list(spsdf[spsdf[0]>spsdf[0].quantile(q=0.25)].index)
                 worst=list(spsdf[spsdf[0]>spsdf[0].quantile(q=0.1)].index)
 
-                for n in st.session_state["name_selected"]:                               
+                for n in st.session_state["name_selected_fundamental"]:                               
                     if n in superb:
                         raddf.loc[metrics,n] = 3
                     elif n in great:
@@ -404,11 +445,11 @@ with tab3:
     reportPeriod = st.radio("Report Period:",("Annual","Quarter"),index=0,horizontal=True)
 
     if reportPeriod == "Annual":
-        isdf = dfF[dfF[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
+        isdf = dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])].sort_values(by=marketCap,ascending=False)
         periodType = year
 
     else:
-        isdf = dfQ[dfQ[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
+        isdf = dfQ[dfQ[coName].isin(st.session_state["name_selected_fundamental"])].sort_values(by=marketCap,ascending=False)
         periodType = Date
 
 
@@ -611,24 +652,24 @@ with tab3:
                     with col3:
                         st.subheader("Enter Comment")
 
-                    for i in range(len(st.session_state["name_selected"])):
+                    for i in range(len(st.session_state["name_selected_fundamental"])):
                         col1,col2,col3=st.columns(3)       
                         with col1:    
-                            st.session_state["name_selected"][i]
+                            st.session_state["name_selected_fundamental"][i]
 
 
                         with col2:
-                            if st.session_state["name_selected"][i] in superb:
+                            if st.session_state["name_selected_fundamental"][i] in superb:
                                 sl_value = "3-Superb"
-                            elif st.session_state["name_selected"][i] in great:
+                            elif st.session_state["name_selected_fundamental"][i] in great:
                                 sl_value = "2-Great"
-                            elif st.session_state["name_selected"][i] in average:
+                            elif st.session_state["name_selected_fundamental"][i] in average:
                                 sl_value = "1-Average"
-                            elif st.session_state["name_selected"][i] in negative:
+                            elif st.session_state["name_selected_fundamental"][i] in negative:
                                 sl_value = "-1-Negative"
-                            elif st.session_state["name_selected"][i] in worst:
+                            elif st.session_state["name_selected_fundamental"][i] in worst:
                                 sl_value = "-2-Worst"
-                            elif st.session_state["name_selected"][i] in neutral:
+                            elif st.session_state["name_selected_fundamental"][i] in neutral:
                                 sl_value = "0-Neutral"
                             else:
                                 sl_value = "0-Neutral"
@@ -702,8 +743,8 @@ with tab3:
 
 with tab4:
     
-    isdf = dfF[dfF[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
-    isdft = dfF[dfF[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False).transpose()
+    isdf = dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])].sort_values(by=marketCap,ascending=False)
+    isdft = dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])].sort_values(by=marketCap,ascending=False).transpose()
     
     col1,col2,col3 = st.columns(3)
 
@@ -821,7 +862,7 @@ with tab4:
         
 
 with tab5:
-    name_FS = st.selectbox("Enter Company Name:",st.session_state["name_selected"],index=0,key="Name_FS")
+    name_FS = st.selectbox("Enter Company Name:",st.session_state["name_selected_fundamental"],index=0,key="Name_FS")
     
 
     col1,col2 = st.columns(2)
@@ -831,7 +872,7 @@ with tab5:
 
             
     with col2:
-            report_period = st.radio("Report Period:",("Annual","Quarterly"),index=0,horizontal=True,key="FSrp")
+            report_period = st.radio("Report Period:",("Annual","Quarterly"),index=1,horizontal=True,key="FSrp")
             
 
     if statement_type == "Income Statement":
@@ -937,13 +978,13 @@ with tab6:
     # Get Historical Data from YahooFinance
     #@st.experimental_memo
     def ytickData():
-        ticker_selected=dfC[dfC[coName].isin(st.session_state["name_selected"])].loc[:,updatedTicker].to_list()
+        ticker_selected=dfC[dfC[coName].isin(st.session_state["name_selected_fundamental"])].loc[:,updatedTicker].to_list()
         ticker_data = yf.download(ticker_selected,start=sd,end=ed)
         colname = {}
         if len(ticker_selected) == 1:
             tickdata=ticker_data[closeType].to_frame()
             vol_data = ticker_data['Volume'].to_frame()
-            colname[ticker_selected[0]]= st.session_state["name_selected"][0]
+            colname[ticker_selected[0]]= st.session_state["name_selected_fundamental"][0]
 
         else:
             tickdata=ticker_data[closeType]
@@ -960,7 +1001,7 @@ with tab6:
 
 
     if len(ticker_selected) > 1:
-            visdf=dfF[dfF[coName].isin(st.session_state["name_selected"])&(dfF[year]==2021)].sort_values(by=marketCap,ascending=True).loc[:,[coName,updatedTicker,year,fcf,'Fair Value (30)', 'Fair Value (15)','Fair Value (45)']]
+            visdf=dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])&(dfF[year]==2021)].sort_values(by=marketCap,ascending=True).loc[:,[coName,updatedTicker,year,fcf,'Fair Value (30)', 'Fair Value (15)','Fair Value (45)']]
             
             close_last=ticker_data[closeType].iloc[-1].to_frame()
 
@@ -1000,7 +1041,7 @@ with tab6:
         price.set_index(['Date','Year'],inplace=True)
 
 
-        sel = dfF[dfF[coName].isin(st.session_state["name_selected"])]
+        sel = dfF[dfF[coName].isin(st.session_state["name_selected_fundamental"])]
 
         vvs = sel[[coName,updatedTicker,marketCap,year,'Fair Value (30)', 'Fair Value (15)','Fair Value (45)']].sort_values(by=marketCap,ascending=False)
         
@@ -1039,7 +1080,7 @@ with tab6:
 
 with tab7:
     try:
-        bizdes= st.selectbox("See Business Description for:",st.session_state["name_selected"],index=0)
+        bizdes= st.selectbox("See Business Description for:",st.session_state["name_selected_fundamental"],index=0)
         
         biz_descrip=dfC[dfC[coName]==(bizdes)].loc[:,"DESCRIPTION"].item()
 
@@ -1065,7 +1106,7 @@ with tab7:
 with tab8:
     # EARNINGS 
     st.subheader("Earning Dates")
-    sel = dfC[dfC[coName].isin(st.session_state["name_selected"])]
+    sel = dfC[dfC[coName].isin(st.session_state["name_selected_fundamental"])]
     earning_date = sel[[coName,'Upcoming Earnings Date','Recent Earnings Date']].set_index(coName)
     earning_date
 
@@ -1080,7 +1121,7 @@ with tab9:
             return f'<a target="_blank" href="{link}">{text}</a>'
 
     if st.session_state["marketSelect"] == "USA":
-        name_selected_link = st.selectbox("Select Name:",st.session_state["name_selected"],index=0,key="USLink")
+        name_selected_link = st.selectbox("Select Name:",st.session_state["name_selected_fundamental"],index=0,key="USLink")
         
         cik_ticker = dfC[dfC[coName]==(name_selected_link)]["CIK"].astype("int").item()
         tickerLink = dfC[dfC[coName]==(name_selected_link)]["TICKER"].item()
@@ -1113,7 +1154,7 @@ with tab9:
 
 
     else: 
-        name_selected_link = st.selectbox("Links:",st.session_state["name_selected"],index=0,key="OtherLink")
+        name_selected_link = st.selectbox("Links:",st.session_state["name_selected_fundamental"],index=0,key="OtherLink")
         name_selected_link
         tickerLink = dfC[dfC[coName]==(name_selected_link)]["TICKER"].item()
         webUrl = dfC[dfC[coName]==(name_selected_link)]["WEBURL"]
@@ -1137,4 +1178,174 @@ with tab9:
         
         st.write(isdf, unsafe_allow_html=True)
     
-  
+    
+with tab10: 
+    shareholdAnal = st.radio("See",("Individually","Peer Comparison"),index=0,horizontal=True)
+
+    if shareholdAnal == "Individually":
+        name_selected_sh = st.selectbox("Select Name:",st.session_state["name_selected_fundamental"],index=0,key="ShareHoldName")
+        
+        dfSO = dfC[dfC[coName]==name_selected_sh][[coName,"SHARES OUTSTANDING","SHARES FLOAT"]]
+        dfSO["SHARES % FLOAT"] = dfSO["SHARES FLOAT"]/dfSO["SHARES OUTSTANDING"]
+        dfSO["SHARES % INSIDER"] = 1 - dfSO["SHARES % FLOAT"]
+        dfSO.set_index(coName,inplace=True)
+        dfSO = dfSO[["SHARES % FLOAT","SHARES % INSIDER"]].transpose()
+        dfSO.index.name="Shares"
+        dfSO.reset_index(inplace=True)
+
+        figSO = px.pie(dfSO, values=name_selected_sh,names="Shares",title='%FLOAT vs %INSIDER')
+
+        
+        dfShp = dfC[dfC[coName]==name_selected_sh][[coName,"PERCENT INSTITUTIONS","PERCENT INSIDERS"]]
+        dfShp.set_index(coName,inplace=True)
+        dfShp = dfShp.transpose()
+        dfShp.index.name = "Holding Percent"
+        dfShp.reset_index(inplace=True)
+
+        figP = px.pie(dfShp, values=name_selected_sh,names="Holding Percent",title='%INSTITUTE vs %INSIDER')
+
+
+        col1,col2 = st.columns(2)
+
+        with col1:
+            st.plotly_chart(figSO)
+
+        with col2:
+            st.plotly_chart(figP)
+            
+
+        if st.session_state["marketSelect"] == "USA":
+            tickerSh = dfC[dfC[coName]==name_selected_sh]["TICKER"].item()
+            
+            holdingType = st.radio("Holder Type:",("Institutions","Funds","Both"),index=2,horizontal=True)
+            
+            dfSh.columns = dfSh.columns.str.rstrip()
+
+            
+            if holdingType == "Instituions":
+                dfSH = dfSh[(dfSh["TICKER"]==tickerSh)&(dfSh["HOLDER TYPE"]=="Institutions")]
+
+            elif holdingType == "Funds":
+                dfSH = dfSh[(dfSh["TICKER"]==tickerSh)&(dfSh["HOLDER TYPE"]=="Funds")]
+            
+            else:
+                dfSH = dfSh[dfSh["TICKER"]==tickerSh]
+                
+            fig = px.pie(dfSH, values='TOTAL SHARES', names='NAME', title='SHAREHOLDING%')
+            st.plotly_chart(fig)
+
+            
+            #figS = go.Figure()
+
+            #figS.add_trace(go.Sunburst(
+            #    labels=dfSh["NAME"],
+            #    parents=dfSh["HOLDER TYPE"],
+            #    values=dfSh['TOTAL SHARES'],
+            #    domain=dict(column=1),
+            #   maxdepth=2,
+            #    insidetextorientation='radial'
+            #))
+
+            #st.plotly_chart(figS)
+            with st.expander("See Table"):
+                dfSH
+
+
+    else:
+        
+        
+        dfSO = dfC[dfC[coName].isin(st.session_state["name_selected_fundamental"])][[coName,"SHARES OUTSTANDING","SHARES FLOAT"]]
+        dfSO["SHARES % FLOAT"] = dfSO["SHARES FLOAT"]/dfSO["SHARES OUTSTANDING"]
+        dfSO["SHARES % INSIDER"] = 1 - dfSO["SHARES % FLOAT"]
+        dfSO.set_index(coName,inplace=True)
+        
+        figSO = px.bar(dfSO, x=["SHARES % FLOAT","SHARES % INSIDER"],y=dfSO.index,title='%FLOAT vs %INSIDER',text_auto=".2%")
+
+        
+        dfShp = dfC[dfC[coName].isin(st.session_state["name_selected_fundamental"])][[coName,"PERCENT INSTITUTIONS","PERCENT INSIDERS"]]
+        dfShp["PERCENT INSTITUTIONS"] =dfShp["PERCENT INSTITUTIONS"]/100
+        dfShp["PERCENT INSIDERS"]=dfShp["PERCENT INSIDERS"]/100
+        dfShp["PERCENT OTHERS/PUBLIC"] = 1 - (dfShp["PERCENT INSTITUTIONS"] + dfShp["PERCENT INSIDERS"])
+        dfShp.set_index(coName,inplace=True)
+        
+        figP = px.bar(dfShp, x=["PERCENT INSTITUTIONS","PERCENT OTHERS/PUBLIC","PERCENT INSIDERS"],y=dfShp.index,title='%INSTITUTE vs %INSIDER',text_auto=".2%")
+
+
+        col1,col2 = st.columns(2)
+
+        with col1:
+            st.plotly_chart(figSO)
+
+        with col2:
+            st.plotly_chart(figP)
+            
+        
+        if st.session_state["marketSelect"] == "USA":
+            tickerSh = dfC[dfC[coName].isin(st.session_state["name_selected_fundamental"])]["TICKER"].to_list()
+        
+            dfSH = dfSh[dfSh["TICKER"].isin(tickerSh)]
+            
+
+            columnOrder = []
+            col3 = ["Company Name","TICKER","HOLDER TYPE"]
+            for cols in col3:
+                columnOrder.append(cols)
+
+            for cols in dfSH:
+                if cols not in columnOrder:
+                    columnOrder.append(cols)
+
+            colShAg = []
+            col_dict = {}
+            for col in columnOrder:
+                col_dict["field"]=col
+                colShAg.append(col_dict)
+                col_dict = {} 
+
+            gridOptions = {
+            "columnDefs": colShAg,
+                            
+            "defaultColDef": {
+                            "selection_mode":"multiple", 
+                            "use_checkbox":False, 
+                            "rowMultiSelectWithClick":True, 
+                            "suppressRowDeselection":True,
+                            "enableRowGroup": True,
+                            "filter":True, 
+                            "floatingFilter": True,
+                            "floatingFilterComponent":"x",
+                            "sortable":True,
+                            "resizable":True,
+                            "applyMiniFilterWhileTyping": True,
+                                },
+            "enableRangeSelection": True,
+            "enableCharts": True,
+            "enableChartToolPanelsButton": True,  
+            "sideBar": ['filters','columns'],
+                }
+            
+            return_mode_value = DataReturnMode.FILTERED_AND_SORTED
+            update_mode=GridUpdateMode.MANUAL
+            gSH = AgGrid(dfSH,height=300,gridOptions=gridOptions,data_return_mode=return_mode_value,update_mode=update_mode,theme="streamlit",allow_unsafe_jscode=True)
+
+            
+
+
+
+
+with tab11:
+    
+    st.dataframe(dfEH[dfEH["Company Name"].isin(st.session_state["name_selected_fundamental"])])
+    st.dataframe(dfEA[dfEA["Company Name"].isin(st.session_state["name_selected_fundamental"])])
+    st.dataframe(dfET[dfET["Company Name"].isin(st.session_state["name_selected_fundamental"])])
+        
+
+
+with tab12:
+        vNameSel = st.selectbox("Select Name:",st.session_state["name_selected_fundamental"])
+
+    
+        # WACC - Discount Rate 
+        # Growth Rate
+        # FCF 
+
