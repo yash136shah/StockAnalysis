@@ -159,7 +159,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         def SectorSel ():   
             st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]
             
-        sectorOptions=multidfC[sector].unique().to_list() + ["All"]
+        sectorOptions=multidfC[sector].unique().tolist() + ["All"]
         st.session_state["sectorSel"] = st.multiselect("Sector:",sectorOptions,default=st.session_state["sectorDefault"] ,key="sectorSelrad",on_change=SectorSel)
         
         def SectorAllSel():
