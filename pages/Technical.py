@@ -14,6 +14,11 @@ st.set_page_config(layout="wide")
 
 
 
+
+
+AdfC,AdfF,AmultidfC,AdfQ,dfM,dfT,dfSh,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
+
+
 # VARIABLE INITIALIZED 
 sector = 'SECTOR'
 industry = "INDUSTRY"
@@ -44,41 +49,12 @@ BS = "BS"
 CF = "CF"
 OT = "Ratio"
 
-
-
-
-
-AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
-
-
-col1,col2,col3,col4 = st.columns([10,1,1,1])
-
-with col1:
-    st.header("TECHNICAL ANALYSIS")
-
-with col2:
-    homePage = st.button("Home")
-    
-    if homePage:
-        switch_page("stockAnalysis-2")
-        
-with col3:    
-    if st.button("Fundamental Analysis"):
-        switch_page("Fundamental")
-        
-with col4:
-    if st.button("Industry Overview"):
-        switch_page("Industry-Analysis-2")
-
-
-
-
 markets = ["USA","Canada","India"]
 
 
 #MARKET SELECT 
 if "marketSelect" not in st.session_state:
-    st.session_state["marketSelect"] = markets[2]
+    st.session_state["marketSelect"] = markets[0]
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
 
 def MarketSelect ():
@@ -94,7 +70,7 @@ if st.session_state["marketSelect"] == "USA":
         descriptive_screener = ["EXCHANGE"]
         dfC = AdfC[AdfC["Market Code"]=="US"]
         dfF = AdfF[AdfF["Market Code"]=="US"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="US"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="US"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
 
 elif st.session_state["marketSelect"] == "India":
@@ -102,7 +78,7 @@ elif st.session_state["marketSelect"] == "India":
         descriptive_screener = []
         dfC = AdfC[AdfC["Market Code"]=="IND"]
         dfF = AdfF[AdfF["Market Code"]=="IND"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
 
 
@@ -111,36 +87,70 @@ elif st.session_state["marketSelect"] == "Canada":
         descriptive_screener=[]
         dfC = AdfC[AdfC["Market Code"]=="CAN"]
         dfF = AdfF[AdfF["Market Code"]=="CAN"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
 
         #IS bifurcation IND and CAN
 
 
-        
+
 name_uni = dfC.sort_values(by=marketCap,ascending=False)[coName].dropna().unique()
 name_list = []
 for i in name_uni:
     name_list.append(i)
 
 if "name_selected" not in st.session_state:
-    st.session_state["name_selected"] = []
+    st.session_state["name_selected"] = name_list[0]
 
-if "nameSelDefault" not in st.session_state:
-    st.session_state["nameSelDefault"] = name_list[0]
-
-
-def NameSel ():   
-    st.session_state["nameSelDefault"] = st.session_state["nameSeltech"]            
+if "name_selected_technical" not in st.session_state:
+    st.session_state["name_selected_techncial"] = dfC[coName].unique()[0]
 
 
-st.session_state["name_selected"] = st.multiselect("Enter Company Name:",name_list,default=st.session_state["nameSelDefault"],on_change=NameSel,key="nameSeltech")
+col1,col2 = st.columns([10,2])
+
+with col1:
+    st.header("TECHNICAL ANALYSIS")
+
+with col2:
+    homePage = st.button("Home")
+    
+    if homePage:
+        st.session_state["name_selected"]=st.session_state["name_selected_technical"] 
+        switch_page("stockAnalysis-2")
+    
+    if st.button("Fundamental Analysis"):
+        st.session_state["name_selected"]=st.session_state["name_selected_technical"] 
+        switch_page("Fundamental")
+    
+    if st.button("Industry Overview"):
+        st.session_state["name_selected"]=st.session_state["name_selected_technical"] 
+        switch_page("Industry-Analysis-2")
+
+
+
+try:
+
+    st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["nameSel"])
+    
+
+except:
+    try:
+        st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["nameSelTechnical"])
+
+    except:  
+        st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["name_selected"])
+        
+
+ 
 if st.button("Change Peer Selection"):
     switch_page("stockAnalysis-2")
 
 
+if len(st.session_state["name_selected_technical"]) == 0:
+    st.warning("Select Companies to see Analysis!")
+    st.stop()
 
- 
+
 
 # ENTER DATE
 dtcol1,dtcol2 = st.columns(2)
@@ -173,16 +183,15 @@ else:
 # Get Historical Data from YahooFinance
 
 
-
 @st.cache(allow_output_mutation=True)
-def ytickData():
-    ticker_selected=dfC[dfC[coName].isin(st.session_state["name_selected"])].loc[:,updatedTicker].to_list()
+def ytickData(nameSel):
+    ticker_selected=dfC[dfC[coName].isin(nameSel)].loc[:,updatedTicker].to_list()
     ticker_data = yf.download(ticker_selected,start=sd,end=ed)
     colname = {}
     if len(ticker_selected) == 1:
         tickdata=ticker_data[closeType].to_frame()
         vol_data = ticker_data['Volume'].to_frame()
-        colname[ticker_selected[0]]= st.session_state["name_selected"][0]
+        colname[ticker_selected[0]]= st.session_state["name_selected_technical"][0]
 
     else:
         tickdata=ticker_data[closeType]
@@ -195,7 +204,7 @@ def ytickData():
 
     return ticker_data,ticker_selected,tickdata,vol_data
 
-ticker_data,ticker_selected,tickdata,vol_data=ytickData()
+ticker_data,ticker_selected,tickdata,vol_data=ytickData(st.session_state["name_selected_technical"])
 
 
 
@@ -378,7 +387,7 @@ with tab4:
         RSI_current_levels()
 
         # RSI BACKTEST
-        rsi_name = st.selectbox("Select Company:",st.session_state["name_selected"],index=0)
+        rsi_name = st.selectbox("Select Company:",st.session_state["name_selected_technical"],index=0)
         ticker_selected_rsi=dfC[dfC[coName]==rsi_name].loc[:,updatedTicker].to_list()
         ticker_data_rsi = yf.download(ticker_selected_rsi,start=sd,end=ed)
         ticker_sel  = ticker_selected_rsi
@@ -687,7 +696,7 @@ with tab4:
     
 
 with tab5:
-    ema_name = st.selectbox("Select Company:",st.session_state["name_selected"],index=0,key="emas")
+    ema_name = st.selectbox("Select Company:",st.session_state["name_selected_technical"],index=0,key="emas")
     ticker_selected_ema=dfC[dfC[coName]==ema_name].loc[:,updatedTicker].to_list()
     ticker_data_ema = yf.download(ticker_selected_ema,start=sd,end=ed)
     ticker_sel  = ticker_selected_ema
@@ -933,7 +942,7 @@ with tab5:
 
 
 with tab6:
-    isdfC = dfC[dfC[coName].isin(st.session_state["name_selected"])].sort_values(by=marketCap,ascending=False)
+    isdfC = dfC[dfC[coName].isin(st.session_state["name_selected_technical"])].sort_values(by=marketCap,ascending=False)
     tr=isdfC[[coName,marketCap,'Technical Rating','Moving Averages Rating','Oscillators Rating']].set_index(coName)
     tr
 
@@ -962,10 +971,10 @@ with tab7:
             ptm = st.radio("Chart:",("Heatmap","Peer Comparison"),index=0,key="pm",horizontal=True)
 
             if ptm =="Heatmap":
-                per_name = st.selectbox("Select Company:",st.session_state["name_selected"],index=0,key="pname")
+                per_name = st.selectbox("Select Company:",st.session_state["name_selected_technical"],index=0,key="pname")
                 ticker_selected_perf=dfC[dfC[coName]==per_name].loc[:,updatedTicker].to_list()
 
-                if len(st.session_state["name_selected"]) == 1: 
+                if len(st.session_state["name_selected_technical"]) == 1: 
                     isdfOne=ticker_data[closeType].resample(freq).ffill().pct_change().reset_index()
                     isdf = isdfOne
 
@@ -1052,7 +1061,7 @@ with tab8:
 
 with tab9:
     try:
-        option_name= st.selectbox("See Options for:",st.session_state["name_selected"],index=0)
+        option_name= st.selectbox("See Options for:",st.session_state["name_selected_technical"],index=0)
         
         ticker=dfC[dfC[coName]==(option_name)].loc[:,updatedTicker].to_list()
 
@@ -1078,4 +1087,3 @@ with tab9:
 
     except:
         st.write("Select a different Company Name or reload page!")
-
