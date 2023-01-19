@@ -135,7 +135,7 @@ try:
 
 except:
     try:
-        st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["nameSelTechnical"])
+        st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["nameSelFundamental"])
 
     except:  
         st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["name_selected"])
