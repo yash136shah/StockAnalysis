@@ -866,7 +866,7 @@ with tab5:
 
             
     with col2:
-            report_period = st.radio("Report Period:",("Annual","Quarterly"),index=1,horizontal=True,key="FSrp")
+            report_period = st.radio("Report Period:",("Annual","Quarterly"),index=0,horizontal=True,key="FSrp")
             
 
     if statement_type == "Income Statement":
