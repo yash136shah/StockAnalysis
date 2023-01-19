@@ -389,7 +389,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
    
         fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
         
-        st.session_state["nameSel"]
+        st.session_state["SInameDefault"]
         try:
             issi = multidfC[multidfC[coName].isin(st.session_state["nameSel"])]
             xh = issi[x_axis_met].tolist()
