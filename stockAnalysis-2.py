@@ -173,7 +173,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
              st.session_state["sectorSel"] = "All"
              st.session_state["sectorDefault"] = "All"
         
-        if st.session_state["sectorSel"] = "All":
+        if st.session_state["sectorSel"] == "All":
             st.session_state["sectorSel"] = multidfC[sector].unique()
 
     if len(st.session_state["sectorSel"]) == 0:   # ERROR RAISED IF NO SECTOR
