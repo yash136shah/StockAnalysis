@@ -394,7 +394,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
             xh = issi[x_axis_met].tolist()
             yh= issi[y_axis_met].tolist()
             fig.add_trace(go.Scatter(x=xh, y=yh, mode = 'markers',marker_symbol = 'star',marker_size = 60,opacity=0.5,fillcolor="orange",name="Selected Companies"))
-        
+            st.write("working!")
         except:
             pass
         
@@ -415,7 +415,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         
                           
         # CLICKABLE EVENTS GENERATED 
-        nameSelectMode = containerSelMode.radio("Selection Mode:",("Continued","Refreshed"),index=1,horizontal=True,help="Continued Selection helps to keep selecting on changing parameters!")
+        nameSelectMode = containerSelMode.radio("Selection Mode:",("Continued","Refreshed"),index=1,horizontal=True,help="Continued Selection helps to maintain the selections on changing parameters/selection, whereas Refreshed Selection will change with changing parameters/selection!")
 
         if nameSelectMode == "Refreshed":
             st.session_state["name_selected_chart"]= []
