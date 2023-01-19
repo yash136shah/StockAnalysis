@@ -390,7 +390,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
         
         try:
-            issi = multidfC[multidfC[coName].isin(st.session_state["name_selected_SI"])]
+            issi = multidfC[multidfC[coName].isin(st.session_state["nameSel"])]
             xh = issi[x_axis_met].tolist()
             yh= issi[y_axis_met].tolist()
             fig.add_trace(go.Scatter(x=xh, y=yh, mode = 'markers',marker_symbol = 'star',marker_size = 60,opacity=0.5,fillcolor="orange",name="Selected Companies"))
@@ -468,7 +468,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         
         
     except:
-        st.session_state["name_selected_SI"]=containerName.multiselect("Company Name Selected:",dfC[coName].unique())
+        st.session_state["name_selected_SI"]=containerName.multiselect("Company Name Selected:",dfC[coName].unique(),key="nameSel")
 
 
     
