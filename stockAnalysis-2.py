@@ -153,6 +153,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
     with col1:
         if "sectorSel" not in st.session_state:
             st.session_state["sectorSel"] = []
+        if "sectorDefault" not in st.session_state:
             st.session_state["sectorDefault"] = multidfC[sector].unique()[0]
             st.session_state["sectorBoxValue"] = False
 
