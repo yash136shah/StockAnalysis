@@ -362,7 +362,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
     containerName = st.container()
     containerSelMode = st.container()
-    countainerNameChart = st.container()
+    containerNameChart = st.container()
     
     tab1,tab2 = st.tabs(["Peer Chart","Peer Table"])
     
