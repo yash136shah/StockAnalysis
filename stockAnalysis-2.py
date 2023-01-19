@@ -220,7 +220,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
              st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industryOptions,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
          
     
-        if st.session_state["industrySel"] == "All":
+        if "All" in st.session_state["industrySel"]:
             st.session_state["industrySel"] = industry_list
             
         if len(st.session_state["industrySel"]) == 0:        # ERROR RAISED IF NO INDUSTRY 
