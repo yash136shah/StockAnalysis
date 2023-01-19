@@ -181,11 +181,11 @@ if st.session_state["name_search"]== 'Sector & Industry':
         st.error("Please Enter a Sector")
         st.stop()
 
-    st.session_state["sectorSel"]
+  
     with col2:
         
         industry_list = multidfC[multidfC[sector].isin(st.session_state["sectorSel"])][industry].unique().tolist()
-        industry_list
+        
         if "industrySel" not in st.session_state:
                 st.session_state["industrySel"] = [] 
                 st.session_state["industryDefault"] = industry_list[:2]
@@ -195,7 +195,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         def IndustrySel ():   
             st.session_state["industryDefault"] = st.session_state["industrySelrad"]            
         
-        st.session_state["industryDefault"]
+        st.session_state["industryDefault"] = industry_list[:2]
         
         st.session_state["industrySel"] = st.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
         
