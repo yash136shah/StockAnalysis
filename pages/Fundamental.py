@@ -57,8 +57,7 @@ markets = ["USA","Canada","India"]
 if "marketSelect" not in st.session_state:
     st.session_state["marketSelect"] = markets[2]
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
-    st.session_state["marketSelrad"]=[]
-
+   
 def MarketSelect ():
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelrad"])
 
