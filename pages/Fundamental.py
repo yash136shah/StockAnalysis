@@ -14,11 +14,6 @@ st.set_page_config(layout="wide")
 
 
 
-
-
-#SET PAGE CONFIG 
-st.set_page_config(layout="wide")
-
 #LOAD DATA 
 AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
 
