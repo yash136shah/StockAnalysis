@@ -170,8 +170,11 @@ if st.session_state["name_search"]== 'Sector & Industry':
         
         all = st.checkbox("Select all",value=st.session_state["sectorBoxValue"],key="sectorAll",on_change=SectorAllSel)
         if all:
-             st.session_state["sectorSel"] = multidfC[sector].unique()
-
+             st.session_state["sectorSel"] = "All"
+             st.session_state["sectorDefault"] = "All"
+        
+        if st.session_state["sectorSel"] = "All":
+            st.session_state["sectorSel"] = multidfC[sector].unique()
 
     if len(st.session_state["sectorSel"]) == 0:   # ERROR RAISED IF NO SECTOR
         st.error("Please Enter a Sector")
