@@ -207,7 +207,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
             else:
                     st.session_state["industryBoxValue"] = True
 
-        st.session_state["industryDefault"] = industry_list[:2]
+        
         
 
         all_ind = st.checkbox("Select all",value=st.session_state["industryBoxValue"],key="industryAll",on_change=IndustryAllSel)
@@ -216,6 +216,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
             st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industry_list,default="All",key="industrySelrad",on_change=IndustrySel)
          
         else:
+             st.session_state["industryDefault"] = industry_list[:2]
              st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
          
     
