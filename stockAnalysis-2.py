@@ -183,6 +183,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
     st.session_state["sectorSel"]
     with col2:
+        industry_list
         industry_list = multidfC[multidfC[sector].isin(st.session_state["sectorSel"])][industry].unique().tolist()
         if "industrySel" not in st.session_state:
                 st.session_state["industrySel"] = [] 
