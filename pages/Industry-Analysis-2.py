@@ -140,9 +140,9 @@ with col1:
             st.session_state["sectorSel"] = multidfC[sector].unique()
     
     
-    if len(st.session_state["sectorSel"]) == 0:   # ERROR RAISED IF NO SECTOR
-        st.error("Please Enter a Sector")
-        st.stop()
+        if len(st.session_state["sectorSel"]) == 0:   # ERROR RAISED IF NO SECTOR
+            st.error("Please Enter a Sector")
+            st.stop()
 
   
     with col2:
