@@ -141,7 +141,7 @@ col1,blankCol = st.columns([5,10])
 
 with col1:
     st.session_state["name_search"] = st.selectbox('Search Company by:',nameSearchoptions,index=st.session_state["name_searchIndex"],key="nameSerrad",on_change=NameSearch,
-                                                  help="There are 3 ways to search companies:\n1) Sector&Industry-helps you screen down companies based on Sector,Industry,Country,Market Cap \n2) Screener - Multiple metrics to screen companies on! \n3)Peers - finding peers based on a Company Name \n*However,if you want to search companies individually or have personalized selection - just head straight to one of the analysis page!")
+                                                  help="There are 3 ways to search companies:\n1) Sector&Industry-helps you screen down companies based on Sector,Industry,Country,Market Cap \n2) Screener - Multiple metrics to screen companies on! \n3)Peers - finding peers based on a Company Name \nHowever,if you want to search companies individually or have personalized selection - just head straight to one of the analysis page!")
 
 
 
