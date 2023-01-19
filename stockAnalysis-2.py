@@ -213,11 +213,11 @@ if st.session_state["name_search"]== 'Sector & Industry':
         all_ind = st.checkbox("Select all",value=st.session_state["industryBoxValue"],key="industryAll",on_change=IndustryAllSel)
         
         if all_ind:
-            st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industry_list,default="All",key="industrySelrad",on_change=IndustrySel)
+            st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industryOptions,default="All",key="industrySelrad",on_change=IndustrySel)
          
         else:
              st.session_state["industryDefault"] = industry_list[:2]
-             st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
+             st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industryOptions,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
          
     
         if st.session_state["industrySel"] == "All":
