@@ -108,58 +108,83 @@ with col2:
 
 col1,col2,col3 = st.columns(3)
 with col1:
-    if "sectorSel" not in st.session_state:
-        st.session_state["sectorSel"] = []
-        st.session_state["sectorDefault"] = multidfC[sector].unique()[0]    
-        st.session_state["sectorBoxValue"] = True
+        if "sectorSel" not in st.session_state:
+            st.session_state["sectorSel"] = []
+        if "sectorDefault" not in st.session_state:
+            st.session_state["sectorDefault"] = multidfC[sector].unique()[0]
+            st.session_state["sectorBoxValue"] = False
 
-    def SectorSel ():   
-        st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]            
+        def SectorSel ():   
+            st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]
+            
+        sectorOptions=multidfC[sector].unique().tolist() + ["All"]
         
-    st.session_state["sectorSel"] = st.multiselect("Sector:",multidfC[sector].unique(),default=st.session_state["sectorDefault"] ,key="sectorSelrad",on_change=SectorSel)
-    
-    def SectorAllSel():
+        containerSector = st.container()
+        
+        
+        def SectorAllSel():
             if st.session_state["sectorBoxValue"] == True: 
                     st.session_state["sectorBoxValue"] = False
             else:
                     st.session_state["sectorBoxValue"] = True
-
-    all_sector = st.checkbox("Select all",value=st.session_state["sectorBoxValue"],key="sectorAll",on_change=SectorAllSel)
-    if all_sector:
+        
+        
+        all = st.checkbox("Select all",value=st.session_state["sectorBoxValue"],key="sectorAll",on_change=SectorAllSel)
+        if all:
+            st.session_state["sectorSel"] = containerSector.multiselect("Sector:",sectorOptions,default="All" ,key="sectorSelrad",on_change=SectorSel)
+        
+        else:
+            st.session_state["sectorSel"] = containerSector.multiselect("Sector:",sectorOptions,default=st.session_state["sectorDefault"],key="sectorSelrad",on_change=SectorSel)
+            
+        if "All" in st.session_state["sectorSel"]:
             st.session_state["sectorSel"] = multidfC[sector].unique()
-
-
+    
+    
     if len(st.session_state["sectorSel"]) == 0:   # ERROR RAISED IF NO SECTOR
         st.error("Please Enter a Sector")
         st.stop()
 
-    
-with col2:
-    industry_list = multidfC[multidfC[sector].isin(st.session_state["sectorSel"])][industry].unique().tolist()
-    if "industrySel" not in st.session_state:
-            st.session_state["industrySel"] = []
-            st.session_state["industryDefault"] = industry_list[:2]
-            st.session_state["industryBoxValue"] = False
-
-    def IndustrySel ():   
-        st.session_state["industryDefault"] = st.session_state["industrySelrad"]            
-    
-    #st.session_state["industryDefault"] = industry_list[:2]
-    st.session_state["industrySel"] = st.multiselect("Industry:",options=industry_list,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
-    
-    def IndustryAllSel():
-           if st.session_state["industryBoxValue"] == True: 
+  
+    with col2:
+        
+        industry_list = multidfC[multidfC[sector].isin(st.session_state["sectorSel"])][industry].unique().tolist()
+        industryOptions = industry_list + ["All"]
+        if "industrySel" not in st.session_state:
+                st.session_state["industrySel"] = [] 
+                st.session_state["industryDefault"] = industry_list[:2]
                 st.session_state["industryBoxValue"] = False
-           else:
-                st.session_state["industryBoxValue"] = True
+        
+        
 
-    all_ind = st.checkbox("Select all",value=st.session_state["industryBoxValue"],key="ind-industry",on_change=IndustryAllSel)
-    if all_ind:
-            st.session_state["industrySel"] = industry_list
+        def IndustrySel ():   
+            st.session_state["industryDefault"] = st.session_state["industrySelrad"]            
+ 
+        def IndustryAllSel():
+            if st.session_state["industryBoxValue"] == True: 
+                    st.session_state["industryBoxValue"] = False
+            else:
+                    st.session_state["industryBoxValue"] = True
+
+        
+        
+        containerIndustry = st.container()
+        all_ind = st.checkbox("Select all",value=st.session_state["industryBoxValue"],key="industryAll",on_change=IndustryAllSel)
+        
+        if all_ind:
+            st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industryOptions,default="All",key="industrySelrad",on_change=IndustrySel)
+         
+        else:
+             st.session_state["industryDefault"] = industry_list[:2]
+             st.session_state["industrySel"] = containerIndustry.multiselect("Industry:",options=industryOptions,default=st.session_state["industryDefault"],key="industrySelrad",on_change=IndustrySel)
+         
     
-    if len(st.session_state["industrySel"]) == 0:        # ERROR RAISED IF NO INDUSTRY 
-        st.error("Please Enter a Industry")
-        st.stop()
+        if "All" in st.session_state["industrySel"]:
+            st.session_state["industrySel"] = industry_list
+            
+        if len(st.session_state["industrySel"]) == 0:        # ERROR RAISED IF NO INDUSTRY 
+            st.error("Please Enter a Industry")
+            st.stop()
+
 
 with col3:
     #country_list= multidfC[(multidfC[sector].isin(st.session_state["sectorSel"])) & (multidfC[industry].isin(st.session_state["industrySel"]))]["COUNTRY"].unique().tolist()
