@@ -362,6 +362,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
     containerName = st.container()
     containerSelMode = st.container()
+    countainerNameChart = st.container()
     
     tab1,tab2 = st.tabs(["Peer Chart","Peer Table"])
     
@@ -389,7 +390,16 @@ if st.session_state["name_search"]== 'Sector & Industry':
    
         fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
         
-        st.session_state["nameSel"]
+        containerNameChart.write(st.session_state["nameSel"])
+        
+        try:
+            issi = multidfC[multidfC[coName].isin(st.session_state["nameSel"])]
+            xh = issi[x_axis_met].tolist()
+            yh= issi[y_axis_met].tolist()
+            fig.add_trace(go.Scatter(x=xh, y=yh, mode = 'markers',marker_symbol = 'star',marker_size = 60,opacity=0.5,fillcolor="orange",name="Selected Companies"))
+            st.write("working!")
+        except:
+            pass
         
         col1,col2,col3,col4 = st.columns([1,1,4,4])
         x_min = isdfn[x_axis_met].min()
@@ -464,14 +474,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         st.session_state["name_selected_SI"]=containerName.multiselect("Company Name Selected:",dfC[coName].unique(),key="nameSel")
 
     
-    try:
-        issi = multidfC[multidfC[coName].isin(st.session_state["nameSel"])]
-        xh = issi[x_axis_met].tolist()
-        yh= issi[y_axis_met].tolist()
-        fig.add_trace(go.Scatter(x=xh, y=yh, mode = 'markers',marker_symbol = 'star',marker_size = 60,opacity=0.5,fillcolor="orange",name="Selected Companies"))
-        st.write("working!")
-    except:
-        pass
+
     
     if len(st.session_state["name_selected_SI"]) == 0:
         st.warning("Select companies on Chart with Box Select or Lasso Select or Select from select box - to perform Analysis.")
