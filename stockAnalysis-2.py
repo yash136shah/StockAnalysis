@@ -158,15 +158,16 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
         def SectorSel ():   
             st.session_state["sectorDefault"] = st.session_state["sectorSelrad"]
-
-        st.session_state["sectorSel"] = st.multiselect("Sector:",multidfC[sector].unique(),default=st.session_state["sectorDefault"] ,key="sectorSelrad",on_change=SectorSel)
+            
+        sectorOptions=multidfC[sector].unique().to_list() + ["All"]
+        st.session_state["sectorSel"] = st.multiselect("Sector:",sectorOptions,default=st.session_state["sectorDefault"] ,key="sectorSelrad",on_change=SectorSel)
         
         def SectorAllSel():
             if st.session_state["sectorBoxValue"] == True: 
                     st.session_state["sectorBoxValue"] = False
             else:
                     st.session_state["sectorBoxValue"] = True
-
+        
         all = st.checkbox("Select all",value=st.session_state["sectorBoxValue"],key="sectorAll",on_change=SectorAllSel)
         if all:
              st.session_state["sectorSel"] = multidfC[sector].unique()
