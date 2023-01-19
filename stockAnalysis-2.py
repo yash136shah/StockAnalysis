@@ -359,7 +359,8 @@ if st.session_state["name_search"]== 'Sector & Industry':
     #NAME SECTION 
     isdfn= ism[(ism[marketCap]>=mcs) & (ism[marketCap]<=mce)].sort_values(by=marketCap,ascending=False)
 
-
+    containerName = st.container()
+    
     tab1,tab2 = st.tabs(["Peer Chart","Peer Table"])
     
     with tab1:
@@ -385,19 +386,25 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
    
         fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
-    
+        try:
+            issi = multidfC[multidfC[coName].isin(name_selected)]
+            xh = issi[x_axis_met].tolist()
+            yh= issi[y_axis_met].tolist()
+            fig.add_trace(go.Scatter(x=xh, y=yh, mode = 'markers',marker_symbol = 'star',marker_size = 60,opacity=0.5,fillcolor="orange",name="Selected Companies")
+        except:
+            pass
         col1,col2,col3,col4 = st.columns([1,1,4,4])
         x_min = isdfn[x_axis_met].min()
         x_max = isdfn[x_axis_met].max()
         mcapList = isdfn[x_axis_met].to_list()
         mcapList.sort()
 
-        #with col1:
-        #    xValMin=st.number_input("Min X-axis value",min_value=x_min,max_value=x_max,value=x_min)
-        #with col2:
-        #    xValMax=st.number_input("Max X-axis value",min_value=x_min,max_value=x_max,value=x_max)
+        with col1:
+            xValMin=st.number_input("Min X-axis value",min_value=x_min,max_value=x_max,value=x_min)
+        with col2:
+            xValMax=st.number_input("Max X-axis value",min_value=x_min,max_value=x_max,value=x_max)
         
-        #fig.update_layout(xaxis_range=[xValMin,xValMax])
+        fig.update_layout(xaxis_range=[xValMin,xValMax])
 
         selection = plotly_events(fig,click_event=False,select_event=True)
         
@@ -450,11 +457,11 @@ if st.session_state["name_search"]== 'Sector & Industry':
     
     
     try:
-        name_selected=st.multiselect("Company Name Selected:",dfC[coName].unique(),default=st.session_state["SInameDefault"],key="nameSel",on_change=SINameSel)
+        name_selected=containerName.multiselect("Company Name Selected:",dfC[coName].unique(),default=st.session_state["SInameDefault"],key="nameSel",on_change=SINameSel)
         
         
     except:
-        name_selected=st.multiselect("Company Name Selected:",dfC[coName].unique())
+        name_selected=containerName.multiselect("Company Name Selected:",dfC[coName].unique())
 
 
     
