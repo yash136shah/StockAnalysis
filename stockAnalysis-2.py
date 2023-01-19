@@ -362,7 +362,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
 
     containerName = st.container()
     containerSelMode = st.container()
-    containerNameChart = st.container()
+    
     
     tab1,tab2 = st.tabs(["Peer Chart","Peer Table"])
     
@@ -390,10 +390,9 @@ if st.session_state["name_search"]== 'Sector & Industry':
    
         fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
         
-        containerNameChart.write(st.session_state["name_selected_SI"])
         
         try:
-            issi = multidfC[multidfC[coName].isin(st.session_state["nameSel"])]
+            issi = multidfC[multidfC[coName].isin(st.session_state["name_selected_SI"])]
             xh = issi[x_axis_met].tolist()
             yh= issi[y_axis_met].tolist()
             fig.add_trace(go.Scatter(x=xh, y=yh, mode = 'markers',marker_symbol = 'star',marker_size = 60,opacity=0.5,fillcolor="orange",name="Selected Companies"))
