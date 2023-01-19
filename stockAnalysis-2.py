@@ -140,7 +140,8 @@ def NameSearch():
 col1,blankCol = st.columns([5,10])
 
 with col1:
-    st.session_state["name_search"] = st.selectbox('Search Company by:',nameSearchoptions,index=st.session_state["name_searchIndex"],key="nameSerrad",on_change=NameSearch)
+    st.session_state["name_search"] = st.selectbox('Search Company by:',nameSearchoptions,index=st.session_state["name_searchIndex"],key="nameSerrad",on_change=NameSearch,
+                                                  help="There are 3 ways to search companies:<br>1)Sector&Industry:helps you screen down companies based on Sector & Industry")
 
 
 
