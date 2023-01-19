@@ -360,6 +360,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
     isdfn= ism[(ism[marketCap]>=mcs) & (ism[marketCap]<=mce)].sort_values(by=marketCap,ascending=False)
 
     containerName = st.container()
+    containerSelMode = st.container()
     
     tab1,tab2 = st.tabs(["Peer Chart","Peer Table"])
     
@@ -413,7 +414,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         
                           
         # CLICKABLE EVENTS GENERATED 
-        nameSelectMode = st.radio("Selection Mode:",("Continued","Refreshed"),index=1,horizontal=True)
+        nameSelectMode = containerSelMode.radio("Selection Mode:",("Continued","Refreshed"),index=1,horizontal=True,help="Continued Selection helps to keep selecting on changing parameters!")
 
         if nameSelectMode == "Refreshed":
             st.session_state["name_selected_chart"]= []
@@ -440,8 +441,9 @@ if st.session_state["name_search"]== 'Sector & Industry':
         grid_returnSI = AgGrid(isdfn,height=400,gridOptions=gridOptions,data_return_mode=return_mode_value,update_mode=update_mode,theme="streamlit",allow_unsafe_jscode=True)      
         screendfC = grid_returnSI['selected_rows']
 
-
-        st.session_state["name_selected_table"]= []
+        if nameSelectMode == "Refreshed":
+            st.session_state["name_selected_table"]= []
+        
         for i in screendfC:
             if i[coName] not in st.session_state["name_selected_table"]:
                 st.session_state["name_selected_table"].append(i[coName])
