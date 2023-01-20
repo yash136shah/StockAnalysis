@@ -16,7 +16,6 @@ st.set_page_config(layout="wide")
 
 
 
-dfC,dfF,multidfC,dfQ,dfM,dfT,dfSH,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
 
 
 # VARIABLE INITIALIZED 
@@ -68,29 +67,20 @@ st.session_state["marketSelect"] = st.sidebar.radio("Market:",markets,index=st.s
 if st.session_state["marketSelect"] == "USA":
         benchmark = "SPY"
         descriptive_screener = ["EXCHANGE"]
-        dfC = AdfC[AdfC["Market Code"]=="US"]
-        dfF = AdfF[AdfF["Market Code"]=="US"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="US"]
-        multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
+        dfC,dfF,multidfC,dfQ,dfM,dfT,dfSH,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All(country="US")
+ 
 
 elif st.session_state["marketSelect"] == "India":
         benchmark = '^NSEI'
         descriptive_screener = []
-        dfC = AdfC[AdfC["Market Code"]=="IND"]
-        dfF = AdfF[AdfF["Market Code"]=="IND"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
-        multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
+        dfC,dfF,multidfC,dfQ,dfM,dfT,dfSH,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All(country="IND")
 
 
 elif st.session_state["marketSelect"] == "Canada":
         benchmark = '^GSPTSE'
         descriptive_screener=[]
-        dfC = AdfC[AdfC["Market Code"]=="CAN"]
-        dfF = AdfF[AdfF["Market Code"]=="CAN"]
-        dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
-        multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
-
-        #IS bifurcation IND and CAN
+        dfC,dfF,multidfC,dfQ,dfM,dfT,dfSH,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All(country="CAN")
+        
 
 
 
