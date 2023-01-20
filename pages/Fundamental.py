@@ -114,7 +114,7 @@ with col3:
 with col4:
     if st.button("Industry Overview"):
         st.session_state["name_selected"]=st.session_state["name_selected_fundamental"] 
-        switch_page("2_Industry_Overview")
+        switch_page("Industry Overview")
 
 
 try:
