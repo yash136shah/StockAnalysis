@@ -16,7 +16,7 @@ st.set_page_config(layout="wide")
 
 
 
-AdfC,AdfF,AmultidfC,dfM,dfT,dfOff,gridOptions = load_data_All()
+dfC,dfF,multidfC,dfQ,dfM,dfT,dfSH,dfOff,dfEA,dfEH,dfET,gridOptions = load_data_All()
 
 
 # VARIABLE INITIALIZED 
@@ -70,7 +70,7 @@ if st.session_state["marketSelect"] == "USA":
         descriptive_screener = ["EXCHANGE"]
         dfC = AdfC[AdfC["Market Code"]=="US"]
         dfF = AdfF[AdfF["Market Code"]=="US"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="US"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="US"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="US"]
 
 elif st.session_state["marketSelect"] == "India":
@@ -78,7 +78,7 @@ elif st.session_state["marketSelect"] == "India":
         descriptive_screener = []
         dfC = AdfC[AdfC["Market Code"]=="IND"]
         dfF = AdfF[AdfF["Market Code"]=="IND"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="IND"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="IND"]
 
 
@@ -87,7 +87,7 @@ elif st.session_state["marketSelect"] == "Canada":
         descriptive_screener=[]
         dfC = AdfC[AdfC["Market Code"]=="CAN"]
         dfF = AdfF[AdfF["Market Code"]=="CAN"]
-        #dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
+        dfQ = AdfQ[AdfQ["Market Code"]=="CAN"]
         multidfC = AmultidfC[AmultidfC["Market Code"]=="CAN"]
 
         #IS bifurcation IND and CAN
