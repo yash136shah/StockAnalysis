@@ -45,7 +45,11 @@ OT = "Ratio"
 
 @st.experimental_memo
 def load_data_All(country="IND"):
-    infoType = ["CompanyInfo","AF","QF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
+    if country == "US":
+        infoType = ["CompanyInfo","AF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
+    
+    else:
+        infoType = ["CompanyInfo","AF","QF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
 
     dictDf = {} 
     listDf = []
