@@ -117,24 +117,22 @@ with col4:
         switch_page("Industry Overview")
 
 
+defaultName = []
 try:
     if len(st.session_state["nameSel"])>0:
         defaultName = st.session_state["nameSel"]
-    
-    st.session_state["name_selected_fundamental"] = st.multiselect("Company Name:",name_list,key="nameSelFundamental",default=defaultName)
-    
-
+        
 except:
     try:
-
         if len(st.session_state["nameSelTechnical"])>0:
             defaultName = st.session_state["nameSelTechnical"]
         
-        st.session_state["name_selected_fundamental"] = st.multiselect("Company Name:",name_list,key="nameSelFundamental",default=defaultName)
-
     except:  
-        st.session_state["name_selected_fundamental"] = st.multiselect("Company Name:",name_list,key="nameSelFundamental",default=st.session_state["name_selected"])
+        defaultName=st.session_state["name_selected"]
+        
 
+
+st.session_state["name_selected_fundamental"] = st.multiselect("Company Name:",name_list,key="nameSelFundamental",default=defaultName)
 
 if st.button("Change Peer Selection"):
     switch_page("stockAnalysis-2")
