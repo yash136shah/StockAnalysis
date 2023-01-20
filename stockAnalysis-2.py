@@ -380,7 +380,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
             marker_color = st.selectbox("Marker Color",multidfCStr.columns,index=indusindex,key="markercolor")
 
    
-        fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName,width=1800)
+        fig = px.scatter(isdfn,x=x_axis_met,y=y_axis_met,color=marker_color,size=marker_size,size_max=40,text=coName)
         
         
         #try:
