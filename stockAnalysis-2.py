@@ -714,7 +714,7 @@ with col1:
         switch_page("Technical Analysis")
 
 with col2:
-    if st.button("Fundamental Analysis"):
+    if st.button("📊Fundamental Analysis"):
         st.session_state["name_selected"]=st.session_state["name_selected_SI"]
-        switch_page("📊Fundamental Analysis")
+        switch_page("Fundamental Analysis")
 
