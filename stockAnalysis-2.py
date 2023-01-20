@@ -704,11 +704,9 @@ else:
 
 
 
-
+st.header("⚔ Perform Analysis")
 
 col1,col2 = st.columns(2)
-
-st.header("⚔ Perform Analysis")
 
 with col1:
     if st.button("📈Technical Analysis"):
