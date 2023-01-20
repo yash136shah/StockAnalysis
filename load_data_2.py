@@ -63,7 +63,7 @@ def load_data_All():
         for info in infoType:
             for country in countries:
                     url = read_file(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.csv")
-                    df = pd.read_csv(StringIO(url),sep=",",header=0)
+                    df = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
                     df["Market Code"] = country
                     listDf.append(df)
                     
@@ -79,14 +79,14 @@ def load_data_All():
     
     #only US
     shareHolders = read_file("streamlitstockanalysis/US-EOD/US_Shareholders.csv")
-    dfSh = pd.read_csv(StringIO(shareHolders),sep=",",header=0)
+    dfSh = pd.read_csv(StringIO(shareHolders),sep=",",header=0,low_memory=False)
     
     #other File info 
     tview = read_file("streamlitstockanalysis/india_america_canada_2023-01-04.csv")
     metRef = read_file("streamlitstockanalysis/MetricRef.csv")
 
-    dfT = pd.read_csv(StringIO(tview),sep=",",header=0)
-    dfM = pd.read_csv(StringIO(metRef),sep=",",header=0)
+    dfT = pd.read_csv(StringIO(tview),sep=",",header=0,low_memory=False)
+    dfM = pd.read_csv(StringIO(metRef),sep=",",header=0,low_memory=False)
 
     dfOff = dictDf["Officers"]
     dfEH = dictDf["EarningHistorical"]
