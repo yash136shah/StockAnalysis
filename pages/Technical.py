@@ -526,7 +526,7 @@ with tab4:
                 st.write("Number of Trades:",len(rsi_signal))
 
 
-            @st.experimental_memo
+            
             def chart():
                 global rsi_signal
                 
@@ -561,7 +561,7 @@ with tab4:
                 fig.update_yaxes(showspikes=True, spikesnap="cursor",spikecolor="black", spikemode="across",spikethickness=1,title="RSI",row=2)
                 fig.update_layout(spikedistance=1000, hoverdistance=10,title="RSI-CHART",height=600)
                 fig.update_traces(xaxis="x2")
-                return fig
+                st.plotly_chart(fig,use_container_width=True)
             
             @st.experimental_memo
             def optimum ():
@@ -659,7 +659,7 @@ with tab4:
                 optimum_rsi.set_index("Range",inplace=True)
                 fig=px.bar(optimum_rsi,x=optimum_rsi.index,y=optimum_rsi.columns)
                 #[optimum_rsi['Profit']>optimum_rsi['Profit'].mean()]
-                fig
+                st.plotly_chart(fig,use_container_width=True)
 
 
                                 
@@ -669,8 +669,8 @@ with tab4:
 
         
         RSI.signal()
-        fig = RSI.chart()
-        st.plotly_chart(fig,use_container_width=True)
+        RSI.chart()
+        
         
         with st.expander("See Table:"):
             rsi_signal
@@ -679,8 +679,8 @@ with tab4:
         get_optimum = st.button("Get Optimum")
 
         if get_optimum:
-            fig=RSI.optimum()
-            st.plotly_chart(fig,use_container_width=True)
+            RSI.optimum()
+            
             
 
     
