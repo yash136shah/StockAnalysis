@@ -45,11 +45,8 @@ OT = "Ratio"
 
 @st.experimental_memo
 def load_data_All(country="IND"):
-    if country == "US":
-        infoType = ["CompanyInfo","AF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
-    
-    else:
-        infoType = ["CompanyInfo","AF","QF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
+
+    infoType = ["CompanyInfo","AF","QF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
 
     dictDf = {} 
     listDf = []
@@ -139,26 +136,23 @@ def load_data_All(country="IND"):
 
 
     #QUARTERLY FS     
-    if country != "US":
-        dfQI = dictDf["QF"]  
+    dfQI = dictDf["QF"]  
 
-        dfQI.columns = dfQI.columns.str.lstrip()
+    dfQI.columns = dfQI.columns.str.lstrip()
 
-        dfQ = dfQI.merge(selected_info,left_on="TICKER",right_on='TICKER',how="left")
+    dfQ = dfQI.merge(selected_info,left_on="TICKER",right_on='TICKER',how="left")
 
-        dfQ['Value 2'] = dfQ['CASH'] + dfQ['CASH AND EQUIVALENTS'] + dfQ['SHORT TERM INVESTMENTS'] + dfQ['LONG TERM INVESTMENTS'].fillna(0) - dfQ['MINORITY INTEREST'].fillna(0) - dfQ['TOTAL LIAB'].fillna(0)
+    dfQ['Value 2'] = dfQ['CASH'] + dfQ['CASH AND EQUIVALENTS'] + dfQ['SHORT TERM INVESTMENTS'] + dfQ['LONG TERM INVESTMENTS'].fillna(0) - dfQ['MINORITY INTEREST'].fillna(0) - dfQ['TOTAL LIAB'].fillna(0)
 
-        dfQ['Net Profit Margin'] = dfQ['NET INCOME']/dfQ['TOTAL REVENUE']                     
-        dfQ['Operating Profit Margin'] = dfQ['EBIT']/dfQ['TOTAL REVENUE']
-        dfQ['EBITDA Margin'] = dfQ['EBITDA']/dfQ['TOTAL REVENUE']
-        dfQ['Gross Profit Margin'] = dfQ['GROSS PROFIT']/dfQ['TOTAL REVENUE']
-        dfQ['DATE']=pd.to_datetime(dfQ['DATE']).dt.date
-        dfQ['C/R'] = dfQ['TOTAL CURRENT ASSETS'].fillna(0)/dfQ['TOTAL CURRENT LIABILITIES'].fillna(0)
-        dfQ['D/E'] = (dfQ['LONG TERM DEBT'].fillna(0) + dfQ['SHORT LONG TERM DEBT TOTAL'].fillna(0))/dfQ['TOTAL STOCKHOLDER EQUITY'].fillna(0)
-        dfQ['ROIC'] = dfQ['EBIT']/(dfQ['LONG TERM DEBT'].fillna(0) + dfQ['SHORT LONG TERM DEBT TOTAL'].fillna(0) + dfQ['TOTAL STOCKHOLDER EQUITY'].fillna(0))
+    dfQ['Net Profit Margin'] = dfQ['NET INCOME']/dfQ['TOTAL REVENUE']                     
+    dfQ['Operating Profit Margin'] = dfQ['EBIT']/dfQ['TOTAL REVENUE']
+    dfQ['EBITDA Margin'] = dfQ['EBITDA']/dfQ['TOTAL REVENUE']
+    dfQ['Gross Profit Margin'] = dfQ['GROSS PROFIT']/dfQ['TOTAL REVENUE']
+    dfQ['DATE']=pd.to_datetime(dfQ['DATE']).dt.date
+    dfQ['C/R'] = dfQ['TOTAL CURRENT ASSETS'].fillna(0)/dfQ['TOTAL CURRENT LIABILITIES'].fillna(0)
+    dfQ['D/E'] = (dfQ['LONG TERM DEBT'].fillna(0) + dfQ['SHORT LONG TERM DEBT TOTAL'].fillna(0))/dfQ['TOTAL STOCKHOLDER EQUITY'].fillna(0)
+    dfQ['ROIC'] = dfQ['EBIT']/(dfQ['LONG TERM DEBT'].fillna(0) + dfQ['SHORT LONG TERM DEBT TOTAL'].fillna(0) + dfQ['TOTAL STOCKHOLDER EQUITY'].fillna(0))
 
-    else:
-        dfQ = pd.DataFrame()
 
     # ANNUAL FINANCIAL STATEMENT 
 
