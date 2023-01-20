@@ -48,7 +48,7 @@ OT = "Ratio"
 
 
 
-markets = ["USA","Canada","India"]
+markets = ["🇺🇸_USA","Canada","India"]
 
 
 #MARKET SELECT 
