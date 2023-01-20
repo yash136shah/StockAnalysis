@@ -58,11 +58,10 @@ def load_data_All(country="IND"):
                     df["Market Code"] = country
                     listDf.append(df)
                     
-
-            mergeDf = pd.concat(listDf)
-            mergeDf.reset_index(drop=True,inplace=True) 
-            dictDf[info] = mergeDf
-            listDf = []
+                    mergeDf = pd.concat(listDf)
+                    mergeDf.reset_index(drop=True,inplace=True) 
+                    dictDf[info] = mergeDf
+                    listDf = []
 
 
     except:
