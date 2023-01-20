@@ -53,8 +53,7 @@ def load_data_All(country="IND"):
 
     try:
         for info in infoType: 
-                    if country == "US" and info in ["AF","QF"]:
-                        f = fs.open(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.parquet") 
+                        f = fs.open(f"streamlitstockanalysis/{country}-EOD/Parquet/{country}_{info}.parquet") 
                         df = pd.read_parquet(f)
                         df["Market Code"] = country
                         listDf.append(df)
@@ -63,19 +62,7 @@ def load_data_All(country="IND"):
                         mergeDf.reset_index(drop=True,inplace=True) 
                         dictDf[info] = mergeDf
                         listDf = []
-                    else:
-                        f = fs.open(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.csv") 
-                        url = f.read().decode("utf-8")
-                        df = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
-                        df["Market Code"] = country
-                        listDf.append(df)
-
-                        mergeDf = pd.concat(listDf)
-                        mergeDf.reset_index(drop=True,inplace=True) 
-                        dictDf[info] = mergeDf
-                        listDf = []
-
-
+                   
     except:
         pass
     
@@ -126,9 +113,8 @@ def load_data_All(country="IND"):
 
     #only US
     if country == "US":
-        f = fs.open(r"streamlitstockanalysis/US-EOD/US_Shareholders.csv") 
-        url = f.read().decode("utf-8")
-        dfSh = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
+        f = fs.open(r"streamlitstockanalysis/US-EOD/Parquet/US_Shareholders.parquet") 
+        dfSh = pd.read_parquet(f)
         dfSh.columns = dfSh.columns.str.lstrip()
         dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     
