@@ -53,11 +53,6 @@ if "marketSelect" not in st.session_state:
     st.session_state["marketSelect"] = markets[2]
     st.session_state["marketIndex"] = markets.index(st.session_state["marketSelect"])
    
-def MarketSelect ():
-    st.session_state["marketIndex"] = markets.index(st.session_state["marketSelrad"])
-
-st.session_state["marketSelect"] = st.sidebar.radio("Market:",markets,index=st.session_state["marketIndex"],key="marketSelrad",on_change=MarketSelect)
-
 
 if st.session_state["marketSelect"] == "USA":
         benchmark = "SPY"
@@ -109,7 +104,7 @@ with col2:
 with col3:
     if st.button("Technical Analysis"):
         st.session_state["name_selected"]=st.session_state["name_selected_fundamental"] 
-        switch_page("Technical")
+        switch_page("Technical Analysis")
 
 with col4:
     if st.button("Industry Overview"):
