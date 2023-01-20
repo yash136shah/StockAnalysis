@@ -117,20 +117,22 @@ with col2:
         switch_page("Industry Overview")
 
 
-
+defaultName = []
 try:
-
-    st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["nameSel"])
-    
-
+    if len(st.session_state["nameSel"])>0:
+        defaultName = st.session_state["nameSel"]
+        
 except:
     try:
-        st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["nameSelFundamental"])
-
+        if len(st.session_state["nameSelFundamental"])>0:
+            defaultName = st.session_state["nameSelFundamental"]
+        
     except:  
-        st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=st.session_state["name_selected"])
+        defaultName=st.session_state["name_selected"]
         
 
+
+st.session_state["name_selected_technical"] = st.multiselect("Company Name:",name_list,key="nameSelTechnical",default=defaultName)
  
 if st.button("Change Peer Selection"):
     switch_page("stockAnalysis-2")
@@ -563,103 +565,103 @@ with tab4:
                 fig.update_traces(xaxis="x2")
                 st.plotly_chart(fig,use_container_width=True)
             
-            @st.experimental_memo
+            st.cache(allow_output_mutation=True)
             def optimum ():
                 
                 RSI.table()    
+                with st.spinner('processing optimum!'):
+                    optimum_rsi = pd.DataFrame() 
 
-                optimum_rsi = pd.DataFrame() 
-                
-                rsi_range_list=[]
-                profit_sum_list=[]
-                for ob in range(10,50,5):
-                    for os in range(90,50,-5):
-                        
-                        rsi_range = f"{ob}-{os}"
-                        
-                        rsi_range_list.append(rsi_range)
-            
-                        signalBuy = []
-                        signalSell = []
-                        position = False
+                    rsi_range_list=[]
+                    profit_sum_list=[]
+                    for ob in range(10,50,5):
+                        for os in range(90,50,-5):
 
-                        for i in range(len(rsidf)):
-                            if rsidf.iloc[i].item()<ob:
-                                if position == False :
-                                    signalBuy.append(rsidf.iloc[i].name)
-                                    position = True
+                            rsi_range = f"{ob}-{os}"
+
+                            rsi_range_list.append(rsi_range)
+
+                            signalBuy = []
+                            signalSell = []
+                            position = False
+
+                            for i in range(len(rsidf)):
+                                if rsidf.iloc[i].item()<ob:
+                                    if position == False :
+                                        signalBuy.append(rsidf.iloc[i].name)
+                                        position = True
+                                    else:
+                                        pass
+
+                                elif rsidf.iloc[i].item()>os:
+                                    if position == True:
+                                        signalSell.append(rsidf.iloc[i].name)
+                                        position = False
+                                    else:
+                                        pass
                                 else:
                                     pass
 
-                            elif rsidf.iloc[i].item()>os:
-                                if position == True:
-                                    signalSell.append(rsidf.iloc[i].name)
-                                    position = False
-                                else:
-                                    pass
+
+
+                            rsi_signal = pd.DataFrame()
+
+                            buy_list=[]  
+                            buy_date = []
+                            for i in signalBuy:
+                                buy_call = close.loc[i]
+                                buy_list.append(buy_call)
+                                buy_date.append(i)
+
+
+                            rsi_signal['Buy Date'] = buy_date
+
+                            rsi_signal['Buy']=buy_list
+
+
+
+                            sell_list=[]
+                            sell_date=[]
+                            for i in signalSell:
+                                sell_call = close.loc[i]
+                                sell_list.append(sell_call)
+                                sell_date.append(i)
+
+                            if len(sell_list) != len(buy_list):    
+                                sell_list.append("TBD")
+                                sell_date.append("TBD")
+
+
+
+                            rsi_signal['Sell Date']=sell_date    
+                            rsi_signal['Sell']=sell_list
+
+                            rsi_signal['Profit/Losst%'] =" "*len(buy_list)
+
+                            rsi_signal['Holding Period']=" "*len(buy_list)
+
+                            if "TBD" in sell_list:
+                                rsi_signal['Profit/Losst%'] = ((rsi_signal['Sell'].iloc[0:-1]-rsi_signal['Buy']).iloc[0:-1]/rsi_signal['Buy'].iloc[0:-1])*100
+                                rsi_signal['Holding Period'] = rsi_signal['Sell Date'].iloc[0:-1].astype("datetime64") - rsi_signal['Buy Date'].iloc[0:-1]
+
                             else:
-                                pass
+
+                                rsi_signal['Profit/Losst%']=((rsi_signal['Sell']-rsi_signal['Buy'])/rsi_signal['Buy'])*100
+
+                                rsi_signal['Holding Period'] = rsi_signal['Sell Date'] - rsi_signal['Buy Date']
 
 
+                            profit_sum=rsi_signal['Profit/Losst%'].sum()
 
-                        rsi_signal = pd.DataFrame()
-
-                        buy_list=[]  
-                        buy_date = []
-                        for i in signalBuy:
-                            buy_call = close.loc[i]
-                            buy_list.append(buy_call)
-                            buy_date.append(i)
+                            profit_sum_list.append(profit_sum)
 
 
-                        rsi_signal['Buy Date'] = buy_date
-
-                        rsi_signal['Buy']=buy_list
-
-
-
-                        sell_list=[]
-                        sell_date=[]
-                        for i in signalSell:
-                            sell_call = close.loc[i]
-                            sell_list.append(sell_call)
-                            sell_date.append(i)
-
-                        if len(sell_list) != len(buy_list):    
-                            sell_list.append("TBD")
-                            sell_date.append("TBD")
-
-
-
-                        rsi_signal['Sell Date']=sell_date    
-                        rsi_signal['Sell']=sell_list
-
-                        rsi_signal['Profit/Losst%'] =" "*len(buy_list)
-
-                        rsi_signal['Holding Period']=" "*len(buy_list)
-
-                        if "TBD" in sell_list:
-                            rsi_signal['Profit/Losst%'] = ((rsi_signal['Sell'].iloc[0:-1]-rsi_signal['Buy']).iloc[0:-1]/rsi_signal['Buy'].iloc[0:-1])*100
-                            rsi_signal['Holding Period'] = rsi_signal['Sell Date'].iloc[0:-1].astype("datetime64") - rsi_signal['Buy Date'].iloc[0:-1]
-
-                        else:
-
-                            rsi_signal['Profit/Losst%']=((rsi_signal['Sell']-rsi_signal['Buy'])/rsi_signal['Buy'])*100
-
-                            rsi_signal['Holding Period'] = rsi_signal['Sell Date'] - rsi_signal['Buy Date']
-
-
-                        profit_sum=rsi_signal['Profit/Losst%'].sum()
-                        
-                        profit_sum_list.append(profit_sum)
-                                            
-                        
-                optimum_rsi['Range'] =  rsi_range_list
-                optimum_rsi['Profit'] = profit_sum_list
-                optimum_rsi.set_index("Range",inplace=True)
-                fig=px.bar(optimum_rsi,x=optimum_rsi.index,y=optimum_rsi.columns)
-                #[optimum_rsi['Profit']>optimum_rsi['Profit'].mean()]
-                st.plotly_chart(fig,use_container_width=True)
+                    optimum_rsi['Range'] =  rsi_range_list
+                    optimum_rsi['Profit'] = profit_sum_list
+                    optimum_rsi.set_index("Range",inplace=True)
+                    fig=px.bar(optimum_rsi,x=optimum_rsi.index,y=optimum_rsi.columns)
+                    #[optimum_rsi['Profit']>optimum_rsi['Profit'].mean()]
+                    st.plotly_chart(fig,use_container_width=True)
 
 
                                 
@@ -679,6 +681,7 @@ with tab4:
         get_optimum = st.button("Get Optimum")
 
         if get_optimum:
+            st.warning("Please do not change or reload the page! Heavy processing on!")
             RSI.optimum()
             
             
@@ -816,7 +819,7 @@ with tab5:
             #ema_signal['Buy Date'] = ema_signal['Buy Date'].dt.strftime("%Y-%m-%d")
             ema_signal['Holding Period'] = ema_signal['Holding Period'].astype('timedelta64[D]')
 
-                
+        st.cache(allow_output_mutation=True)     
         def chart():
 
             EMA.signal(ema1,ema2)
@@ -858,39 +861,41 @@ with tab5:
             
             global optimumEMA
             
-            optimumEMA = pd.DataFrame()
-            
-            profit = []
-            ema_range = [] 
-            for i in range(10,110,10):
-                for u in range(250,10,-10):
-                    if (u-i) < 10:
-                        pass
+            with st.spinner('processing optimum!'):
 
-                    else:
-                        EMA.signal(i,u,display="No")
-                        profit.append(ema_signal.iloc[:,4].sum())
-                        ema_range.append(f'{i}-{u}')
+                optimumEMA = pd.DataFrame()
+                
+                profit = []
+                ema_range = [] 
+                for i in range(10,110,10):
+                    for u in range(250,10,-10):
+                        if (u-i) < 10:
+                            pass
 
-
-            optimumEMA['EMA-RANGE']=ema_range
-            optimumEMA['Profit'] = profit 
+                        else:
+                            EMA.signal(i,u)
+                            profit.append(ema_signal.iloc[:,4].sum())
+                            ema_range.append(f'{i}-{u}')
 
 
-            fig1= px.histogram(optimumEMA,x="Profit")
-
-            fig2df = optimumEMA.set_index("EMA-RANGE").iloc[0:110]
-            
-            fig2=px.bar(fig2df,x=fig2df.index,y=fig2df['Profit'])
-
-            
-            fig3df = optimumEMA.set_index("EMA-RANGE").iloc[110:]
-            fig3=px.bar(fig3df,x=fig3df.index,y=fig3df['Profit'])
+                optimumEMA['EMA-RANGE']=ema_range
+                optimumEMA['Profit'] = profit 
 
 
-            st.plotly_chart(fig1)
-            st.plotly_chart(fig2)
-            st.plotly_chart(fig3)
+                fig1= px.histogram(optimumEMA,x="Profit")
+
+                fig2df = optimumEMA.set_index("EMA-RANGE").iloc[0:110]
+                
+                fig2=px.bar(fig2df,x=fig2df.index,y=fig2df['Profit'])
+
+                
+                fig3df = optimumEMA.set_index("EMA-RANGE").iloc[110:]
+                fig3=px.bar(fig3df,x=fig3df.index,y=fig3df['Profit'])
+
+
+                st.plotly_chart(fig1)
+                st.plotly_chart(fig2)
+                st.plotly_chart(fig3)
 
 
         
@@ -927,6 +932,7 @@ with tab5:
     get_optimum = st.button("Get Optimum",key="emagetopt")
 
     if get_optimum:
+        st.warning("Please do not change or reload the page! Heavy processing on!")
         EMA.optimum()
 
 
@@ -994,16 +1000,42 @@ with tab7:
 
 
 with tab8:
-
+        perf_type = st.radio("Performance Type:",("Day","Weekly","Monthly","3-months","6-months","Yearly","Choose your own Period"),index=6,horizontal=True,key="perftype")
+        
         date_list=tickdata.index.date
-        ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="Hmapdatesl")
+        
+        if perf_type == "Choose your own Period":
+            ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="Hmapdatesl")
+        
+        else:
+            de = date_list[-1]
+
+            if perf_type == "Day":
+                ds = date_list[-2]
+                
+            elif perf_type == "Weekly":
+                ds = date_list[-5]
+                
+            elif perf_type == "Monthly":
+                ds = date_list[-20]
+
+
+            elif perf_type == "3-months":
+                ds = date_list[-60]
+
+            elif perf_type == "6-months":
+                ds = date_list[-120]
+
+            elif perf_type == "Yearly":
+                ds = date_list[-240]
+
         def HeatMap():
             mrh = pd.DataFrame()  
             
             cldf = ticker_data["Close"].dropna()
-
+            cldf = cldf.loc[ds:de]
             mrh['return']=cldf.iloc[-1]/cldf.iloc[0] - 1
-
+            
             
             color_bin = [-100000000,-0.2,-0.01,0, 0.01, 0.2,100000000]
             mrh['colors'] = pd.cut(mrh['return'], bins=color_bin, labels=['red','indianred','lightpink','lightgreen','green','lime'])
