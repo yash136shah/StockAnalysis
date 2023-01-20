@@ -105,7 +105,7 @@ with col2:
     
     if st.button("Fundamental Analysis"):
         st.session_state["name_selected"]=st.session_state["name_selected_technical"] 
-        switch_page("Fundamental")
+        switch_page("Fundamental Analysis")
     
     if st.button("Industry Overview"):
         st.session_state["name_selected"]=st.session_state["name_selected_technical"] 
