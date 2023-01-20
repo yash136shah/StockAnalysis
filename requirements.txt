@@ -12,3 +12,4 @@ streamlit-extras==0.2.5
 streamlit-aggrid==0.3.3
 streamlit-toggle-switch==1.0.2
 gsheetsdb==0.1.13.1
+s3fs==2022.11.0
