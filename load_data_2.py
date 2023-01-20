@@ -43,7 +43,7 @@ BS = "BS"
 CF = "CF"
 OT = "Ratio"
 
-@st.experimental_memo
+@st.experimental_singleton
 def load_data_All(country="IND"):
 
     infoType = ["CompanyInfo","AF","QF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
@@ -80,10 +80,16 @@ def load_data_All(country="IND"):
         pass
     
     #only US
-    f = fs.open(r"streamlitstockanalysis/US-EOD/US_Shareholders.csv") 
-    url = f.read().decode("utf-8")
-    dfSh = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
+    if country == "US":
+        f = fs.open(r"streamlitstockanalysis/US-EOD/US_Shareholders.csv") 
+        url = f.read().decode("utf-8")
+        dfSh = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
+        dfSh.columns = dfSh.columns.str.lstrip()
+        dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     
+    else:
+        dfSH = pd.DataFrame()
+
     #tview 
     f = fs.open(r"streamlitstockanalysis/india_america_canada_2023-01-04.csv") 
     url = f.read().decode("utf-8")
@@ -101,12 +107,12 @@ def load_data_All(country="IND"):
     dfCI = dictDf["CompanyInfo"] 
     
 
-
-    frames = [dfSh,dfOff,dfEH,dfET,dfEA,dfCI,dfT,dfM]
-       
+    
+    frames = [dfOff,dfEH,dfET,dfEA,dfCI,dfT,dfM]
+    
     for df in frames:    
         df.columns = df.columns.str.lstrip()
-    
+
 
     dfCI.loc[dfCI["EXCHANGE"]=="TO",["YF TICKER"]] = dfCI["TICKER"] + ".TO"
     dfCI.loc[dfCI["EXCHANGE"]=="NSE",["YF TICKER"]] = dfCI["TICKER"] + ".NS"
@@ -122,7 +128,6 @@ def load_data_All(country="IND"):
     nameInfo = dfC[["TICKER","NAME"]]
     nameInfo.rename(columns={"NAME":"Company Name"},inplace=True)
 
-    dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfOff = dfOff.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfEH = dfEH.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfET = dfET.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
@@ -140,6 +145,7 @@ def load_data_All(country="IND"):
     numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
     colnumeric = dfC.select_dtypes(include=numerics).columns
     dfC[colnumeric]=dfC[colnumeric].fillna(0)
+
 
 
 
