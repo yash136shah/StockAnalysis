@@ -223,7 +223,7 @@ if st.session_state["name_search"]== 'Sector & Industry':
         industryOverview = st.checkbox("See Industry Overview")
 
         if industryOverview:
-            switch_page("Industry-Analysis-2")
+            switch_page("2_Industry_Overview")
 
 
     #ROW 2 of Selection 
