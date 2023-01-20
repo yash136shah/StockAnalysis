@@ -13,11 +13,9 @@ fs = s3fs.S3FileSystem(anon=False)
 
 # Retrieve file contents.
 # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
-@st.experimental_memo(ttl=600)
-def read_file(filename):
-        with fs.open(filename) as f:
-            return f.read().decode("utf-8")
 
+def read_file(filename):
+        
 
 
 # VARIABLE INITIALIZED 
@@ -52,17 +50,16 @@ CF = "CF"
 OT = "Ratio"
 
 @st.experimental_memo
-def load_data_All():
-    countries = ["US","CAN","IND"]
+def load_data_All(country="IND"):
     infoType = ["CompanyInfo","AF","QF","Officers","Listings","SharesOutstanding","EarningHistorical","EarningTrend","EarningAnnual"]
 
     dictDf = {} 
     listDf = []
 
     try:
-        for info in infoType:
-            for country in countries:
-                    url = read_file(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.csv")
+        for info in infoType:                        
+                    f = fs.open(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.csv") 
+                    url = f.read().decode("utf-8")
                     df = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
                     df["Market Code"] = country
                     listDf.append(df)
@@ -78,15 +75,19 @@ def load_data_All():
         pass
     
     #only US
-    shareHolders = read_file("streamlitstockanalysis/US-EOD/US_Shareholders.csv")
-    dfSh = pd.read_csv(StringIO(shareHolders),sep=",",header=0,low_memory=False)
+    f = fs.open(r"streamlitstockanalysis/US-EOD/US_Shareholders.csv") 
+    url = f.read().decode("utf-8")
+    dfSh = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
     
-    #other File info 
-    tview = read_file("streamlitstockanalysis/india_america_canada_2023-01-04.csv")
-    metRef = read_file("streamlitstockanalysis/MetricRef.csv")
-
-    dfT = pd.read_csv(StringIO(tview),sep=",",header=0,low_memory=False)
-    dfM = pd.read_csv(StringIO(metRef),sep=",",header=0,low_memory=False)
+    #tview 
+    f = fs.open(r"streamlitstockanalysis/india_america_canada_2023-01-04.csv") 
+    url = f.read().decode("utf-8")
+    dfT = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
+    
+    #metRef
+    f = fs.open(r"streamlitstockanalysis/MetricRef.csv") 
+    url = f.read().decode("utf-8")
+    dfM = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
 
     dfOff = dictDf["Officers"]
     dfEH = dictDf["EarningHistorical"]
@@ -97,6 +98,7 @@ def load_data_All():
 
 
     frames = [dfSh,dfOff,dfEH,dfET,dfEA,dfCI,dfT,dfM]
+       
     for df in frames:    
         df.columns = df.columns.str.lstrip()
     
