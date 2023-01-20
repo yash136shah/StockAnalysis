@@ -79,16 +79,7 @@ def load_data_All(country="IND"):
     except:
         pass
     
-    #only US
-    if country == "US":
-        f = fs.open(r"streamlitstockanalysis/US-EOD/US_Shareholders.csv") 
-        url = f.read().decode("utf-8")
-        dfSh = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
-        dfSh.columns = dfSh.columns.str.lstrip()
-        dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
-    
-    else:
-        dfSH = pd.DataFrame()
+
 
     #tview 
     f = fs.open(r"streamlitstockanalysis/india_america_canada_2023-01-04.csv") 
@@ -133,7 +124,18 @@ def load_data_All(country="IND"):
     dfET = dfET.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
     dfEA= dfEA.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
 
-
+    #only US
+    if country == "US":
+        f = fs.open(r"streamlitstockanalysis/US-EOD/US_Shareholders.csv") 
+        url = f.read().decode("utf-8")
+        dfSh = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
+        dfSh.columns = dfSh.columns.str.lstrip()
+        dfSH = dfSh.merge(nameInfo,left_on="TICKER",right_on="TICKER",how="left")
+    
+    else:
+        dfSH = pd.DataFrame()
+        
+        
     mdata=[]
     for i in dfC['MARKET CAPITALIZATION']:
         mdata.append(nu.numerize(i))
