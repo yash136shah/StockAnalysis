@@ -52,8 +52,12 @@ def load_data_All(country="IND"):
     listDf = []
 
     try:
-        for info in infoType:                        
-                    f = fs.open(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.csv") 
+        for info in infoType: 
+                    if country == "US" and info in ["AF","QF"]:
+                        f = fs.open(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.parquet") 
+                    else:
+                        f = fs.open(f"streamlitstockanalysis/{country}-EOD/{country}_{info}.csv") 
+         
                     url = f.read().decode("utf-8")
                     df = pd.read_csv(StringIO(url),sep=",",header=0,low_memory=False)
                     df["Market Code"] = country
