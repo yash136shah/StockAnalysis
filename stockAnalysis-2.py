@@ -706,12 +706,17 @@ else:
 
 
 
+col1,col2 = st.columns(2)
 
-if st.button("Technical Analysis"):
-    st.session_state["name_selected"]=st.session_state["name_selected_SI"]
-    switch_page("Technical")
+st.header("⚔ Perform Analysis")
 
-if st.button("Fundamental Analysis"):
-    st.session_state["name_selected"]=st.session_state["name_selected_SI"]
-    switch_page("Fundamental")
+with col1:
+    if st.button("📈Technical Analysis"):
+        st.session_state["name_selected"]=st.session_state["name_selected_SI"]
+        switch_page("Technical Analysis")
+
+with col2:
+    if st.button("Fundamental Analysis"):
+        st.session_state["name_selected"]=st.session_state["name_selected_SI"]
+        switch_page("📊Fundamental Analysis")
 
