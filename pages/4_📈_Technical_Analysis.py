@@ -289,9 +289,11 @@ with tab2:
             else:
                 choosePeriod = "Yes"
     
-    if choosePeriod == "Yes":
-                ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
-
+    try:
+        if choosePeriod == "Yes":
+                    ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
+    except:
+        pass
 
     def Indexed_Price():
         try:
