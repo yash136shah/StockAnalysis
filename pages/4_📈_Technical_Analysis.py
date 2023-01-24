@@ -280,13 +280,14 @@ with tab2:
         else:
             per_type = st.radio("Multiple","Choose your own Period",index=0,horizontal=True,key="indexPerType")
             
-            if per_type = "Multiple":
+            if per_type == "Multiple":
                 pmultiple = st.number("Enter Muliple",min_value=1, max_value=100, value=4, step=1)
             
-            de = date_list[-1]      
-            ds=date_list[-pmultiple]
+                de = date_list[-1]      
+                ds=date_list[-pmultiple]
 
-
+            else:
+                ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
 
 
     def Indexed_Price():
