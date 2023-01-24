@@ -275,8 +275,7 @@ with tab2:
                     ds = date_list[-120]
 
                 elif per_type == "12m":
-        
-                ds = date_list[-240]
+                    ds = date_list[-240]
         
         else:
             per_type = st.radio("Multiple","Choose your own Period",index=0,horizontal=True,key="indexPerType")
