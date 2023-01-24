@@ -245,9 +245,35 @@ with tab2:
 
     date_list = indexMData.index.date
     
-
     
-    ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexdatesl")
+    per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
+        
+
+    if perf_type == "Choose your own Period":
+        ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="Hmapdatesl")
+
+    else:
+        de = date_list[-1]
+
+        if perf_type == "1d":
+            ds = date_list[-2]
+
+        elif perf_type == "1w":
+            ds = date_list[-5]
+
+        elif perf_type == "1m":
+            ds = date_list[-20]
+
+
+        elif perf_type == "3m":
+            ds = date_list[-60]
+
+        elif perf_type == "6m":
+            ds = date_list[-120]
+
+        elif perf_type == "12m":
+            ds = date_list[-240]
+
 
     def Indexed_Price():
         try:
@@ -995,7 +1021,7 @@ with tab7:
 
 
 with tab8:
-        perf_type = st.radio("Performance Type:",("Day","Weekly","Monthly","3-months","6-months","Yearly","Choose your own Period"),index=6,horizontal=True,key="perftype")
+        perf_type = st.radio("Performance Type:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="perftype")
         
         date_list=tickdata.index.date
         
@@ -1005,23 +1031,23 @@ with tab8:
         else:
             de = date_list[-1]
 
-            if perf_type == "Day":
+            if perf_type == "1d":
                 ds = date_list[-2]
                 
-            elif perf_type == "Weekly":
+            elif perf_type == "1w":
                 ds = date_list[-5]
                 
-            elif perf_type == "Monthly":
+            elif perf_type == "1m":
                 ds = date_list[-20]
 
 
-            elif perf_type == "3-months":
+            elif perf_type == "3m":
                 ds = date_list[-60]
 
-            elif perf_type == "6-months":
+            elif perf_type == "6m":
                 ds = date_list[-120]
 
-            elif perf_type == "Yearly":
+            elif perf_type == "12m":
                 ds = date_list[-240]
 
         def HeatMap():
