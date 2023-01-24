@@ -249,7 +249,7 @@ with tab2:
         date_list = indexMData.index.date
 
     with col2:
-        if dtFreq = "Daily":
+        if dtFreq == "Daily":
             per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
         else:
             per_type = st.radio("Period:",("Choose your own Period"),index=0,horizontal=True,key="indexPerType")
