@@ -251,34 +251,43 @@ with tab2:
     with col2:
         if dtFreq == "Daily":
             per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
-        else:
-            per_type = "Choose your own Period"
             
+            if per_type == "Choose your own Period":
+                ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
 
-    if per_type == "Choose your own Period":
-        ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
+            else:
+                de = date_list[-1]
 
-    else:
-        de = date_list[-1]
+                if per_type == "1d":
+                    ds = date_list[-2]
 
-        if per_type == "1d":
-            ds = date_list[-2]
+                elif per_type == "1w":
+                    ds = date_list[-5]
 
-        elif per_type == "1w":
-            ds = date_list[-5]
-
-        elif per_type == "1m":
-            ds = date_list[-20]
+                elif per_type == "1m":
+                    ds = date_list[-20]
 
 
-        elif per_type == "3m":
-            ds = date_list[-60]
+                elif per_type == "3m":
+                    ds = date_list[-60]
 
-        elif per_type == "6m":
-            ds = date_list[-120]
+                elif per_type == "6m":
+                    ds = date_list[-120]
 
-        elif per_type == "12m":
-            ds = date_list[-240]
+                elif per_type == "12m":
+        
+                ds = date_list[-240]
+        
+        else:
+            per_type = st.radio("Multiple","Choose your own Period",index=0,horizontal=True,key="indexPerType")
+            
+            if per_type = "Multiple":
+                pmultiple = st.number("Enter Muliple",min_value=1, max_value=100, value=4, step=1)
+            
+            de = date_list[-1]      
+            ds=date_list[-pmultiple]
+
+
 
 
     def Indexed_Price():
