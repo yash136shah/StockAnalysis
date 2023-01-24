@@ -227,9 +227,9 @@ with tab1:
 
 # Plotting Volume 
 with tab2:
-    col1,col2 = st.columns(2)
-    indexData = tickdata.copy()
     
+    indexData = tickdata.copy()
+    col1,col2 = st.columns(2)
     with col1:
         dtFreq = st.radio("Date Frequency:",("Quarterly","Monthly","Weekly","Daily"),index=1,horizontal=True)
         #indexData.index.resample("M")#strftime("%Y-%m") #tickdata.index.date
@@ -253,7 +253,7 @@ with tab2:
             per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
             
             if per_type == "Choose your own Period":
-                ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
+                choosePeriod = "Yes"
 
             else:
                 de = date_list[-1]
@@ -287,6 +287,9 @@ with tab2:
                 ds=date_list[-pmultiple]
 
             else:
+                choosePeriod = "Yes"
+    
+    if choosePeriod == "Yes":
                 ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
 
 
