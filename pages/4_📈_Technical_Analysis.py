@@ -249,8 +249,11 @@ with tab2:
         date_list = indexMData.index.date
 
     with col2:
-        per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
-
+        if dtFreq = "Daily":
+            per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
+        else:
+            per_type = st.radio("Period:",("Choose your own Period"),index=0,horizontal=True,key="indexPerType")
+            
 
     if per_type == "Choose your own Period":
         ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
