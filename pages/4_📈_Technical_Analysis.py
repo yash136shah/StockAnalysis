@@ -253,28 +253,28 @@ with tab2:
 
 
     if per_type == "Choose your own Period":
-        ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="Hmapdatesl")
+        ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="indexCP")
 
     else:
         de = date_list[-1]
 
-        if perf_type == "1d":
+        if per_type == "1d":
             ds = date_list[-2]
 
-        elif perf_type == "1w":
+        elif per_type == "1w":
             ds = date_list[-5]
 
-        elif perf_type == "1m":
+        elif per_type == "1m":
             ds = date_list[-20]
 
 
-        elif perf_type == "3m":
+        elif per_type == "3m":
             ds = date_list[-60]
 
-        elif perf_type == "6m":
+        elif per_type == "6m":
             ds = date_list[-120]
 
-        elif perf_type == "12m":
+        elif per_type == "12m":
             ds = date_list[-240]
 
 
