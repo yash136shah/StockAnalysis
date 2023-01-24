@@ -227,29 +227,32 @@ with tab1:
 
 # Plotting Volume 
 with tab2:
+    col1,col2 = st.columns(2)
     indexData = tickdata.copy()
-    dtFreq = st.radio("Date Frequency:",("Quarterly","Monthly","Weekly","Daily"),index=1,horizontal=True)
-    #indexData.index.resample("M")#strftime("%Y-%m") #tickdata.index.date
     
-    if dtFreq == "Quarterly":
-        indexMData=indexData.resample("Q").mean()
-    
-    elif dtFreq == "Monthly":
-        indexMData=indexData.resample("M").mean()
-    
-    elif dtFreq == "Weekly":
-        indexMData=indexData.resample("W").mean()
-    
-    else:
-        indexMData = indexData
+    with col1:
+        dtFreq = st.radio("Date Frequency:",("Quarterly","Monthly","Weekly","Daily"),index=1,horizontal=True)
+        #indexData.index.resample("M")#strftime("%Y-%m") #tickdata.index.date
 
-    date_list = indexMData.index.date
-    
-    
-    per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
-        
+        if dtFreq == "Quarterly":
+            indexMData=indexData.resample("Q").mean()
 
-    if perf_type == "Choose your own Period":
+        elif dtFreq == "Monthly":
+            indexMData=indexData.resample("M").mean()
+
+        elif dtFreq == "Weekly":
+            indexMData=indexData.resample("W").mean()
+
+        else:
+            indexMData = indexData
+
+        date_list = indexMData.index.date
+
+    with col2:
+        per_type = st.radio("Period:",("1d","1w","1m","3m","6m","12m","Choose your own Period"),index=6,horizontal=True,key="indexPerType")
+
+
+    if per_type == "Choose your own Period":
         ds,de = st.select_slider("Date Range:",options=date_list,value=(date_list[0],date_list[-1]),key="Hmapdatesl")
 
     else:
